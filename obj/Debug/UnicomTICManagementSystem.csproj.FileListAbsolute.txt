@@ -1,0 +1,13 @@
+Z:\cSharp\project ums\UnicomTICManagementSystem\bin\Debug\UnicomTICManagementSystem.exe.config
+Z:\cSharp\project ums\UnicomTICManagementSystem\bin\Debug\UnicomTICManagementSystem.exe
+Z:\cSharp\project ums\UnicomTICManagementSystem\bin\Debug\UnicomTICManagementSystem.pdb
+Z:\cSharp\project ums\UnicomTICManagementSystem\bin\Debug\System.Data.SQLite.dll
+Z:\cSharp\project ums\UnicomTICManagementSystem\bin\Debug\System.Data.SQLite.xml
+Z:\cSharp\project ums\UnicomTICManagementSystem\obj\Debug\UnicomTICManagementSystem.csproj.AssemblyReference.cache
+Z:\cSharp\project ums\UnicomTICManagementSystem\obj\Debug\UnicomTICManagementSystem.Properties.Resources.resources
+Z:\cSharp\project ums\UnicomTICManagementSystem\obj\Debug\UnicomTICManagementSystem.csproj.GenerateResource.cache
+Z:\cSharp\project ums\UnicomTICManagementSystem\obj\Debug\UnicomTICManagementSystem.csproj.CoreCompileInputs.cache
+Z:\cSharp\project ums\UnicomTICManagementSystem\obj\Debug\UnicomTI.449BFD41.Up2Date
+Z:\cSharp\project ums\UnicomTICManagementSystem\obj\Debug\UnicomTICManagementSystem.exe
+Z:\cSharp\project ums\UnicomTICManagementSystem\obj\Debug\UnicomTICManagementSystem.pdb
+Z:\cSharp\project ums\UnicomTICManagementSystem\obj\Debug\UnicomTICManagementSystem.Form1.resources
