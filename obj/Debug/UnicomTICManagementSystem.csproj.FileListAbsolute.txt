@@ -10,4 +10,6 @@ Z:\cSharp\project ums\UnicomTICManagementSystem\obj\Debug\UnicomTICManagementSys
 Z:\cSharp\project ums\UnicomTICManagementSystem\obj\Debug\UnicomTI.449BFD41.Up2Date
 Z:\cSharp\project ums\UnicomTICManagementSystem\obj\Debug\UnicomTICManagementSystem.exe
 Z:\cSharp\project ums\UnicomTICManagementSystem\obj\Debug\UnicomTICManagementSystem.pdb
-Z:\cSharp\project ums\UnicomTICManagementSystem\obj\Debug\UnicomTICManagementSystem.Form1.resources
+Z:\cSharp\project ums\UnicomTICManagementSystem\obj\Debug\UnicomTICManagementSystem.Main_Form.resources
+Z:\cSharp\project ums\UnicomTICManagementSystem\obj\Debug\UnicomTICManagementSystem.Views.Student_Form.resources
+Z:\cSharp\project ums\UnicomTICManagementSystem\obj\Debug\UnicomTICManagementSystem.login_Form.resources

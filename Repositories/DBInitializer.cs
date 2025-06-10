@@ -50,9 +50,13 @@ namespace UnicomTICManagementSystem.Repositories
 
                     CREATE TABLE IF NOT EXISTS Students (
                         Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        UTNumber TEXT NOT NULL,
                         Name TEXT NOT NULL,
                         Address TEXT NOT NULL,
+                        Email TEXT NOT NULL,
+                        ContactNumber TEXT NOT NULL,
                         CourseId INTEGER,
+                        CourseName TEXT,
                         UserId INTEGER NOT NULL,
                         FOREIGN KEY (UserId) REFERENCES Users(Id),
                         FOREIGN KEY (CourseId) REFERENCES Courses(Id)
@@ -60,7 +64,7 @@ namespace UnicomTICManagementSystem.Repositories
                     );
                     CREATE TABLE IF NOT EXISTS Users(
                         Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                        Username TEXT NOT NULL,
+                        Username TEXT NOT NULL UNIQUE,
                         Password TEXT NOT NULL,
                         Role TEXT NOT NULL,
                         Status TEXT NOT NULL

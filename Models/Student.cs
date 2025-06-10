@@ -9,7 +9,7 @@ namespace UnicomTICManagementSystem.Models
     internal class Student
     {
         public int Id { get; set; }
-        public string UtNumber { get; set; }
+        public string UTNumber { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
         public string Email { get; set; }
@@ -18,5 +18,6 @@ namespace UnicomTICManagementSystem.Models
         public string Password { get; set; }
         public int CourseId { get; set; }
         public string CourseName { get; set; }
+        public int UserId { get; set; }
     }
 }

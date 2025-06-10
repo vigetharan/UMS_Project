@@ -12,9 +12,9 @@ using UnicomTICManagementSystem.Controllers;
 
 namespace UnicomTICManagementSystem
 {
-    public partial class Form1 : Form
+    public partial class login_Form : Form
     {
-        public Form1()
+        public login_Form()
         {
             InitializeComponent();
            DBInitializer.CreateTables();
@@ -22,7 +22,14 @@ namespace UnicomTICManagementSystem
 
         private void button1_Click(object sender, EventArgs e)
         {
-            LoginController.CheckLogin( tb_username.Text, tb_password.Text);
+            if (LoginController.CheckLogin(tb_username.Text, tb_password.Text))
+            {
+                Main_Form f = new Main_Form();
+                f.Show();
+                this.Hide(); 
+
+
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)

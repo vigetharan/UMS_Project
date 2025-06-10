@@ -1,6 +1,6 @@
 ﻿namespace UnicomTICManagementSystem
 {
-    partial class Form1
+    partial class login_Form
     {
         /// <summary>
         /// Required designer variable.
@@ -67,6 +67,7 @@
             this.tb_password.Name = "tb_password";
             this.tb_password.Size = new System.Drawing.Size(188, 20);
             this.tb_password.TabIndex = 1;
+            this.tb_password.UseSystemPasswordChar = true;
             // 
             // label2
             // 
@@ -77,17 +78,20 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Password";
             // 
-            // Form1
+            // login_Form
             // 
+            this.AcceptButton = this.btn_login;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ClientSize = new System.Drawing.Size(637, 450);
             this.Controls.Add(this.btn_login);
             this.Controls.Add(this.tb_password);
             this.Controls.Add(this.tb_username);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "Form1";
+            this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Name = "login_Form";
             this.Text = "Login Form            -UNICOMTIC MANAGEMENT SYSTEM-";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
