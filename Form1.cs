@@ -22,13 +22,22 @@ namespace UnicomTICManagementSystem
 
         private void button1_Click(object sender, EventArgs e)
         {
+            /*if (LoginController.CheckLogin(tb_username.Text, tb_password.Text))
+            {
+                Main_Form f = new Main_Form();
+                f.Show();
+                
+            }*/
+
             if (LoginController.CheckLogin(tb_username.Text, tb_password.Text))
             {
                 Main_Form f = new Main_Form();
                 f.Show();
-                this.Hide(); 
-
-
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Invalid login credentials. Please try again.");
             }
         }
 
@@ -37,6 +46,9 @@ namespace UnicomTICManagementSystem
 
         }
 
+        private void tb_password_TextChanged(object sender, EventArgs e)
+        {
 
+        }
     }
 }

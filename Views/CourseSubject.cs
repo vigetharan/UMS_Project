@@ -8,19 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace UnicomTICManagementSystem
+namespace UnicomTICManagementSystem.Views
 {
-    public partial class Main_Form : Form
+    public partial class CourseSubject : Form
     {
-        public Main_Form()
+        public CourseSubject()
         {
             InitializeComponent();
- 
-        }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }
