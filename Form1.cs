@@ -18,6 +18,7 @@ namespace UnicomTICManagementSystem
         {
             InitializeComponent();
            DBInitializer.CreateTables();
+            tb_username.Focus();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -37,7 +38,9 @@ namespace UnicomTICManagementSystem
             }
             else
             {
-                MessageBox.Show("Invalid login credentials. Please try again.");
+                tb_username.Clear();
+                tb_password.Clear();
+                label_error.Visible = true;
             }
         }
 
@@ -49,6 +52,16 @@ namespace UnicomTICManagementSystem
         private void tb_password_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void label_error_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tb_username_TextChanged(object sender, EventArgs e)
+        {
+            label_error.Visible = false;
         }
     }
 }
