@@ -17,10 +17,10 @@ namespace UnicomTICManagementSystem.Controllers
             {
                 string addUserQuery = "INSERT INTO Users ( Username,Password,Role,Status) VALUES (@username,@password,@role,@status)";
                 SQLiteCommand addCommand = new SQLiteCommand(addUserQuery, dbconn);
-                addCommand.Parameters.AddWithValue("@Username", u.Username);
-                addCommand.Parameters.AddWithValue("@Password", u.Password);
-                addCommand.Parameters.AddWithValue("@Role", u.Role);
-                addCommand.Parameters.AddWithValue("@Status", u.Status);
+                addCommand.Parameters.AddWithValue("@username", u.Username);
+                addCommand.Parameters.AddWithValue("@password", u.Password);
+                addCommand.Parameters.AddWithValue("@role", u.Role);
+                addCommand.Parameters.AddWithValue("@status", u.Status);
 
                 addCommand.ExecuteNonQuery();
             }

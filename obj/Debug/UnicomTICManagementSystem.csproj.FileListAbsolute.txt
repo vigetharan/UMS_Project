@@ -13,3 +13,4 @@ Z:\cSharp\project ums\UnicomTICManagementSystem\obj\Debug\UnicomTICManagementSys
 Z:\cSharp\project ums\UnicomTICManagementSystem\obj\Debug\UnicomTICManagementSystem.Main_Form.resources
 Z:\cSharp\project ums\UnicomTICManagementSystem\obj\Debug\UnicomTICManagementSystem.Views.Student_Form.resources
 Z:\cSharp\project ums\UnicomTICManagementSystem\obj\Debug\UnicomTICManagementSystem.login_Form.resources
+Z:\cSharp\project ums\UnicomTICManagementSystem\obj\Debug\UnicomTICManagementSystem.Views.CourseSubject.resources

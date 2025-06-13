@@ -4,6 +4,7 @@ using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using UnicomTICManagementSystem.Models;
 using UnicomTICManagementSystem.Repositories;
 
@@ -11,18 +12,19 @@ namespace UnicomTICManagementSystem.Controllers
 {
     internal class CourseController
     {
-            public string AddCourse(string coursename)
+        public string AddCourse(string coursename)
+        {
+            using (var dbconn = DatabaseManager.GetConnection())
             {
-                using (var dbconn = DatabaseManager.GetConnection())
-                {
-                    string addCourseQuery = "INSERT INTO Courses ( CourseName) VALUES (@coursename)";
-                    SQLiteCommand addCommand = new SQLiteCommand(addCourseQuery, dbconn);
-                    addCommand.Parameters.AddWithValue("@UTNumber", coursename);
-                    
-                    addCommand.ExecuteNonQuery();
-                }
-                return $"NEW COURSE {coursename} ADDED SUCCESSFULLY";
+                string addCourseQuery = "INSERT INTO Courses ( CourseName) VALUES (@coursename)";
+                SQLiteCommand addCommand = new SQLiteCommand(addCourseQuery, dbconn);
+                addCommand.Parameters.AddWithValue("coursename", coursename);
 
-
+                addCommand.ExecuteNonQuery();
             }
+            return $"NEW COURSE {coursename} ADDED SUCCESSFULLY";
+
+
+        }
+    }
 }

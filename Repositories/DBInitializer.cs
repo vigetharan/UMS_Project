@@ -18,7 +18,7 @@ namespace UnicomTICManagementSystem.Repositories
                 cmd.CommandText = @"
                     CREATE TABLE IF NOT EXISTS Courses (
                         Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                        Name TEXT NOT NULL
+                        CourseName TEXT NOT NULL
                     );
                     
                     CREATE TABLE IF NOT EXISTS Users(
@@ -35,6 +35,7 @@ namespace UnicomTICManagementSystem.Repositories
                         Name TEXT NOT NULL,
                         Phone TEXT NOT NULL,
                         Address TEXT NOT NULL,
+                        Salary DECIMAL NOT NULL,
                         UserId INTEGER NOT NULL,
                         FOREIGN KEY (UserId) REFERENCES Users(Id)
                     );
@@ -60,6 +61,7 @@ namespace UnicomTICManagementSystem.Repositories
                     CREATE TABLE IF NOT EXISTS Students (
                         Id INTEGER PRIMARY KEY AUTOINCREMENT,
                         UTNumber TEXT NOT NULL,
+                        NicNo TEXT NOT NULL,
                         Name TEXT NOT NULL,
                         Address TEXT NOT NULL,
                         Email TEXT NOT NULL,
