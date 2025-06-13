@@ -37,7 +37,9 @@
             this.button1 = new System.Windows.Forms.Button();
             this.centerPanel = new System.Windows.Forms.Panel();
             this.UpPanel = new System.Windows.Forms.Panel();
+            this.button7 = new System.Windows.Forms.Button();
             this.leftPanel.SuspendLayout();
+            this.UpPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // leftPanel
@@ -107,7 +109,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(105, 56);
             this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
+            this.button1.Text = "STUDENTS";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -124,11 +126,22 @@
             // UpPanel
             // 
             this.UpPanel.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.UpPanel.Controls.Add(this.button7);
             this.UpPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.UpPanel.Location = new System.Drawing.Point(111, 0);
             this.UpPanel.Name = "UpPanel";
             this.UpPanel.Size = new System.Drawing.Size(689, 40);
             this.UpPanel.TabIndex = 2;
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(3, 3);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(80, 37);
+            this.button7.TabIndex = 0;
+            this.button7.Text = "ADD A NEW ENTRY";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // Main_Form
             // 
@@ -141,6 +154,7 @@
             this.Name = "Main_Form";
             this.Text = "Main_Form";
             this.leftPanel.ResumeLayout(false);
+            this.UpPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -156,5 +170,6 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button7;
     }
 }

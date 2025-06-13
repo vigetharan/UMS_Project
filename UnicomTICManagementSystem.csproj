@@ -110,6 +110,12 @@
     <Compile Include="Views\Staff_Form.Designer.cs">
       <DependentUpon>Staff_Form.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Student_Details.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Student_Details.Designer.cs">
+      <DependentUpon>Student_Details.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Student_Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,6 +139,9 @@
     </Compile>
     <EmbeddedResource Include="Views\CourseSubject.resx">
       <DependentUpon>CourseSubject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Student_Details.resx">
+      <DependentUpon>Student_Details.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Student_Form.resx">
       <DependentUpon>Student_Form.cs</DependentUpon>

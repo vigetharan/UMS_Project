@@ -41,23 +41,30 @@ namespace UnicomTICManagementSystem.Views
 
         private void LoadComboBoxData()
         {
-            string query = "SELECT CourseName FROM Courses";
+ //           string query = "SELECT Id, CourseName FROM Courses";
 
             try
             {
                 using (var dbconn = DatabaseManager.GetConnection())
                 {
-                    SQLiteCommand cmd = new SQLiteCommand(query, dbconn);
-                    SQLiteDataReader reader = cmd.ExecuteReader();
-
-                    combo_course.Items.Clear();
-
-                    while (reader.Read())
+                    string query = "SELECT Id, CourseName FROM Courses";
+                    using (var cmd = new SQLiteCommand(query, dbconn))
+                    using (var adapter = new SQLiteDataAdapter(cmd))
                     {
-                        combo_course.Items.Add(reader["CourseName"].ToString());
-                    }
+                        DataTable dt = new DataTable();
+                        adapter.Fill(dt);
+                        DataRow dr = dt.NewRow();
+                        dr["Id"] = -1;              // or -1 or some invalid ID
+                        dr["CourseName"] = "-- Select One --";
+                        dt.Rows.InsertAt(dr, 0);
 
-                    reader.Close();
+
+                        combo_course.DataSource = dt;
+                        combo_course.DisplayMember = "CourseName"; // visible text
+                        combo_course.ValueMember = "Id";     // internal value
+                                                             // Set default selected index (the dummy row)
+                        combo_course.SelectedIndex = 0;
+                    }
                 }
             }
             catch (Exception ex)
@@ -66,7 +73,7 @@ namespace UnicomTICManagementSystem.Views
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        //comment
         private void btn_add_Click(object sender, EventArgs e)
         {
             User user = new User
@@ -86,7 +93,7 @@ namespace UnicomTICManagementSystem.Views
                 Address = tb_address.Text,
                 Email = tb_email.Text,
                 ContactNo = tb_contactno.Text,
-                CourseId = (int)combo_course.SelectedValue,
+                CourseId = Convert.ToInt32(combo_course.SelectedValue),
                 UserId = user.Id
             };
 
@@ -99,6 +106,11 @@ namespace UnicomTICManagementSystem.Views
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label17_Click(object sender, EventArgs e)
         {
 
         }
