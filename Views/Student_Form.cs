@@ -38,6 +38,12 @@ namespace UnicomTICManagementSystem.Views
         {
 
         }
+        private void Clear_Form()
+        {
+            tb_address.Clear();
+            tb_name.Clear();
+
+        }
 
         private void LoadComboBoxData()
         {
@@ -103,6 +109,7 @@ namespace UnicomTICManagementSystem.Views
             string getMessage = stController.AddStudent(st);
 
             MessageBox.Show(getMessage+"\n"+getMessage1);
+            this.Clear();
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)

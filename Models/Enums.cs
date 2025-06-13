@@ -5,8 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace UnicomTICManagementSystem.Models
+
+// for keep enum type variables
 {
-    public class Enums  // <-- change internal to public
+    public class Enums  
     {
         public enum UserRole
         {

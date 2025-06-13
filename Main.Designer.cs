@@ -29,15 +29,18 @@
         private void InitializeComponent()
         {
             this.leftPanel = new System.Windows.Forms.Panel();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_exam = new System.Windows.Forms.Button();
+            this.btn_timetable = new System.Windows.Forms.Button();
+            this.btn_attendance = new System.Windows.Forms.Button();
+            this.btn_course = new System.Windows.Forms.Button();
+            this.btn_staff = new System.Windows.Forms.Button();
+            this.btn_admin = new System.Windows.Forms.Button();
+            this.btn_lecturer = new System.Windows.Forms.Button();
+            this.btn_student = new System.Windows.Forms.Button();
             this.centerPanel = new System.Windows.Forms.Panel();
             this.UpPanel = new System.Windows.Forms.Panel();
-            this.button7 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btn_add_new = new System.Windows.Forms.Button();
             this.leftPanel.SuspendLayout();
             this.UpPanel.SuspendLayout();
             this.SuspendLayout();
@@ -45,73 +48,98 @@
             // leftPanel
             // 
             this.leftPanel.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.leftPanel.Controls.Add(this.button6);
-            this.leftPanel.Controls.Add(this.button5);
-            this.leftPanel.Controls.Add(this.button4);
-            this.leftPanel.Controls.Add(this.button3);
-            this.leftPanel.Controls.Add(this.button2);
-            this.leftPanel.Controls.Add(this.button1);
+            this.leftPanel.Controls.Add(this.btn_exam);
+            this.leftPanel.Controls.Add(this.btn_timetable);
+            this.leftPanel.Controls.Add(this.btn_attendance);
+            this.leftPanel.Controls.Add(this.btn_course);
+            this.leftPanel.Controls.Add(this.btn_staff);
+            this.leftPanel.Controls.Add(this.btn_admin);
+            this.leftPanel.Controls.Add(this.btn_lecturer);
+            this.leftPanel.Controls.Add(this.btn_student);
             this.leftPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.leftPanel.Location = new System.Drawing.Point(0, 0);
             this.leftPanel.Name = "leftPanel";
-            this.leftPanel.Size = new System.Drawing.Size(111, 450);
+            this.leftPanel.Size = new System.Drawing.Size(111, 650);
             this.leftPanel.TabIndex = 0;
             // 
-            // button6
+            // btn_exam
             // 
-            this.button6.Location = new System.Drawing.Point(0, 359);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(105, 56);
-            this.button6.TabIndex = 5;
-            this.button6.Text = "button6";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btn_exam.Location = new System.Drawing.Point(0, 483);
+            this.btn_exam.Name = "btn_exam";
+            this.btn_exam.Size = new System.Drawing.Size(105, 56);
+            this.btn_exam.TabIndex = 7;
+            this.btn_exam.Text = "EXAMS / MARKS";
+            this.btn_exam.UseVisualStyleBackColor = true;
+            this.btn_exam.Click += new System.EventHandler(this.btn_exam_Click);
             // 
-            // button5
+            // btn_timetable
             // 
-            this.button5.Location = new System.Drawing.Point(0, 297);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(105, 56);
-            this.button5.TabIndex = 4;
-            this.button5.Text = "button5";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btn_timetable.Location = new System.Drawing.Point(0, 421);
+            this.btn_timetable.Name = "btn_timetable";
+            this.btn_timetable.Size = new System.Drawing.Size(105, 56);
+            this.btn_timetable.TabIndex = 6;
+            this.btn_timetable.Text = "TIME TABLES";
+            this.btn_timetable.UseVisualStyleBackColor = true;
+            this.btn_timetable.Click += new System.EventHandler(this.btn_timetable_Click);
             // 
-            // button4
+            // btn_attendance
             // 
-            this.button4.Location = new System.Drawing.Point(0, 235);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(105, 56);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btn_attendance.Location = new System.Drawing.Point(0, 359);
+            this.btn_attendance.Name = "btn_attendance";
+            this.btn_attendance.Size = new System.Drawing.Size(105, 56);
+            this.btn_attendance.TabIndex = 5;
+            this.btn_attendance.Text = "ATTENDANCES";
+            this.btn_attendance.UseVisualStyleBackColor = true;
+            this.btn_attendance.Click += new System.EventHandler(this.btn_attendance_Click);
             // 
-            // button3
+            // btn_course
             // 
-            this.button3.Location = new System.Drawing.Point(0, 173);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(105, 56);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btn_course.Location = new System.Drawing.Point(0, 297);
+            this.btn_course.Name = "btn_course";
+            this.btn_course.Size = new System.Drawing.Size(105, 56);
+            this.btn_course.TabIndex = 4;
+            this.btn_course.Text = "COURSE / SUBJECTS";
+            this.btn_course.UseVisualStyleBackColor = true;
+            this.btn_course.Click += new System.EventHandler(this.btn_course_Click);
             // 
-            // button2
+            // btn_staff
             // 
-            this.button2.Location = new System.Drawing.Point(0, 111);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(105, 56);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btn_staff.Location = new System.Drawing.Point(0, 235);
+            this.btn_staff.Name = "btn_staff";
+            this.btn_staff.Size = new System.Drawing.Size(105, 56);
+            this.btn_staff.TabIndex = 3;
+            this.btn_staff.Text = "STAFFS";
+            this.btn_staff.UseVisualStyleBackColor = true;
+            this.btn_staff.Click += new System.EventHandler(this.btn_staff_Click);
             // 
-            // button1
+            // btn_admin
             // 
-            this.button1.Location = new System.Drawing.Point(0, 49);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(105, 56);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "STUDENTS";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btn_admin.Location = new System.Drawing.Point(0, 173);
+            this.btn_admin.Name = "btn_admin";
+            this.btn_admin.Size = new System.Drawing.Size(105, 56);
+            this.btn_admin.TabIndex = 2;
+            this.btn_admin.Text = "ADMINS";
+            this.btn_admin.UseVisualStyleBackColor = true;
+            // 
+            // btn_lecturer
+            // 
+            this.btn_lecturer.Location = new System.Drawing.Point(0, 111);
+            this.btn_lecturer.Name = "btn_lecturer";
+            this.btn_lecturer.Size = new System.Drawing.Size(105, 56);
+            this.btn_lecturer.TabIndex = 1;
+            this.btn_lecturer.Text = "LECTURERS";
+            this.btn_lecturer.UseVisualStyleBackColor = true;
+            this.btn_lecturer.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // btn_student
+            // 
+            this.btn_student.Location = new System.Drawing.Point(0, 49);
+            this.btn_student.Name = "btn_student";
+            this.btn_student.Size = new System.Drawing.Size(105, 56);
+            this.btn_student.TabIndex = 0;
+            this.btn_student.Text = "STUDENTS";
+            this.btn_student.UseVisualStyleBackColor = true;
+            this.btn_student.Click += new System.EventHandler(this.button1_Click);
             // 
             // centerPanel
             // 
@@ -119,29 +147,40 @@
             this.centerPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.centerPanel.Location = new System.Drawing.Point(111, 40);
             this.centerPanel.Name = "centerPanel";
-            this.centerPanel.Size = new System.Drawing.Size(689, 410);
+            this.centerPanel.Size = new System.Drawing.Size(889, 610);
             this.centerPanel.TabIndex = 1;
             this.centerPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // UpPanel
             // 
             this.UpPanel.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.UpPanel.Controls.Add(this.button7);
+            this.UpPanel.Controls.Add(this.button1);
+            this.UpPanel.Controls.Add(this.btn_add_new);
             this.UpPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.UpPanel.Location = new System.Drawing.Point(111, 0);
             this.UpPanel.Name = "UpPanel";
-            this.UpPanel.Size = new System.Drawing.Size(689, 40);
+            this.UpPanel.Size = new System.Drawing.Size(889, 40);
             this.UpPanel.TabIndex = 2;
             // 
-            // button7
+            // button1
             // 
-            this.button7.Location = new System.Drawing.Point(3, 3);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(80, 37);
-            this.button7.TabIndex = 0;
-            this.button7.Text = "ADD A NEW ENTRY";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
+            this.button1.Location = new System.Drawing.Point(104, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(80, 37);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "EDIT AN ENTRY";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // btn_add_new
+            // 
+            this.btn_add_new.Location = new System.Drawing.Point(3, 3);
+            this.btn_add_new.Name = "btn_add_new";
+            this.btn_add_new.Size = new System.Drawing.Size(80, 37);
+            this.btn_add_new.TabIndex = 0;
+            this.btn_add_new.Text = "ADD A NEW ENTRY";
+            this.btn_add_new.UseVisualStyleBackColor = true;
+            this.btn_add_new.Click += new System.EventHandler(this.button7_Click);
             // 
             // Main_Form
             // 
@@ -151,7 +190,7 @@
             this.Controls.Add(this.centerPanel);
             this.Controls.Add(this.UpPanel);
             this.Controls.Add(this.leftPanel);
-            this.Name = "Main_Dashboard";
+            this.Name = "Main_Form";
             this.Text = "Main_Form";
             this.Load += new System.EventHandler(this.Main_Form_Load);
             this.leftPanel.ResumeLayout(false);
@@ -165,12 +204,15 @@
         private System.Windows.Forms.Panel leftPanel;
         private System.Windows.Forms.Panel centerPanel;
         private System.Windows.Forms.Panel UpPanel;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btn_attendance;
+        private System.Windows.Forms.Button btn_course;
+        private System.Windows.Forms.Button btn_staff;
+        private System.Windows.Forms.Button btn_admin;
+        private System.Windows.Forms.Button btn_lecturer;
+        private System.Windows.Forms.Button btn_student;
+        private System.Windows.Forms.Button btn_add_new;
+        private System.Windows.Forms.Button btn_exam;
+        private System.Windows.Forms.Button btn_timetable;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button7;
     }
 }

@@ -86,11 +86,47 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\DatabaseManager.cs" />
     <Compile Include="Repositories\DBInitializer.cs" />
+    <Compile Include="Views\Admin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Admin.Designer.cs">
+      <DependentUpon>Admin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\AdminDetails.Designer.cs">
+      <DependentUpon>AdminDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Attendance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Attendance.Designer.cs">
+      <DependentUpon>Attendance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AttendanceDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\AttendanceDetails.Designer.cs">
+      <DependentUpon>AttendanceDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\CourseSubject.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\CourseSubject.Designer.cs">
       <DependentUpon>CourseSubject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CourseSubjectDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CourseSubjectDetails.Designer.cs">
+      <DependentUpon>CourseSubjectDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LecturerDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\LecturerDetails.Designer.cs">
+      <DependentUpon>LecturerDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Lecturer_Form.cs">
       <SubType>Form</SubType>
@@ -98,11 +134,23 @@
     <Compile Include="Views\Lecturer_Form.Designer.cs">
       <DependentUpon>Lecturer_Form.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\MarksDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\MarksDetails.Designer.cs">
+      <DependentUpon>MarksDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Marks_Form.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\Marks_Form.Designer.cs">
       <DependentUpon>Marks_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StaffDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\StaffDetails.Designer.cs">
+      <DependentUpon>StaffDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Staff_Form.cs">
       <SubType>Form</SubType>
@@ -121,6 +169,18 @@
     </Compile>
     <Compile Include="Views\Student_Form.Designer.cs">
       <DependentUpon>Student_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TimeTable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\TimeTable.Designer.cs">
+      <DependentUpon>TimeTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TimeTableDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\TimeTableDetails.Designer.cs">
+      <DependentUpon>TimeTableDetails.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
