@@ -21,6 +21,7 @@ namespace UnicomTICManagementSystem.Views
         public Student_Form()
         {
             InitializeComponent();
+            LoadComboBoxData();
         }
 
         private void combo_course_SelectedIndexChanged(object sender, EventArgs e)
@@ -85,7 +86,7 @@ namespace UnicomTICManagementSystem.Views
                 Address = tb_address.Text,
                 Email = tb_email.Text,
                 ContactNo = tb_contactno.Text,
-                CourseId = int.Parse("1"),
+                CourseId = (int)combo_course.SelectedValue,
                 UserId = user.Id
             };
 

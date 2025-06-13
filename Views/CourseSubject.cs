@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UnicomTICManagementSystem.Controllers;
 
 namespace UnicomTICManagementSystem.Views
 {
@@ -15,6 +16,16 @@ namespace UnicomTICManagementSystem.Views
         public CourseSubject()
         {
             InitializeComponent();
+        }
+
+        private void btn_add_Click(object sender, EventArgs e)
+        {
+            CourseController cController = new CourseController();
+            string courseName = tb_course.Text;
+
+            string getMessage = cController.AddCourse(courseName);
+
+            MessageBox.Show(getMessage);
         }
     }
 }

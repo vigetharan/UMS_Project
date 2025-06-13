@@ -33,5 +33,11 @@ namespace UnicomTICManagementSystem
             centerPanel.Controls.Add(studentForm);
             studentForm.Show();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            CourseSubject courseSubject = new CourseSubject();
+            courseSubject.Show();
+        }
     }
 }
