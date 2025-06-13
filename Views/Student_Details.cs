@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UnicomTICManagementSystem.Repositories;
+using UnicomTICManagementSystem.Controllers;
 
 namespace UnicomTICManagementSystem.Views
 {
@@ -22,29 +23,9 @@ namespace UnicomTICManagementSystem.Views
 
         public void LoadDataIntoGrid()
         {
-            string query = @"
-        SELECT 
-            s.*,
-            c.CourseName
-        FROM 
-            Students s
-        LEFT JOIN 
-            Courses c ON s.CourseId = c.Id";
-
-            using (var dbconn = DatabaseManager.GetConnection())
-            {
-                using (SQLiteCommand cmd = new SQLiteCommand(query, dbconn))
-                using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(cmd))
-                {
-                    DataTable dt = new DataTable();
-                    adapter.Fill(dt);
-
+            StudentController Stc = new StudentController();
+            DataTable dt = Stc.GetAllStudents();
                     student_view.DataSource = dt;
-                    student_view.Columns["CourseId"].Visible = false;
-                    student_view.Columns["UserId"].Visible = false;
-                    student_view.Columns["Id"].Visible = false;
-                }
-            }
         }
 
         private void student_view_CellContentClick(object sender, DataGridViewCellEventArgs e)

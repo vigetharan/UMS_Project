@@ -147,12 +147,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1000, 650);
             this.Controls.Add(this.centerPanel);
             this.Controls.Add(this.UpPanel);
             this.Controls.Add(this.leftPanel);
-            this.Name = "Main_Form";
+            this.Name = "Main_Dashboard";
             this.Text = "Main_Form";
+            this.Load += new System.EventHandler(this.Main_Form_Load);
             this.leftPanel.ResumeLayout(false);
             this.UpPanel.ResumeLayout(false);
             this.ResumeLayout(false);

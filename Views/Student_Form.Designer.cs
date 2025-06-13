@@ -68,6 +68,7 @@
             this.label1.Location = new System.Drawing.Point(44, 32);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(72, 13);
+            this.label1.TabIndex = 36;
             this.label1.Text = "UT NUMBER";
             // 
             // tb_utno
@@ -83,6 +84,7 @@
             this.label2.Location = new System.Drawing.Point(44, 101);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(67, 13);
+            this.label2.TabIndex = 35;
             this.label2.Text = "FULL NAME";
             // 
             // label3
@@ -91,6 +93,7 @@
             this.label3.Location = new System.Drawing.Point(44, 134);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(59, 13);
+            this.label3.TabIndex = 34;
             this.label3.Text = "ADDRESS";
             // 
             // label4
@@ -99,6 +102,7 @@
             this.label4.Location = new System.Drawing.Point(44, 176);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(39, 13);
+            this.label4.TabIndex = 33;
             this.label4.Text = "EMAIL";
             // 
             // label5
@@ -107,6 +111,7 @@
             this.label5.Location = new System.Drawing.Point(44, 216);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(108, 13);
+            this.label5.TabIndex = 32;
             this.label5.Text = "CONTACT NUMBER";
             // 
             // tb_name
@@ -114,9 +119,8 @@
             this.tb_name.Location = new System.Drawing.Point(179, 101);
             this.tb_name.Name = "tb_name";
             this.tb_name.Size = new System.Drawing.Size(279, 20);
-            this.tb_name.TabIndex = 7;
-            this.tb_name.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             this.tb_name.TabIndex = 3;
+            this.tb_name.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // tb_address
             // 
@@ -155,6 +159,7 @@
             this.label6.Location = new System.Drawing.Point(44, 257);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(68, 13);
+            this.label6.TabIndex = 31;
             this.label6.Text = "USERNAME";
             // 
             // label7
@@ -163,6 +168,7 @@
             this.label7.Location = new System.Drawing.Point(44, 292);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(70, 13);
+            this.label7.TabIndex = 30;
             this.label7.Text = "PASSWORD";
             // 
             // tb_username
@@ -312,6 +318,7 @@
             this.btn_cancel.TabIndex = 1;
             this.btn_cancel.Text = "CANCEL";
             this.btn_cancel.UseVisualStyleBackColor = true;
+            this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
             // 
             // Student_Form
             // 

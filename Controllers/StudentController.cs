@@ -35,7 +35,57 @@ namespace UnicomTICManagementSystem.Controllers
 
 
         }
+        public String UpdateStudent(Student st)
+        {
+            using (var dbconn = DatabaseManager.GetConnection())
+            {
+                string updateStudentQuery = "UPDATE Students SET Name = @name, Address = @address, Email = @email, NicNo = @nicno, ContactNo = @contactno, CourseId = @courseid WHERE UTNumber = @utnumber";
+                SQLiteCommand updateCommand = new SQLiteCommand(updateStudentQuery, dbconn);
+                updateCommand.Parameters.AddWithValue("@utnumber", st.UTNumber);
+                updateCommand.Parameters.AddWithValue("@name", st.Name);
+                updateCommand.Parameters.AddWithValue("@address", st.Address);
+                updateCommand.Parameters.AddWithValue("@email", st.Email);
+                updateCommand.Parameters.AddWithValue("@nicno", st.NicNo);
+                updateCommand.Parameters.AddWithValue("@contactno", st.ContactNo);
+                updateCommand.Parameters.AddWithValue("@courseid", st.CourseId);
+                updateCommand.ExecuteNonQuery();
+            }
+            return "STUDENT UPDATED SUCCESSFULLY";
+        }
 
+        public string DeleteStudent(string utNumber)
+        {
+            using (var dbconn = DatabaseManager.GetConnection())
+            {
+                string deleteStudentQuery = "DELETE FROM Students WHERE UTNumber = @utnumber";
+                SQLiteCommand deleteCommand = new SQLiteCommand(deleteStudentQuery, dbconn);
+                deleteCommand.Parameters.AddWithValue("@utnumber", utNumber);
+                deleteCommand.ExecuteNonQuery();
+            }
+            return "STUDENT DELETED SUCCESSFULLY";
+        }
+        public DataTable GetAllStudents()
+        {
+            using (var dbconn = DatabaseManager.GetConnection())
+            {
+                string query = @"
+                SELECT 
+                    s.UtNumber, s.Name, s.NicNo, s.Address, s.Email, s.ContactNo,
+                    c.CourseName
+                FROM 
+                    Students s
+                LEFT JOIN 
+                    Courses c ON s.CourseId = c.Id";
+
+                using (SQLiteCommand cmd = new SQLiteCommand(query, dbconn))
+                using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(cmd))
+                {
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    return dt;
+                }
+            }
+        }
        
     }
 }

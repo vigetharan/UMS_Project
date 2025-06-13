@@ -27,6 +27,7 @@ namespace UnicomTICManagementSystem
         private bool studentButtonClicked = false;
         private void button1_Click(object sender, EventArgs e)
         {
+            centerPanel.Controls.Clear();
             studentButtonClicked = true;
             Student_Details sdform = new Student_Details();
             sdform.TopLevel = false;
@@ -35,20 +36,17 @@ namespace UnicomTICManagementSystem
             centerPanel.Controls.Add(sdform);
             sdform.Show();
 
-
- /*           Student_Form studentForm = new Student_Form();
-            studentForm.TopLevel = false;
-            studentForm.FormBorderStyle = FormBorderStyle.None;
-            studentForm.Dock = DockStyle.Fill;
-            centerPanel.Controls.Add(studentForm);
-            studentForm.Show();
- */
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             studentButtonClicked = false;
             CourseSubject courseSubject = new CourseSubject();
+            centerPanel.Controls.Clear();
+            courseSubject.TopLevel = false;
+            courseSubject.FormBorderStyle = FormBorderStyle.None;
+            courseSubject.Dock = DockStyle.Fill;
+            centerPanel.Controls.Add(courseSubject);
             courseSubject.Show();
         }
 
@@ -59,14 +57,12 @@ namespace UnicomTICManagementSystem
                 Student_Form popup = new Student_Form();
                 popup.StartPosition = FormStartPosition.CenterScreen; // or CenterParent
                 popup.Show();
-                /*               Student_Form studentForm = new Student_Form();
-                               studentForm.TopLevel = false;
-                               studentForm.FormBorderStyle = FormBorderStyle.None;
-                               studentForm.Dock = DockStyle.Fill;
-               //                centerPanel.Controls.Add(studentForm);
-                               studentForm.ShowDialog();
-                */
             }
+        }
+
+        private void Main_Form_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
