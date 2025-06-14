@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace UnicomTICManagementSystem.Models
 {
-    internal class Lecturer
+    internal class Lecturer : Person
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Address { get; set; }
-        public string Email { get; set; }
-        public string ContactNo { get; set; }
+        public string EmployeeId { get; set; }
+        public decimal Salary { get; set; }
     }
 }

@@ -28,5 +28,7 @@ namespace UnicomTICManagementSystem.Models
             ACTIVE,
             INACTIVE
         }
+        public enum Group        {GROUP_A, GROUP_B        }
+        public enum AttendanceStatus        { PRESENT , ABSENT , LATE , EXCUSED        }
     }
 }

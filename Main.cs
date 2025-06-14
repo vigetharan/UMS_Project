@@ -36,7 +36,7 @@ namespace UnicomTICManagementSystem
         private void button1_Click(object sender, EventArgs e)
         {
             // clear center viewing panel to empty, and other button clicks set to false
-
+            btn_student.FlatStyle = FlatStyle.Popup;
             centerPanel.Controls.Clear();
             studentButtonClicked = true;
             lecturerButtonClicked = false;
@@ -46,7 +46,6 @@ namespace UnicomTICManagementSystem
             courseButtonClicked = false;
             attendanceButtonClicked = false;
             examButtonClicked = false;
-            this.btn_student.BringToFront();
 
             //Load lecturerForm into center panel
             Student_Details sdform = new Student_Details();
@@ -81,60 +80,68 @@ namespace UnicomTICManagementSystem
             lecForm.Show();
         }
 
-        private void button7_Click(object sender, EventArgs e)
+        private void btn_add_person_Click(object sender, EventArgs e)
         {
-            if (studentButtonClicked)
-            {
-                Student_Form popup = new Student_Form();
-                popup.StartPosition = FormStartPosition.CenterScreen; // or CenterParent
-                popup.Show();
-            }
-            else if (lecturerButtonClicked)
-            {
-                Lecturer_Form popup = new Lecturer_Form();
-                popup.StartPosition = FormStartPosition.CenterScreen; // or CenterParent
-                popup.Show();
-            }
-            else if (staffButtonClicked)
-            {
-                Staff_Form popup = new Staff_Form();
-                popup.StartPosition = FormStartPosition.CenterScreen; // or CenterParent
-                popup.Show();
-            }
-            else if (adminButtonClicked)
-            {
-                Admin popup = new Admin();
-                popup.StartPosition = FormStartPosition.CenterScreen; // or CenterParent
-                popup.Show();
-            }
-            else if (timetableButtonClicked)
-            {
-                TimeTable popup = new TimeTable();
-                popup.StartPosition = FormStartPosition.CenterScreen; // or CenterParent
-                popup.Show();
-            }
-            else if (examButtonClicked)
-            {
-                Marks_Form popup = new Marks_Form();
-                popup.StartPosition = FormStartPosition.CenterScreen; // or CenterParent
-                popup.Show();
-            }
-            else if (attendanceButtonClicked)
-            {
-                Attendance popup = new Attendance();
-                popup.StartPosition = FormStartPosition.CenterScreen; // or CenterParent
-                popup.Show();
-            }
-            else if (courseButtonClicked)
-            {
-                CourseSubject popup = new CourseSubject();
-                popup.StartPosition = FormStartPosition.CenterScreen; // or CenterParent
-                popup.Show();
-            }
-            else
-            {
-                MessageBox.Show("❌\nPlease Select one for add a new entry !");
-            }
+            AddPersonForm popup = new AddPersonForm();
+            popup.StartPosition = FormStartPosition.CenterScreen; // or CenterParent
+            popup.Show();
+
+
+
+
+            /*           if (studentButtonClicked)
+                       {
+                           Student_Form popup = new Student_Form();
+                           popup.StartPosition = FormStartPosition.CenterScreen; // or CenterParent
+                           popup.Show();
+                       }
+                       else if (lecturerButtonClicked)
+                       {
+                           Lecturer_Form popup = new Lecturer_Form();
+                           popup.StartPosition = FormStartPosition.CenterScreen; // or CenterParent
+                           popup.Show();
+                       }
+                       else if (staffButtonClicked)
+                       {
+                           Staff_Form popup = new Staff_Form();
+                           popup.StartPosition = FormStartPosition.CenterScreen; // or CenterParent
+                           popup.Show();
+                       }
+                       else if (adminButtonClicked)
+                       {
+                           Admin popup = new Admin();
+                           popup.StartPosition = FormStartPosition.CenterScreen; // or CenterParent
+                           popup.Show();
+                       }
+                       else if (timetableButtonClicked)
+                       {
+                           TimeTable popup = new TimeTable();
+                           popup.StartPosition = FormStartPosition.CenterScreen; // or CenterParent
+                           popup.Show();
+                       }
+                       else if (examButtonClicked)
+                       {
+                           Marks_Form popup = new Marks_Form();
+                           popup.StartPosition = FormStartPosition.CenterScreen; // or CenterParent
+                           popup.Show();
+                       }
+                       else if (attendanceButtonClicked)
+                       {
+                           Attendance popup = new Attendance();
+                           popup.StartPosition = FormStartPosition.CenterScreen; // or CenterParent
+                           popup.Show();
+                       }
+                       else if (courseButtonClicked)
+                       {
+                           CourseSubject popup = new CourseSubject();
+                           popup.StartPosition = FormStartPosition.CenterScreen; // or CenterParent
+                           popup.Show();
+                       }
+                       else
+                       {
+                           MessageBox.Show("❌\nPlease Select one for add a new entry !");
+                       }
+           */
         }
 
         private void Main_Form_Load(object sender, EventArgs e)

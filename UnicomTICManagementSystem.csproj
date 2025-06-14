@@ -55,6 +55,7 @@
     <Compile Include="Controllers\LecturerCourseController.cs" />
     <Compile Include="Controllers\LecturersController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\PersonController.cs" />
     <Compile Include="Controllers\StaffsController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\StudentLectureController.cs" />
@@ -77,6 +78,7 @@
     <Compile Include="Models\Enums.cs" />
     <Compile Include="Models\Lecturer.cs" />
     <Compile Include="Models\Mark.cs" />
+    <Compile Include="Models\Person.cs" />
     <Compile Include="Models\Staff.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\Subject.cs" />
@@ -164,11 +166,11 @@
     <Compile Include="Views\Student_Details.Designer.cs">
       <DependentUpon>Student_Details.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Student_Form.cs">
+    <Compile Include="Views\AddPersonForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Student_Form.Designer.cs">
-      <DependentUpon>Student_Form.cs</DependentUpon>
+    <Compile Include="Views\AddPersonForm.Designer.cs">
+      <DependentUpon>AddPersonForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\TimeTable.cs">
       <SubType>Form</SubType>
@@ -203,8 +205,8 @@
     <EmbeddedResource Include="Views\Student_Details.resx">
       <DependentUpon>Student_Details.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Student_Form.resx">
-      <DependentUpon>Student_Form.cs</DependentUpon>
+    <EmbeddedResource Include="Views\AddPersonForm.resx">
+      <DependentUpon>AddPersonForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

@@ -40,7 +40,7 @@
             this.centerPanel = new System.Windows.Forms.Panel();
             this.UpPanel = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
-            this.btn_add_new = new System.Windows.Forms.Button();
+            this.btn_add_person = new System.Windows.Forms.Button();
             this.leftPanel.SuspendLayout();
             this.UpPanel.SuspendLayout();
             this.SuspendLayout();
@@ -155,7 +155,7 @@
             // 
             this.UpPanel.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.UpPanel.Controls.Add(this.button1);
-            this.UpPanel.Controls.Add(this.btn_add_new);
+            this.UpPanel.Controls.Add(this.btn_add_person);
             this.UpPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.UpPanel.Location = new System.Drawing.Point(111, 0);
             this.UpPanel.Name = "UpPanel";
@@ -166,21 +166,21 @@
             // 
             this.button1.Location = new System.Drawing.Point(104, 3);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(80, 37);
+            this.button1.Size = new System.Drawing.Size(99, 37);
             this.button1.TabIndex = 1;
-            this.button1.Text = "EDIT AN ENTRY";
+            this.button1.Text = "EDIT A PERSON DETAILS";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
-            // btn_add_new
+            // btn_add_person
             // 
-            this.btn_add_new.Location = new System.Drawing.Point(3, 3);
-            this.btn_add_new.Name = "btn_add_new";
-            this.btn_add_new.Size = new System.Drawing.Size(80, 37);
-            this.btn_add_new.TabIndex = 0;
-            this.btn_add_new.Text = "ADD A NEW ENTRY";
-            this.btn_add_new.UseVisualStyleBackColor = true;
-            this.btn_add_new.Click += new System.EventHandler(this.button7_Click);
+            this.btn_add_person.Location = new System.Drawing.Point(3, 3);
+            this.btn_add_person.Name = "btn_add_person";
+            this.btn_add_person.Size = new System.Drawing.Size(80, 37);
+            this.btn_add_person.TabIndex = 0;
+            this.btn_add_person.Text = "ADD A PERSON";
+            this.btn_add_person.UseVisualStyleBackColor = true;
+            this.btn_add_person.Click += new System.EventHandler(this.btn_add_person_Click);
             // 
             // Main_Form
             // 
@@ -210,7 +210,7 @@
         private System.Windows.Forms.Button btn_admin;
         private System.Windows.Forms.Button btn_lecturer;
         private System.Windows.Forms.Button btn_student;
-        private System.Windows.Forms.Button btn_add_new;
+        private System.Windows.Forms.Button btn_add_person;
         private System.Windows.Forms.Button btn_exam;
         private System.Windows.Forms.Button btn_timetable;
         private System.Windows.Forms.Button button1;

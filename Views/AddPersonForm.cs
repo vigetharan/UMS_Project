@@ -13,12 +13,13 @@ using System.Xml.Linq;
 using UnicomTICManagementSystem.Controllers;
 using UnicomTICManagementSystem.Models;
 using UnicomTICManagementSystem.Repositories;
+using static UnicomTICManagementSystem.Models.Enums;
 
 namespace UnicomTICManagementSystem.Views
 {
-    public partial class Student_Form : Form
+    public partial class AddPersonForm : Form
     {
-        public Student_Form()
+        public AddPersonForm()
         {
             InitializeComponent();
             LoadComboBoxData();
@@ -36,7 +37,17 @@ namespace UnicomTICManagementSystem.Views
 
         private void Student_Form_Load(object sender, EventArgs e)
         {
+                // Create a list with a default placeholder
+                var genderList = new List<string> { "--Select--" };
 
+                // Add enum values to the list
+                genderList.AddRange(Enum.GetValues(typeof(Gender)).Cast<Gender>().Select(g => g.ToString()));
+
+                // Bind the list to the ComboBox
+                cb_gender.DataSource = genderList;
+            var groupList = new List<string> { "--Select--" };
+            groupList.AddRange(Enum.GetValues(typeof(Group)).Cast<Group>().Select(g => g.ToString()));
+            cb_group.DataSource = groupList;
         }
         private void Clear_Form()
         {
@@ -109,7 +120,7 @@ namespace UnicomTICManagementSystem.Views
             string getMessage = stController.AddStudent(st);
 
             MessageBox.Show(getMessage+"\n"+getMessage1);
-            this.Clear();
+ //           this.Clear();
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
@@ -125,6 +136,81 @@ namespace UnicomTICManagementSystem.Views
         private void btn_cancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void error_utno_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void cb_authentication_CheckedChanged(object sender, EventArgs e)
+        {
+            bool ischecked = cb_authentication.Checked;
+            tb_username.Visible = !ischecked;
+            tb_password.Visible = !ischecked;
+            label_username.Visible = !ischecked;
+            label_password.Visible = !ischecked;
+            
+            if (!ischecked)
+            {
+                tb_username.Clear();
+                tb_password.Clear();
+            }
+        }
+
+        private void tb_username_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tb_password_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void combo_group_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tb_nic_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tb_nic_Leave(object sender, EventArgs e)
+        {
+            PersonController pc = new PersonController();
+            if (!pc.CheckNic(tb_nic.Text))
+            {
+                error_nic.Visible = true;
+                error_nic.Text = "Invalid NIC ! Please enter a valid one.";
+            }
+            else
+            {
+                error_nic.Visible = false;
+                try
+                {
+                    DateTime dob = pc.GetDob(tb_nic.Text);
+                    tb_dob.Text = dob.ToString("yyyy-MM-dd");
+                    Enums.Gender gender = PersonController.CheckGender(tb_nic.Text);
+                    cb_gender.SelectedItem = gender.ToString();
+                }
+                catch (ArgumentException ex)
+                {
+                    error_nic.Visible = true;
+                    error_nic.Text = ex.Message;
+                }
+            }
         }
     }
 }

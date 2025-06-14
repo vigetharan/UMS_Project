@@ -53,13 +53,13 @@ namespace UnicomTICManagementSystem.Controllers
             return "STUDENT UPDATED SUCCESSFULLY";
         }
 
-        public string DeleteStudent(string utNumber)
+        public string DeleteStudent(string studentId)
         {
             using (var dbconn = DatabaseManager.GetConnection())
             {
-                string deleteStudentQuery = "DELETE FROM Students WHERE UTNumber = @utnumber";
+                string deleteStudentQuery = "DELETE FROM Students WHERE Id = @sid";
                 SQLiteCommand deleteCommand = new SQLiteCommand(deleteStudentQuery, dbconn);
-                deleteCommand.Parameters.AddWithValue("@utnumber", utNumber);
+                deleteCommand.Parameters.AddWithValue("@sid", studentId);
                 deleteCommand.ExecuteNonQuery();
             }
             return "STUDENT DELETED SUCCESSFULLY";
