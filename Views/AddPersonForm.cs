@@ -45,9 +45,14 @@ namespace UnicomTICManagementSystem.Views
 
                 // Bind the list to the ComboBox
                 cb_gender.DataSource = genderList;
-            var groupList = new List<string> { "--Select--" };
-            groupList.AddRange(Enum.GetValues(typeof(Group)).Cast<Group>().Select(g => g.ToString()));
-            cb_group.DataSource = groupList;
+                var groupList = new List<string> { "--Select--" };
+                groupList.AddRange(Enum.GetValues(typeof(Group)).Cast<Group>().Select(g => g.ToString()));
+                cb_group.DataSource = groupList;
+
+
+                var rolelist = new List<string> { "--select--" };
+                rolelist.AddRange(Enum.GetValues(typeof(UserRole)).Cast<UserRole>().Select(g => g.ToString()));
+                cb_role.DataSource = rolelist;
         }
         private void Clear_Form()
         {
@@ -210,6 +215,15 @@ namespace UnicomTICManagementSystem.Views
                     error_nic.Visible = true;
                     error_nic.Text = ex.Message;
                 }
+            }
+        }
+
+        private void cb_role_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedRole = cb_role.SelectedItem.ToString();
+            if(selectedRole == "ADMIN")
+            {
+                MessageBox.Show("ADMIN SELECTED");
             }
         }
     }

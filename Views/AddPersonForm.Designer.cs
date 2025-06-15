@@ -70,6 +70,8 @@
             this.label10 = new System.Windows.Forms.Label();
             this.cb_gender = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
+            this.cb_role = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -427,15 +429,35 @@
             this.label13.AutoSize = true;
             this.label13.Location = new System.Drawing.Point(44, 271);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(46, 13);
+            this.label13.Size = new System.Drawing.Size(53, 13);
             this.label13.TabIndex = 45;
-            this.label13.Text = "GROUP";
+            this.label13.Text = "GENDER";
+            // 
+            // cb_role
+            // 
+            this.cb_role.FormattingEnabled = true;
+            this.cb_role.Location = new System.Drawing.Point(179, 315);
+            this.cb_role.Name = "cb_role";
+            this.cb_role.Size = new System.Drawing.Size(121, 21);
+            this.cb_role.TabIndex = 47;
+            this.cb_role.SelectedIndexChanged += new System.EventHandler(this.cb_role_SelectedIndexChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(44, 318);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(69, 13);
+            this.label6.TabIndex = 48;
+            this.label6.Text = "USER ROLE";
             // 
             // AddPersonForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1000, 650);
+            this.Controls.Add(this.cb_role);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.cb_gender);
             this.Controls.Add(this.label13);
@@ -526,5 +548,7 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox cb_gender;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.ComboBox cb_role;
+        private System.Windows.Forms.Label label6;
     }
 }

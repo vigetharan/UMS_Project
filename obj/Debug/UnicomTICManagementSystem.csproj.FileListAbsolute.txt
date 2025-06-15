@@ -11,7 +11,6 @@ Z:\cSharp\project ums\UnicomTICManagementSystem\obj\Debug\UnicomTI.449BFD41.Up2D
 Z:\cSharp\project ums\UnicomTICManagementSystem\obj\Debug\UnicomTICManagementSystem.exe
 Z:\cSharp\project ums\UnicomTICManagementSystem\obj\Debug\UnicomTICManagementSystem.pdb
 Z:\cSharp\project ums\UnicomTICManagementSystem\obj\Debug\UnicomTICManagementSystem.Main_Form.resources
-Z:\cSharp\project ums\UnicomTICManagementSystem\obj\Debug\UnicomTICManagementSystem.Views.Student_Form.resources
 Z:\cSharp\project ums\UnicomTICManagementSystem\obj\Debug\UnicomTICManagementSystem.login_Form.resources
 Z:\cSharp\project ums\UnicomTICManagementSystem\obj\Debug\UnicomTICManagementSystem.Views.CourseSubject.resources
 Z:\cSharp\project ums\UnicomTICManagementSystem\obj\Debug\UnicomTICManagementSystem.Views.Student_Details.resources
@@ -32,3 +31,4 @@ C:\Users\Mikey\Desktop\cSharp assignment\2025.06.13night\UMS_Project\obj\Debug\U
 C:\Users\Mikey\Desktop\cSharp assignment\2025.06.13night\UMS_Project\obj\Debug\UnicomTICManagementSystem.exe
 C:\Users\Mikey\Desktop\cSharp assignment\2025.06.13night\UMS_Project\obj\Debug\UnicomTICManagementSystem.pdb
 C:\Users\Mikey\Desktop\cSharp assignment\2025.06.13night\UMS_Project\obj\Debug\UnicomTICManagementSystem.Views.AddPersonForm.resources
+Z:\cSharp\project ums\UnicomTICManagementSystem\obj\Debug\UnicomTICManagementSystem.Views.AddPersonForm.resources

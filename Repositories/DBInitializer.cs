@@ -29,6 +29,27 @@ namespace UnicomTICManagementSystem.Repositories
                         Status TEXT NOT NULL
                     );
 
+                    CREATE TABLE IF NOT EXISTS Persons (
+                        Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        NicNo TEXT NOT NULL,
+                        Name TEXT NOT NULL,
+                        Address TEXT NOT NULL,
+                        Email TEXT NOT NULL,
+                        ContactNo TEXT NOT NULL,
+                        Gender INTEGER,
+                        UserId INTEGER NOT NULL,
+                        FOREIGN KEY (UserId) REFERENCES Users(Id),                       
+                    );
+
+                    CREATE TABLE IF NOT EXISTS Students (
+                        Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        UTNumber TEXT NOT NULL,
+                        CourseId INTEGER,
+                        UserId INTEGER NOT NULL,
+                        FOREIGN KEY (UserId) REFERENCES Users(Id),
+                        FOREIGN KEY (CourseId) REFERENCES Courses(Id)
+                        
+                    );
 
                     CREATE TABLE IF NOT EXISTS Lecturers (
                         Id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -42,35 +63,30 @@ namespace UnicomTICManagementSystem.Repositories
 
                     CREATE TABLE IF NOT EXISTS Staffs (
                         Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                        Name TEXT NOT NULL,
-                        Phone TEXT NOT NULL,
-                        Address TEXT NOT NULL,
                         UserId INTEGER NOT NULL,
                         FOREIGN KEY (UserId) REFERENCES Users(Id)
                     );
 
                     CREATE TABLE IF NOT EXISTS Admins (
                         Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                        Name TEXT NOT NULL,
-                        Phone TEXT NOT NULL,
-                        Address TEXT NOT NULL,
                         UserId INTEGER NOT NULL,
                         FOREIGN KEY (UserId) REFERENCES Users(Id)
                     );
 
-                    CREATE TABLE IF NOT EXISTS Students (
+                    CREATE TABLE IF NOT EXISTS TimeTables (
                         Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                        UTNumber TEXT NOT NULL,
-                        NicNo TEXT NOT NULL,
-                        Name TEXT NOT NULL,
-                        Address TEXT NOT NULL,
-                        Email TEXT NOT NULL,
-                        ContactNo TEXT NOT NULL,
-                        CourseId INTEGER,
-                        UserId INTEGER NOT NULL,
-                        FOREIGN KEY (UserId) REFERENCES Users(Id),
-                        FOREIGN KEY (CourseId) REFERENCES Courses(Id)
-                        
+                        StudentId INTEGER NOT NULL,
+                        SubjectId INTEGER NOT NULL,
+                        FOREIGN KEY (StudentId) REFERENCES Users(Id),
+                        FOREIGN KEY (SubjectId) REFERENCES Subject(Id)
+                    );
+
+                    CREATE TABLE IF NOT EXISTS StudentSubject (
+                        StudentId INTEGER,
+                        SubjectId INTEGER,
+                        PRIMARY KEY (StudentId, SubjectId),
+                        FOREIGN KEY (StudentId) REFERENCES Students(Id),
+                        FOREIGN KEY (SubjectrId) REFERENCES Subjects(Id)
                     );
 
                     CREATE TABLE IF NOT EXISTS StudentLecture (
@@ -81,12 +97,12 @@ namespace UnicomTICManagementSystem.Repositories
                         FOREIGN KEY (LecturerId) REFERENCES Lecturers(Id)
                     );
 
-                    CREATE TABLE IF NOT EXISTS LecturerCourse (
-                        LecturerId INTEGER,
+                    CREATE TABLE IF NOT EXISTS LecturerSubjects (
+                        SubjectId INTEGER,
                         CourseId INTEGER,
-                        PRIMARY KEY (LecturerId, CourseId),
+                        PRIMARY KEY (LecturerId, SubjectId),
                         FOREIGN KEY (LecturerId) REFERENCES Lecturers(Id),
-                        FOREIGN KEY (CourseId) REFERENCES Courses(Id)
+                        FOREIGN KEY (CourseId) REFERENCES Subjects(Id)
                     );
                 ";
 
