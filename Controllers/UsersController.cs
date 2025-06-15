@@ -11,7 +11,7 @@ namespace UnicomTICManagementSystem.Controllers
 {
     internal class UsersController
     {
-        public string AddUser(User u)
+        public int AddUser(User u)
         {
             using (var dbconn = DatabaseManager.GetConnection())
             {
@@ -24,7 +24,7 @@ namespace UnicomTICManagementSystem.Controllers
 
                 addCommand.ExecuteNonQuery();
             }
-            return "USER REGISTERED SUCCESSFULLY";
+            return u.Id;
 
 
         }

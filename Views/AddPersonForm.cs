@@ -81,11 +81,11 @@ namespace UnicomTICManagementSystem.Views
                         dt.Rows.InsertAt(dr, 0);
 
 
-                        combo_course.DataSource = dt;
-                        combo_course.DisplayMember = "CourseName"; // visible text
-                        combo_course.ValueMember = "Id";     // internal value
+                        cb_course.DataSource = dt;
+                        cb_course.DisplayMember = "CourseName"; // visible text
+                        cb_course.ValueMember = "Id";     // internal value
                                                              // Set default selected index (the dummy row)
-                        combo_course.SelectedIndex = 0;
+                        cb_course.SelectedIndex = 0;
                     }
                 }
             }
@@ -98,31 +98,47 @@ namespace UnicomTICManagementSystem.Views
         //comment
         private void btn_add_Click(object sender, EventArgs e)
         {
-            User user = new User
+            if (!cb_authentication.Checked)
+                {
+                    User user = new User
+                    {
+                        Username = tb_username.Text,
+                        Password = tb_password.Text,
+                        Role = Enums.UserRole.STUDENT,
+                        Status = Enums.UserStatus.ACTIVE
+                    };
+                UsersController uController = new UsersController();
+                int UId = uController.AddUser(user);
+            }
+            else
             {
-                Username = tb_username.Text,
-                Password = tb_password.Text,
-                Role = Enums.UserRole.STUDENT,
-                Status = Enums.UserStatus.ACTIVE
-            };
-            UsersController uController = new UsersController();
-            string getMessage1 = uController.AddUser(user);
-            Student st = new Student
+                User user = new User
+                {
+                    Username = null,
+                    Password = null,
+                    Role = Enums.UserRole.STUDENT,
+                    Status = Enums.UserStatus.ACTIVE
+                };
+                UsersController uController = new UsersController();
+                string getMessage1 = uController.AddUser(user);
+                
+            }
+            
+            Person p = new Person
             {
-                UTNumber = tb_utno.Text,
                 NicNo = tb_nic.Text,
                 Name = tb_name.Text,
                 Address = tb_address.Text,
                 Email = tb_email.Text,
                 ContactNo = tb_contactno.Text,
-                CourseId = Convert.ToInt32(combo_course.SelectedValue),
-                UserId = user.Id
+                Gender = (Gender)cb_gender.SelectedIndex,
+                UserId = UId
             };
 
-            StudentController stController = new StudentController();
+            PersonController pController = new PersonController();
 
 
-            string getMessage = stController.AddStudent(st);
+            string getMessage = pController.AddPerson(p);
 
             MessageBox.Show(getMessage+"\n"+getMessage1);
  //           this.Clear();
@@ -220,10 +236,38 @@ namespace UnicomTICManagementSystem.Views
 
         private void cb_role_SelectedIndexChanged(object sender, EventArgs e)
         {
+            tb_utno.Visible = false;
+            cb_group.Visible = false;
+            cb_course.Visible = false;
+            label_utno.Visible = false;
+            label_group.Visible = false;
+            label_course.Visible = false;
             string selectedRole = cb_role.SelectedItem.ToString();
-            if(selectedRole == "ADMIN")
+            switch (selectedRole)
             {
-                MessageBox.Show("ADMIN SELECTED");
+                case "ADMIN":
+                    MessageBox.Show("ADMIN SELECTED");
+                    // Show admin-specific controls here if needed
+                    break;
+
+                case "STUDENT":
+                    tb_utno.Visible = true;
+                    cb_group.Visible = true;
+                    cb_course.Visible = true;
+                    label_utno.Visible = true;
+                    label_group.Visible = true;
+                    label_course.Visible = true;
+                    break;
+
+                case "STAFF":
+                    MessageBox.Show("STAFF SELECTED");
+                    // Show staff-specific controls if needed
+                    break;
+
+                case "LECTURER":
+                    MessageBox.Show("LECTURER SELECTED");
+                    // Show lecturer-specific controls if needed
+                    break;
             }
         }
     }

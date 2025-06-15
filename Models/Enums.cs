@@ -20,8 +20,8 @@ namespace UnicomTICManagementSystem.Models
 
         public enum Gender
         {
-            MALE,
-            FEMALE
+            MALE = 1,
+            FEMALE =2
         }
         public enum  UserStatus
         {

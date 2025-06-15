@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.label1 = new System.Windows.Forms.Label();
+            this.label_utno = new System.Windows.Forms.Label();
             this.tb_utno = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -44,8 +44,8 @@
             this.label_password = new System.Windows.Forms.Label();
             this.tb_username = new System.Windows.Forms.TextBox();
             this.tb_password = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.combo_course = new System.Windows.Forms.ComboBox();
+            this.label_course = new System.Windows.Forms.Label();
+            this.cb_course = new System.Windows.Forms.ComboBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.label9 = new System.Windows.Forms.Label();
@@ -62,7 +62,7 @@
             this.btn_cancel = new System.Windows.Forms.Button();
             this.cb_authentication = new System.Windows.Forms.CheckBox();
             this.cb_group = new System.Windows.Forms.ComboBox();
-            this.label11 = new System.Windows.Forms.Label();
+            this.label_group = new System.Windows.Forms.Label();
             this.tb_dob = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.error_dob = new System.Windows.Forms.Label();
@@ -74,14 +74,15 @@
             this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // label1
+            // label_utno
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(481, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(72, 13);
-            this.label1.TabIndex = 36;
-            this.label1.Text = "UT NUMBER";
+            this.label_utno.AutoSize = true;
+            this.label_utno.Location = new System.Drawing.Point(481, 9);
+            this.label_utno.Name = "label_utno";
+            this.label_utno.Size = new System.Drawing.Size(72, 13);
+            this.label_utno.TabIndex = 36;
+            this.label_utno.Text = "UT NUMBER";
+            this.label_utno.Visible = false;
             // 
             // tb_utno
             // 
@@ -90,6 +91,7 @@
             this.tb_utno.Size = new System.Drawing.Size(121, 20);
             this.tb_utno.TabIndex = 1;
             this.tb_utno.Text = "UT";
+            this.tb_utno.Visible = false;
             // 
             // label2
             // 
@@ -202,23 +204,25 @@
             this.tb_password.TabIndex = 8;
             this.tb_password.TextChanged += new System.EventHandler(this.tb_password_TextChanged);
             // 
-            // label8
+            // label_course
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(481, 106);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(52, 13);
-            this.label8.TabIndex = 17;
-            this.label8.Text = "COURSE";
+            this.label_course.AutoSize = true;
+            this.label_course.Location = new System.Drawing.Point(481, 106);
+            this.label_course.Name = "label_course";
+            this.label_course.Size = new System.Drawing.Size(52, 13);
+            this.label_course.TabIndex = 17;
+            this.label_course.Text = "COURSE";
+            this.label_course.Visible = false;
             // 
-            // combo_course
+            // cb_course
             // 
-            this.combo_course.FormattingEnabled = true;
-            this.combo_course.Location = new System.Drawing.Point(571, 103);
-            this.combo_course.Name = "combo_course";
-            this.combo_course.Size = new System.Drawing.Size(121, 21);
-            this.combo_course.TabIndex = 9;
-            this.combo_course.SelectedIndexChanged += new System.EventHandler(this.combo_course_SelectedIndexChanged);
+            this.cb_course.FormattingEnabled = true;
+            this.cb_course.Location = new System.Drawing.Point(571, 103);
+            this.cb_course.Name = "cb_course";
+            this.cb_course.Size = new System.Drawing.Size(121, 21);
+            this.cb_course.TabIndex = 9;
+            this.cb_course.Visible = false;
+            this.cb_course.SelectedIndexChanged += new System.EventHandler(this.combo_course_SelectedIndexChanged);
             // 
             // label9
             // 
@@ -359,16 +363,18 @@
             this.cb_group.Name = "cb_group";
             this.cb_group.Size = new System.Drawing.Size(121, 21);
             this.cb_group.TabIndex = 38;
+            this.cb_group.Visible = false;
             this.cb_group.SelectedIndexChanged += new System.EventHandler(this.combo_group_SelectedIndexChanged);
             // 
-            // label11
+            // label_group
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(481, 61);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(46, 13);
-            this.label11.TabIndex = 39;
-            this.label11.Text = "GROUP";
+            this.label_group.AutoSize = true;
+            this.label_group.Location = new System.Drawing.Point(481, 61);
+            this.label_group.Name = "label_group";
+            this.label_group.Size = new System.Drawing.Size(46, 13);
+            this.label_group.TabIndex = 39;
+            this.label_group.Text = "GROUP";
+            this.label_group.Visible = false;
             // 
             // tb_dob
             // 
@@ -466,7 +472,7 @@
             this.Controls.Add(this.tb_dob);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.cb_group);
-            this.Controls.Add(this.label11);
+            this.Controls.Add(this.label_group);
             this.Controls.Add(this.cb_authentication);
             this.Controls.Add(this.error_contactno);
             this.Controls.Add(this.error_course);
@@ -479,8 +485,8 @@
             this.Controls.Add(this.error_utno);
             this.Controls.Add(this.tb_nic);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.combo_course);
-            this.Controls.Add(this.label8);
+            this.Controls.Add(this.cb_course);
+            this.Controls.Add(this.label_course);
             this.Controls.Add(this.tb_password);
             this.Controls.Add(this.tb_username);
             this.Controls.Add(this.label_password);
@@ -496,7 +502,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.tb_utno);
             this.Controls.Add(this.btn_cancel);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.label_utno);
             this.Name = "AddPersonForm";
             this.Text = "Student_Form";
             this.Load += new System.EventHandler(this.Student_Form_Load);
@@ -507,7 +513,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label_utno;
         private System.Windows.Forms.TextBox tb_utno;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -522,8 +528,8 @@
         private System.Windows.Forms.Label label_password;
         private System.Windows.Forms.TextBox tb_username;
         private System.Windows.Forms.TextBox tb_password;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox combo_course;
+        private System.Windows.Forms.Label label_course;
+        private System.Windows.Forms.ComboBox cb_course;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.Label label9;
@@ -540,7 +546,7 @@
         private System.Windows.Forms.Button btn_cancel;
         private System.Windows.Forms.CheckBox cb_authentication;
         private System.Windows.Forms.ComboBox cb_group;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label_group;
         private System.Windows.Forms.TextBox tb_dob;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label error_dob;

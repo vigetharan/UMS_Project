@@ -1,14 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using UnicomTICManagementSystem.Models;
+using UnicomTICManagementSystem.Repositories;
 
 namespace UnicomTICManagementSystem.Controllers
 {
     internal class PersonController
     {
+        public string AddPerson(Person p)
+        {
+            using (var dbconn = DatabaseManager.GetConnection())
+            {
+                string addStudentQuery = "INSERT INTO Persons ( NicNo,Name,Address,Email,,ContactNo,Gender, UserId) VALUES (@nicno,@name,@address,@email,@contactno, @gender, @userid)";
+                SQLiteCommand addCommand = new SQLiteCommand(addStudentQuery, dbconn);
+                addCommand.Parameters.AddWithValue("@nicno", p.NicNo);
+                addCommand.Parameters.AddWithValue("@name", p.Name);
+                addCommand.Parameters.AddWithValue("@address", p.Address);
+                addCommand.Parameters.AddWithValue("@email", p.Email);
+                addCommand.Parameters.AddWithValue("@contactno", p.ContactNo);
+                addCommand.Parameters.AddWithValue("@gender", p.Gender);
+                addCommand.Parameters.AddWithValue("@userid", p.UserId);
+                addCommand.ExecuteNonQuery();
+            }
+            return "PERSON ADDED SUCCESSFULLY";
+        }
         public bool CheckNic(string nic)
         {
             if (!string.IsNullOrWhiteSpace(nic) && (nic.Length == 12 || nic.Length == 10 && nic.EndsWith("V")))
@@ -32,19 +52,47 @@ namespace UnicomTICManagementSystem.Controllers
             if (nic.Length == 12)
             {
                 //                throw new ArgumentException("Invalid NIC format");
-                int year = int.Parse(nic.Substring(0, 4));
                 int daypart = int.Parse(nic.Substring(4, 3));
-                DateTime dateOfBirth = new DateTime(year, 1, 1).AddDays(daypart - 1);
-                return dateOfBirth;
+                if (daypart > 500)
+                {
+                    daypart -= 500;
+                }
+                int year = int.Parse(nic.Substring(0, 4));
+                //want to checks for leap
+                if (daypart < 59)
+                {
+                    DateTime dateOfBirth = new DateTime(year, 1, 1).AddDays(daypart - 1);
+                    return dateOfBirth;
+                }
+                else
+                {
+                    DateTime dateOfBirth = new DateTime(year, 1, 1).AddDays(daypart - 2);
+                    return dateOfBirth;
+                }
+                
             }
             else if (nic.Length == 10 && nic.EndsWith("V"))
             {
-                int daypart = int.Parse(nic.Substring(2, 5));
-                int year = int.Parse("19" + nic.Substring(0, 2));
-                DateTime dateOfBirth = new DateTime(year, 1, 1).AddDays(daypart - 1);
+                int daypart = int.Parse(nic.Substring(2, 3));
+                if (daypart > 500)
+                {
+                    daypart -= 500;
+                }
+                int yy = int.Parse(nic.Substring(0, 2));
+                int year = 1900+yy;
+                if (daypart < 59)
+                {
+                    DateTime dateOfBirth = new DateTime(year, 1, 1).AddDays(daypart - 1);
+                    return dateOfBirth;
+                }
+                else
+                {
+                    DateTime dateOfBirth = new DateTime(year, 1, 1).AddDays(daypart - 2);
+                    return dateOfBirth;
+                }
 
 
-                return dateOfBirth;
+                
             }
             else
             {
@@ -68,7 +116,7 @@ namespace UnicomTICManagementSystem.Controllers
             }
             else
             {
-                int daypart = int.Parse(nic.Substring(2, 5));
+                int daypart = int.Parse(nic.Substring(2, 3));
                 if (daypart < 500)
                 {
                     return Enums.Gender.MALE;
