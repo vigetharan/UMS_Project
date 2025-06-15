@@ -17,7 +17,7 @@ namespace UnicomTICManagementSystem
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //           Application.Run(new login_Form());
+            Application.Run(new login_Form());
             //            Application.Run(new Student_Form());
             Application.Run(new Main_Form());
         }

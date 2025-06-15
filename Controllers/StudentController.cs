@@ -19,15 +19,11 @@ namespace UnicomTICManagementSystem.Controllers
         {
             using (var dbconn = DatabaseManager.GetConnection())
             {
-                string addStudentQuery = "INSERT INTO Students ( UTNumber,Name,Address,Email,NicNo,ContactNo,CourseId,UserId) VALUES (@utnumber,@name,@address,@email,@nicno,@contactno,@courseid,@userid)";
+                string addStudentQuery = "INSERT INTO Students ( UTNumber,CourseId,JoinedDate,UserId) VALUES (@utnumber,@courseid,@joinedDate,@userid)";
                 SQLiteCommand addCommand = new SQLiteCommand(addStudentQuery, dbconn);
                 addCommand.Parameters.AddWithValue("@utnumber", st.UTNumber);
-                addCommand.Parameters.AddWithValue("@name", st.Name);
-                addCommand.Parameters.AddWithValue("@address", st.Address);
-                addCommand.Parameters.AddWithValue("@email", st.Email);
-                addCommand.Parameters.AddWithValue("@nicno", st.NicNo);
-                addCommand.Parameters.AddWithValue("@contactno", st.ContactNo);
                 addCommand.Parameters.AddWithValue("@courseid", st.CourseId);
+                addCommand.Parameters.AddWithValue("@joinedDate", st.JoinedDate);
                 addCommand.Parameters.AddWithValue("@userid", st.UserId);
                 addCommand.ExecuteNonQuery();
             }
@@ -69,13 +65,21 @@ namespace UnicomTICManagementSystem.Controllers
             using (var dbconn = DatabaseManager.GetConnection())
             {
                 string query = @"
-                SELECT 
-                    s.UtNumber, s.Name, s.NicNo, s.Address, s.Email, s.ContactNo,
-                    c.CourseName
-                FROM 
-                    Students s
-                LEFT JOIN 
-                    Courses c ON s.CourseId = c.Id";
+                        SELECT 
+                            p.FirstName,
+                            p.LastName,
+                            p.DOB,
+                            p.Address,
+                            s.UtNumber,
+                            s.JoinedDate,
+                            c.CourseName
+                        FROM 
+                            Person p
+                        INNER JOIN 
+                            Student s ON p.Id = s.PersonId
+                        LEFT JOIN
+                            Courses c ON s.CourseId = c.Id
+
 
                 using (SQLiteCommand cmd = new SQLiteCommand(query, dbconn))
                 using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(cmd))

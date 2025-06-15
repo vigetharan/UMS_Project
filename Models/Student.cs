@@ -12,6 +12,7 @@ namespace UnicomTICManagementSystem.Models
         public string UTNumber { get; set; }
 
         public int CourseId { get; set; }
+        public DateTime JoinedDate { get; set; }
         public int UserId { get; set; }
     }
 }

@@ -26,6 +26,7 @@ namespace UnicomTICManagementSystem.Views
             string getMessage = cController.AddCourse(courseName);
 
             MessageBox.Show(getMessage);
+            tb_course.Clear();
         }
     }
 }

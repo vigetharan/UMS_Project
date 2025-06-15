@@ -31,6 +31,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btn_add = new System.Windows.Forms.Button();
             this.tb_course = new System.Windows.Forms.TextBox();
+            this.dgv_course = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_course)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -44,7 +46,7 @@
             // 
             // btn_add
             // 
-            this.btn_add.Location = new System.Drawing.Point(161, 101);
+            this.btn_add.Location = new System.Drawing.Point(55, 108);
             this.btn_add.Name = "btn_add";
             this.btn_add.Size = new System.Drawing.Size(75, 23);
             this.btn_add.TabIndex = 1;
@@ -59,16 +61,26 @@
             this.tb_course.Size = new System.Drawing.Size(100, 20);
             this.tb_course.TabIndex = 2;
             // 
+            // dgv_course
+            // 
+            this.dgv_course.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_course.Location = new System.Drawing.Point(529, 95);
+            this.dgv_course.Name = "dgv_course";
+            this.dgv_course.Size = new System.Drawing.Size(240, 284);
+            this.dgv_course.TabIndex = 3;
+            // 
             // CourseSubject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.dgv_course);
             this.Controls.Add(this.tb_course);
             this.Controls.Add(this.btn_add);
             this.Controls.Add(this.label1);
             this.Name = "CourseSubject";
             this.Text = "CourseSubject";
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_course)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -79,5 +91,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btn_add;
         private System.Windows.Forms.TextBox tb_course;
+        private System.Windows.Forms.DataGridView dgv_course;
     }
 }

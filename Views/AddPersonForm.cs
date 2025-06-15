@@ -98,50 +98,79 @@ namespace UnicomTICManagementSystem.Views
         //comment
         private void btn_add_Click(object sender, EventArgs e)
         {
-            if (!cb_authentication.Checked)
-                {
-                    User user = new User
-                    {
-                        Username = tb_username.Text,
-                        Password = tb_password.Text,
-                        Role = Enums.UserRole.STUDENT,
-                        Status = Enums.UserStatus.ACTIVE
-                    };
-                UsersController uController = new UsersController();
-                int UId = uController.AddUser(user);
-            }
-            else
+            try
             {
                 User user = new User
                 {
-                    Username = null,
-                    Password = null,
+                    Username = cb_authentication.Checked ? null : tb_username.Text,
+                    Password = cb_authentication.Checked ? null : tb_password.Text,
                     Role = Enums.UserRole.STUDENT,
                     Status = Enums.UserStatus.ACTIVE
                 };
                 UsersController uController = new UsersController();
-                string getMessage1 = uController.AddUser(user);
-                
+                int userid = uController.AddUser(user);
+
+                Person p = new Person
+                {
+                    NicNo = tb_nic.Text,
+                    Name = tb_name.Text,
+                    Address = tb_address.Text,
+                    Email = tb_email.Text,
+                    ContactNo = tb_contactno.Text,
+                    Gender = (Gender)cb_gender.SelectedIndex,
+                    UserId = userid
+                };
+
+                PersonController pController = new PersonController();
+                string getMessage = pController.AddPerson(p);
+
+                MessageBox.Show(getMessage);
+                if (cb_role.SelectedItem.ToString() == "STUDENT")
+                {
+                    Student st = new Student
+                    {
+                        UTNumber = tb_utno.Text,
+                        CourseId = Convert.ToInt32(cb_course.SelectedValue),
+                        JoinedDate = DateTime.Now,
+                        UserId = userid
+                    };
+                    StudentController sController = new StudentController();
+                    string message = sController.AddStudent(st);
+                    MessageBox.Show(message);
+                }
             }
-            
-            Person p = new Person
+            /*
+                        else if (cb_role.SelectedItem.ToString() == "LECTURER")
+                        {
+                            Lecturer l = new Lecturer
+                            {
+                                Name = tb_name.Text,
+                                Phone = tb_contactno.Text,
+                                Address = tb_address.Text,
+                                Salary = 0, // Assuming salary is not provided in this form
+                                UserId = userid
+                            };
+                            LecturerController lController = new LecturerController();
+                            string message = lController.AddLecturer(l);
+                            MessageBox.Show(message);
+                        }
+                        else if (cb_role.SelectedItem.ToString() == "STAFF")
+                        {
+                            // Handle staff addition logic here
+                        }
+                        else if (cb_role.SelectedItem.ToString() == "ADMIN")
+                        {
+                            // Handle admin addition logic here
+                        }
+            */
+            catch (Exception ex)
             {
-                NicNo = tb_nic.Text,
-                Name = tb_name.Text,
-                Address = tb_address.Text,
-                Email = tb_email.Text,
-                ContactNo = tb_contactno.Text,
-                Gender = (Gender)cb_gender.SelectedIndex,
-                UserId = UId
-            };
-
-            PersonController pController = new PersonController();
-
-
-            string getMessage = pController.AddPerson(p);
-
-            MessageBox.Show(getMessage+"\n"+getMessage1);
- //           this.Clear();
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                Clear_Form();
+            }
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
@@ -214,7 +243,7 @@ namespace UnicomTICManagementSystem.Views
             if (!pc.CheckNic(tb_nic.Text))
             {
                 error_nic.Visible = true;
-                error_nic.Text = "Invalid NIC ! Please enter a valid one.";
+                error_nic.Text = "Invalid NIC ! Please enter a valid one as Format of (123456789V)";
             }
             else
             {

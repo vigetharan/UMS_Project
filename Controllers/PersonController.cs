@@ -16,7 +16,7 @@ namespace UnicomTICManagementSystem.Controllers
         {
             using (var dbconn = DatabaseManager.GetConnection())
             {
-                string addStudentQuery = "INSERT INTO Persons ( NicNo,Name,Address,Email,,ContactNo,Gender, UserId) VALUES (@nicno,@name,@address,@email,@contactno, @gender, @userid)";
+                string addStudentQuery = "INSERT INTO Persons ( NicNo,Name,Address,Email,ContactNo,Gender, UserId) VALUES (@nicno,@name,@address,@email,@contactno, @gender, @userid)";
                 SQLiteCommand addCommand = new SQLiteCommand(addStudentQuery, dbconn);
                 addCommand.Parameters.AddWithValue("@nicno", p.NicNo);
                 addCommand.Parameters.AddWithValue("@name", p.Name);
@@ -31,7 +31,7 @@ namespace UnicomTICManagementSystem.Controllers
         }
         public bool CheckNic(string nic)
         {
-            if (!string.IsNullOrWhiteSpace(nic) && (nic.Length == 12 || nic.Length == 10 && nic.EndsWith("V")))
+            if (!string.IsNullOrWhiteSpace(nic) && (nic.Length == 12 || nic.Length == 10 && nic.ToUpper().EndsWith("V", StringComparison.OrdinalIgnoreCase)))
             {
                 return true;
             }
@@ -59,17 +59,25 @@ namespace UnicomTICManagementSystem.Controllers
                 }
                 int year = int.Parse(nic.Substring(0, 4));
                 //want to checks for leap
-                if (daypart < 59)
+                if (DateTime.IsLeapYear(year))
                 {
                     DateTime dateOfBirth = new DateTime(year, 1, 1).AddDays(daypart - 1);
                     return dateOfBirth;
                 }
                 else
                 {
-                    DateTime dateOfBirth = new DateTime(year, 1, 1).AddDays(daypart - 2);
-                    return dateOfBirth;
+                    if (daypart <= 59)
+                    {
+                        DateTime dateOfBirth = new DateTime(year, 1, 1).AddDays(daypart - 1);
+                        return dateOfBirth;
+                    }
+                    else
+                    {
+                        DateTime dateOfBirth = new DateTime(year, 1, 1).AddDays(daypart - 2);
+                        return dateOfBirth;
+                    }
                 }
-                
+
             }
             else if (nic.Length == 10 && nic.EndsWith("V"))
             {
@@ -79,24 +87,29 @@ namespace UnicomTICManagementSystem.Controllers
                     daypart -= 500;
                 }
                 int yy = int.Parse(nic.Substring(0, 2));
-                int year = 1900+yy;
-                if (daypart < 59)
+                int year = 1900 + yy;
+                if (DateTime.IsLeapYear(year))
                 {
                     DateTime dateOfBirth = new DateTime(year, 1, 1).AddDays(daypart - 1);
                     return dateOfBirth;
                 }
                 else
                 {
-                    DateTime dateOfBirth = new DateTime(year, 1, 1).AddDays(daypart - 2);
-                    return dateOfBirth;
+                    if (daypart <= 59)
+                    {
+                        DateTime dateOfBirth = new DateTime(year, 1, 1).AddDays(daypart - 1);
+                        return dateOfBirth;
+                    }
+                    else
+                    {
+                        DateTime dateOfBirth = new DateTime(year, 1, 1).AddDays(daypart - 2);
+                        return dateOfBirth;
+                    }
                 }
-
-
-                
             }
             else
             {
-                throw new ArgumentException("Invalid NIC format");
+                throw new ArgumentException("Invalid NIC format. Please Enter Valid Format :-XXXXXXXXXV OR XXXXXXXXXXXX");
 
             }
         }

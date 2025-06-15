@@ -37,15 +37,18 @@ namespace UnicomTICManagementSystem.Repositories
                         Email TEXT NOT NULL,
                         ContactNo TEXT NOT NULL,
                         Gender INTEGER,
-                        UserId INTEGER NOT NULL,
-                        FOREIGN KEY (UserId) REFERENCES Users(Id),                       
+                        UserId INTEGER NOT NULL UNIQUE,
+                        FOREIGN KEY (UserId) REFERENCES Users(Id)                     
                     );
 
                     CREATE TABLE IF NOT EXISTS Students (
                         Id INTEGER PRIMARY KEY AUTOINCREMENT,
                         UTNumber TEXT NOT NULL,
                         CourseId INTEGER,
+                        JoinedDate DATETIME DEFAULT CURRENT_TIMESTAMP,
+                        PersonId INTEGER NOT NULL,
                         UserId INTEGER NOT NULL,
+                        FOREIGN KEY (PersonId) REFERENCES Persons(Id),
                         FOREIGN KEY (UserId) REFERENCES Users(Id),
                         FOREIGN KEY (CourseId) REFERENCES Courses(Id)
                         
@@ -72,21 +75,47 @@ namespace UnicomTICManagementSystem.Repositories
                         UserId INTEGER NOT NULL,
                         FOREIGN KEY (UserId) REFERENCES Users(Id)
                     );
+                    CREATE TABLE IF NOT EXISTS Exams (
+                        Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        Name TEXT NOT NULL,
+                        SubjectId INTEGER NOT NULL,
+                        FOREIGN KEY (SubjectId) REFERENCES Subject(Id)
+                    );
+
+                        CREATE TABLE IF NOT EXISTS Marks (
+                        Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        Marks INTEGER NOT NULL,
+                        StudentId INTEGER NOT NULL,
+                        SubjectId INTEGER NOT NULL,
+                        FOREIGN KEY (SubjectId) REFERENCES Subjects(Id),
+                        FOREIGN KEY (StudentId) REFERENCES Students(Id)
+                    );
+
+                    CREATE TABLE IF NOT EXISTS Subjects (
+                        Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        Name TEXT NOT NULL,
+                        CourseId INTEGER NOT NULL,
+                        FOREIGN KEY (CourseId) REFERENCES Courses(Id)
+                    );
+
 
                     CREATE TABLE IF NOT EXISTS TimeTables (
                         Id INTEGER PRIMARY KEY AUTOINCREMENT,
                         StudentId INTEGER NOT NULL,
                         SubjectId INTEGER NOT NULL,
+                        ExamId INTEGER NOT NULL,
                         FOREIGN KEY (StudentId) REFERENCES Users(Id),
-                        FOREIGN KEY (SubjectId) REFERENCES Subject(Id)
+                        FOREIGN KEY (SubjectId) REFERENCES Subjects(Id)
+                        FOREIGN KEY (ExamId) REFERENCES Exams(Id)
                     );
+
 
                     CREATE TABLE IF NOT EXISTS StudentSubject (
                         StudentId INTEGER,
                         SubjectId INTEGER,
                         PRIMARY KEY (StudentId, SubjectId),
                         FOREIGN KEY (StudentId) REFERENCES Students(Id),
-                        FOREIGN KEY (SubjectrId) REFERENCES Subjects(Id)
+                        FOREIGN KEY (SubjectId) REFERENCES Subjects(Id)
                     );
 
                     CREATE TABLE IF NOT EXISTS StudentLecture (
@@ -99,10 +128,17 @@ namespace UnicomTICManagementSystem.Repositories
 
                     CREATE TABLE IF NOT EXISTS LecturerSubjects (
                         SubjectId INTEGER,
-                        CourseId INTEGER,
+                        LecturerId INTEGER,
                         PRIMARY KEY (LecturerId, SubjectId),
-                        FOREIGN KEY (LecturerId) REFERENCES Lecturers(Id),
-                        FOREIGN KEY (CourseId) REFERENCES Subjects(Id)
+                        FOREIGN KEY (LecturerId) REFERENCES Lecturers(Id)
+                    );
+                    
+                    CREATE TABLE IF NOT EXISTS ErrorLogs (
+                        LogID INTEGER PRIMARY KEY AUTOINCREMENT,
+                        LogType TEXT NOT NULL,
+                        Timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+                        Message TEXT NOT NULL,
+                        Details TEXT
                     );
                 ";
 

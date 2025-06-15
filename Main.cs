@@ -216,7 +216,7 @@ namespace UnicomTICManagementSystem
             examButtonClicked = false;
 
             //Load Course and Subjects Form into center panel
-            CourseSubjectDetails csd = new CourseSubjectDetails();
+            CourseSubject csd = new CourseSubject();
             centerPanel.Controls.Clear();
             csd.TopLevel = false;
             csd.FormBorderStyle = FormBorderStyle.None;
