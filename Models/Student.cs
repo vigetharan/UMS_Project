@@ -8,12 +8,11 @@ namespace UnicomTICManagementSystem.Models
 {
     internal class Student : Person
     {
-        public int Id { get; set; }
+        public int SId { get; set; }
         public string UTNumber { get; set; }
-        public Enums.Group Group {  get; set; }
+        public Enums.Group Group { get; set; }
         public int CourseId { get; set; }
         public DateTime JoinedDate { get; set; }
-        public string ParentContact {  get; set; }
-        public int UserId { get; set; }
+        public string ParentContact { get; set; }
     }
 }

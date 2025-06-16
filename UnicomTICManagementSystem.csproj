@@ -53,7 +53,7 @@
   <ItemGroup>
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\LecturerCourseController.cs" />
-    <Compile Include="Controllers\LecturersController.cs" />
+    <Compile Include="Controllers\LecturerController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
     <Compile Include="Controllers\StaffsController.cs" />

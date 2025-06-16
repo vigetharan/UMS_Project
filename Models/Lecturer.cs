@@ -9,9 +9,9 @@ namespace UnicomTICManagementSystem.Models
     internal class Lecturer : Person
     {
         public int Id { get; set; }
+        public int PersonId { get; set;  }
         public string EmployeeId { get; set; }
         public decimal Salary { get; set; }
-        public string Department { get; set; }
         public int UserId {  get; set; }
     }
 }

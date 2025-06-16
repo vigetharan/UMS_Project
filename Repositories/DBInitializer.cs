@@ -25,8 +25,11 @@ namespace UnicomTICManagementSystem.Repositories
                         Id INTEGER PRIMARY KEY AUTOINCREMENT,
                         Username TEXT NOT NULL UNIQUE,
                         Password TEXT NOT NULL,
-                        Role TEXT NOT NULL,
-                        Status TEXT NOT NULL
+                        Role INTEGER NOT NULL,
+                        Status INTEGER NOT NULL,
+                        PersonId INTEGER NOT NULL,
+                        FOREIGN KEY (PersonId) REFERENCES Persons(Id)
+       
                     );
 
                     CREATE TABLE IF NOT EXISTS Persons (
@@ -37,6 +40,8 @@ namespace UnicomTICManagementSystem.Repositories
                         Email TEXT NOT NULL,
                         ContactNo TEXT NOT NULL,
                         Gender INTEGER,
+                        DateOfBirth DATETIME,
+                        UserRole INTEGER,
                         UserId INTEGER NOT NULL UNIQUE,
                         FOREIGN KEY (UserId) REFERENCES Users(Id)                     
                     );
@@ -44,8 +49,10 @@ namespace UnicomTICManagementSystem.Repositories
                     CREATE TABLE IF NOT EXISTS Students (
                         Id INTEGER PRIMARY KEY AUTOINCREMENT,
                         UTNumber TEXT NOT NULL,
+                        Group_Assigned INTEGER,
                         CourseId INTEGER,
                         JoinedDate DATETIME DEFAULT CURRENT_TIMESTAMP,
+                        ParentContact TEXT NOT NULL,
                         PersonId INTEGER NOT NULL,
                         UserId INTEGER NOT NULL,
                         FOREIGN KEY (PersonId) REFERENCES Persons(Id),
@@ -54,11 +61,16 @@ namespace UnicomTICManagementSystem.Repositories
                         
                     );
 
-                    CREATE TABLE IF NOT EXISTS Lecturers (
+                    CREATE TABLE IF NOT EXISTS Subjects (
                         Id INTEGER PRIMARY KEY AUTOINCREMENT,
                         Name TEXT NOT NULL,
-                        Phone TEXT NOT NULL,
-                        Address TEXT NOT NULL,
+                        CourseId INTEGER NOT NULL,
+                        FOREIGN KEY (CourseId) REFERENCES Courses(Id)
+                    );
+
+                    CREATE TABLE IF NOT EXISTS Lecturers (
+                        Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        EmployeeId TEXT NOT NULL UNIQUE,
                         Salary DECIMAL NOT NULL,
                         UserId INTEGER NOT NULL,
                         FOREIGN KEY (UserId) REFERENCES Users(Id)
@@ -66,12 +78,14 @@ namespace UnicomTICManagementSystem.Repositories
 
                     CREATE TABLE IF NOT EXISTS Staffs (
                         Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        EmployeeId TEXT NOT NULL UNIQUE,
                         UserId INTEGER NOT NULL,
                         FOREIGN KEY (UserId) REFERENCES Users(Id)
                     );
 
                     CREATE TABLE IF NOT EXISTS Admins (
                         Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        EmployeeId TEXT NOT NULL UNIQUE,
                         UserId INTEGER NOT NULL,
                         FOREIGN KEY (UserId) REFERENCES Users(Id)
                     );
@@ -79,7 +93,7 @@ namespace UnicomTICManagementSystem.Repositories
                         Id INTEGER PRIMARY KEY AUTOINCREMENT,
                         Name TEXT NOT NULL,
                         SubjectId INTEGER NOT NULL,
-                        FOREIGN KEY (SubjectId) REFERENCES Subject(Id)
+                        FOREIGN KEY (SubjectId) REFERENCES Subjects(Id)
                     );
 
                         CREATE TABLE IF NOT EXISTS Marks (
@@ -90,23 +104,27 @@ namespace UnicomTICManagementSystem.Repositories
                         FOREIGN KEY (SubjectId) REFERENCES Subjects(Id),
                         FOREIGN KEY (StudentId) REFERENCES Students(Id)
                     );
-
-                    CREATE TABLE IF NOT EXISTS Subjects (
+                    CREATE TABLE IF NOT EXISTS Rooms (
                         Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                        Name TEXT NOT NULL,
-                        CourseId INTEGER NOT NULL,
-                        FOREIGN KEY (CourseId) REFERENCES Courses(Id)
+                        RoomName TEXT NOT NULL,
+                        RoomType TEXT CHECK(RoomType IN ('Lab', 'Hall')) NOT NULL,
+                        Capacity INTEGER
                     );
 
-
+                
                     CREATE TABLE IF NOT EXISTS TimeTables (
                         Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        TimeSlot DATETIME NOT NULL,
                         StudentId INTEGER NOT NULL,
                         SubjectId INTEGER NOT NULL,
                         ExamId INTEGER NOT NULL,
-                        FOREIGN KEY (StudentId) REFERENCES Users(Id),
-                        FOREIGN KEY (SubjectId) REFERENCES Subjects(Id)
-                        FOREIGN KEY (ExamId) REFERENCES Exams(Id)
+                        LecturerId INTEGER NOT NULL,                        
+                        RoomId INTEGER NOT NULL,
+                        FOREIGN KEY (RoomId) REFERENCES Rooms(Id)
+                        FOREIGN KEY (StudentId) REFERENCES Students(Id),
+                        FOREIGN KEY (SubjectId) REFERENCES Subjects(Id),
+                        FOREIGN KEY (ExamId) REFERENCES Exams(Id),
+                        FOREIGN KEY (LecturerId) REFERENCES Lecturers(Id)
                     );
 
 
@@ -130,7 +148,8 @@ namespace UnicomTICManagementSystem.Repositories
                         SubjectId INTEGER,
                         LecturerId INTEGER,
                         PRIMARY KEY (LecturerId, SubjectId),
-                        FOREIGN KEY (LecturerId) REFERENCES Lecturers(Id)
+                        FOREIGN KEY (LecturerId) REFERENCES Lecturers(Id),
+                        FOREIGN KEY (SubjectId) REFERENCES Subjects(Id)
                     );
                     
                     CREATE TABLE IF NOT EXISTS ErrorLogs (

@@ -19,6 +19,8 @@ namespace UnicomTICManagementSystem.Views
 {
     public partial class AddPersonForm : Form
     {
+        public object DateOnly { get; private set; }
+
         public AddPersonForm()
         {
             InitializeComponent();
@@ -132,39 +134,38 @@ namespace UnicomTICManagementSystem.Views
                     {
                         UTNumber = tb_utno.Text,
                         CourseId = Convert.ToInt32(cb_course.SelectedValue),
-                        JoinedDate = DateTime.Now,
+                        JoinedDate = dtp_datejoined.Value.Date,
                         UserId = userid
                     };
                     StudentController sController = new StudentController();
                     string message = sController.AddStudent(st);
                     MessageBox.Show(message);
                 }
+
+                else if (cb_role.SelectedItem.ToString() == "LECTURER")
+                {
+                    Lecturer l = new Lecturer
+                    {
+                        Name = tb_name.Text,
+ //                       EmployeeId = tb_employeeid.Text,
+ //                       Salary = tb_salary.Text,
+                        UserId = userid
+                    };
+                    LecturerController lController = new LecturerController();
+                    string message = lController.AddLecturer(l);
+                    MessageBox.Show(message);
+                }
+                /*
+                                              else if (cb_role.SelectedItem.ToString() == "STAFF")
+                                              {
+                                                  // Handle staff addition logic here
+                                              }
+                                              else if (cb_role.SelectedItem.ToString() == "ADMIN")
+                                              {
+                                                  // Handle admin addition logic here
+                                              }
+                                  */
             }
-      
-                                    else if (cb_role.SelectedItem.ToString() == "LECTURER")
-                                    {
-                                        Lecturer l = new Lecturer
-                                        {
-                                            Name = tb_name.Text,
-                                            EmployeeId = tb_employeeid.Text,
-                                            Salary =tb_salary.Text,
-                                            Department = cb_department.Text,
-                                            UserId = userid
-                                        };
-                                        LecturerController lController = new LecturerController();
-                                        string message = lController.AddLecturer(l);
-                                        MessageBox.Show(message);
-                                    }
-      /*
-                                    else if (cb_role.SelectedItem.ToString() == "STAFF")
-                                    {
-                                        // Handle staff addition logic here
-                                    }
-                                    else if (cb_role.SelectedItem.ToString() == "ADMIN")
-                                    {
-                                        // Handle admin addition logic here
-                                    }
-                        */
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -300,6 +301,11 @@ namespace UnicomTICManagementSystem.Views
                     // Show lecturer-specific controls if needed
                     break;
             }
+        }
+
+        private void tb_datejoined_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -72,6 +72,8 @@
             this.label13 = new System.Windows.Forms.Label();
             this.cb_role = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.label_datejoined = new System.Windows.Forms.Label();
+            this.dtp_datejoined = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // label_utno
@@ -457,11 +459,33 @@
             this.label6.TabIndex = 48;
             this.label6.Text = "USER ROLE";
             // 
+            // label_datejoined
+            // 
+            this.label_datejoined.AutoSize = true;
+            this.label_datejoined.Location = new System.Drawing.Point(481, 148);
+            this.label_datejoined.Name = "label_datejoined";
+            this.label_datejoined.Size = new System.Drawing.Size(78, 13);
+            this.label_datejoined.TabIndex = 49;
+            this.label_datejoined.Text = "DATE JOINED";
+            this.label_datejoined.Visible = false;
+            // 
+            // dtp_datejoined
+            // 
+            this.dtp_datejoined.Location = new System.Drawing.Point(511, 168);
+            this.dtp_datejoined.MaxDate = new System.DateTime(2030, 12, 31, 0, 0, 0, 0);
+            this.dtp_datejoined.MinDate = new System.DateTime(2025, 1, 1, 0, 0, 0, 0);
+            this.dtp_datejoined.Name = "dtp_datejoined";
+            this.dtp_datejoined.Size = new System.Drawing.Size(200, 20);
+            this.dtp_datejoined.TabIndex = 50;
+            this.dtp_datejoined.Value = new System.DateTime(2025, 6, 17, 0, 14, 48, 0);
+            // 
             // AddPersonForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1000, 650);
+            this.Controls.Add(this.dtp_datejoined);
+            this.Controls.Add(this.label_datejoined);
             this.Controls.Add(this.cb_role);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label10);
@@ -556,5 +580,7 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.ComboBox cb_role;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label_datejoined;
+        private System.Windows.Forms.DateTimePicker dtp_datejoined;
     }
 }

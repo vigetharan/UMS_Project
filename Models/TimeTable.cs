@@ -12,7 +12,6 @@ namespace UnicomTICManagementSystem.Models
         public int TimeSlotId {  get; set; }
         public int SubjectId { get; set; }
         public int LecturerId {  get; set; }
-        public int Year {  get; set; }
         public string RoomId { get; set; }
         public bool IsActive { get; set; }
     }
