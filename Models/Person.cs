@@ -17,6 +17,5 @@ namespace UnicomTICManagementSystem.Models
         public DateTime DateOfBirth { get; set; }
         public int UserId { get; set; }
         public Enums.UserRole UserRole { get; set; }
-
     }
 }

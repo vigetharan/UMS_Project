@@ -10,6 +10,7 @@ namespace UnicomTICManagementSystem.Models
     {
         public int Id { get; set; }
         public int StudentId { get; set; }
+        public int LecturerId {  get; set; }
         public int SubjectId { get; set; }
         public DateTime Date { get; set; }
         public Enums.AttendanceStatus AttendanceStatus { get; set; }
