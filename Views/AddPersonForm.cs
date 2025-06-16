@@ -64,6 +64,7 @@ namespace UnicomTICManagementSystem.Views
         private void LoadComboBoxData()
         {
  //           string query = "SELECT Id, CourseName FROM Courses";
+ //gsgsfrgsf
 
             try
             {
@@ -82,9 +83,9 @@ namespace UnicomTICManagementSystem.Views
 
 
                         cb_course.DataSource = dt;
-                        cb_course.DisplayMember = "CourseName"; // visible text
-                        cb_course.ValueMember = "Id";     // internal value
-                                                             // Set default selected index (the dummy row)
+                        cb_course.DisplayMember = "CourseName";
+                        cb_course.ValueMember = "Id";
+
                         cb_course.SelectedIndex = 0;
                     }
                 }
@@ -139,30 +140,31 @@ namespace UnicomTICManagementSystem.Views
                     MessageBox.Show(message);
                 }
             }
-/*
-                        else if (cb_role.SelectedItem.ToString() == "LECTURER")
-                        {
-                            Lecturer l = new Lecturer
-                            {
-                                Name = tb_name.Text,
-                                Phone = tb_contactno.Text,
-                                Address = tb_address.Text,
-                                Salary = 0, // Assuming salary is not provided in this form
-                                UserId = userid
-                            };
-                            LecturerController lController = new LecturerController();
-                            string message = lController.AddLecturer(l);
-                            MessageBox.Show(message);
-                        }
-                        else if (cb_role.SelectedItem.ToString() == "STAFF")
-                        {
-                            // Handle staff addition logic here
-                        }
-                        else if (cb_role.SelectedItem.ToString() == "ADMIN")
-                        {
-                            // Handle admin addition logic here
-                        }
-            */
+      
+                                    else if (cb_role.SelectedItem.ToString() == "LECTURER")
+                                    {
+                                        Lecturer l = new Lecturer
+                                        {
+                                            Name = tb_name.Text,
+                                            EmployeeId = tb_employeeid.Text,
+                                            Salary =tb_salary.Text,
+                                            Department = cb_department.Text,
+                                            UserId = userid
+                                        };
+                                        LecturerController lController = new LecturerController();
+                                        string message = lController.AddLecturer(l);
+                                        MessageBox.Show(message);
+                                    }
+      /*
+                                    else if (cb_role.SelectedItem.ToString() == "STAFF")
+                                    {
+                                        // Handle staff addition logic here
+                                    }
+                                    else if (cb_role.SelectedItem.ToString() == "ADMIN")
+                                    {
+                                        // Handle admin addition logic here
+                                    }
+                        */
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
