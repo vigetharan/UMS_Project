@@ -139,7 +139,7 @@ namespace UnicomTICManagementSystem.Views
                     MessageBox.Show(message);
                 }
             }
-            /*
+/*
                         else if (cb_role.SelectedItem.ToString() == "LECTURER")
                         {
                             Lecturer l = new Lecturer

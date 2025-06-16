@@ -78,7 +78,7 @@ namespace UnicomTICManagementSystem.Controllers
                         INNER JOIN 
                             Student s ON p.Id = s.PersonId
                         LEFT JOIN
-                            Courses c ON s.CourseId = c.Id
+                            Courses c ON s.CourseId = c.Id";
 
 
                 using (SQLiteCommand cmd = new SQLiteCommand(query, dbconn))
