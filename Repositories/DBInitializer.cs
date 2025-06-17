@@ -26,10 +26,9 @@ namespace UnicomTICManagementSystem.Repositories
                         Username TEXT NOT NULL UNIQUE,
                         Password TEXT NOT NULL,
                         Role INTEGER NOT NULL,
-                        Status INTEGER NOT NULL,
-                        PersonId INTEGER NOT NULL,
-                        FOREIGN KEY (PersonId) REFERENCES Persons(Id)
-       
+                        Status INTEGER NOT NULL DEFAULT O,
+                        PersonID INTEGER UNIQUE,
+                        FOREIGN KEY(PersonID) REFERENCES Person(PersonID) ON DELETE CASCADE
                     );
 
                     CREATE TABLE IF NOT EXISTS Persons (
@@ -50,11 +49,11 @@ namespace UnicomTICManagementSystem.Repositories
                         Id INTEGER PRIMARY KEY AUTOINCREMENT,
                         UTNumber TEXT NOT NULL,
                         Group_Assigned INTEGER,
-                        CourseId INTEGER,
-                        JoinedDate DATETIME DEFAULT CURRENT_TIMESTAMP,
+                        JoinedDate TEXT,
                         ParentContact TEXT NOT NULL,
                         PersonId INTEGER NOT NULL,
                         UserId INTEGER NOT NULL,
+                        CourseId INTEGER NOT NULL,
                         FOREIGN KEY (PersonId) REFERENCES Persons(Id),
                         FOREIGN KEY (UserId) REFERENCES Users(Id),
                         FOREIGN KEY (CourseId) REFERENCES Courses(Id)
@@ -72,27 +71,37 @@ namespace UnicomTICManagementSystem.Repositories
                         Id INTEGER PRIMARY KEY AUTOINCREMENT,
                         EmployeeId TEXT NOT NULL UNIQUE,
                         Salary DECIMAL NOT NULL,
+                        JoinedDate TEXT,
                         UserId INTEGER NOT NULL,
+                        PersonId INTEGER NOT NULL UNIQUE,
+                        FOREIGN KEY (PersonId) REFERENCES Persons(Id),
                         FOREIGN KEY (UserId) REFERENCES Users(Id)
                     );
 
                     CREATE TABLE IF NOT EXISTS Staffs (
                         Id INTEGER PRIMARY KEY AUTOINCREMENT,
                         EmployeeId TEXT NOT NULL UNIQUE,
+                        JoinedDate TEXT,
                         UserId INTEGER NOT NULL,
+                        PersonId INTEGER NOT NULL UNIQUE,
+                        FOREIGN KEY (PersonId) REFERENCES Persons(Id),
                         FOREIGN KEY (UserId) REFERENCES Users(Id)
                     );
 
                     CREATE TABLE IF NOT EXISTS Admins (
                         Id INTEGER PRIMARY KEY AUTOINCREMENT,
                         EmployeeId TEXT NOT NULL UNIQUE,
+                        JoinedDate TEXT,
                         UserId INTEGER NOT NULL,
+                        PersonId INTEGER NOT NULL UNIQUE,
+                        FOREIGN KEY (PersonId) REFERENCES Persons(Id),
                         FOREIGN KEY (UserId) REFERENCES Users(Id)
                     );
                     CREATE TABLE IF NOT EXISTS Exams (
                         Id INTEGER PRIMARY KEY AUTOINCREMENT,
                         Name TEXT NOT NULL,
                         SubjectId INTEGER NOT NULL,
+                        ExamDate TEXT NOT NULL,
                         FOREIGN KEY (SubjectId) REFERENCES Subjects(Id)
                     );
 
@@ -100,8 +109,9 @@ namespace UnicomTICManagementSystem.Repositories
                         Id INTEGER PRIMARY KEY AUTOINCREMENT,
                         Marks INTEGER NOT NULL,
                         StudentId INTEGER NOT NULL,
-                        SubjectId INTEGER NOT NULL,
-                        FOREIGN KEY (SubjectId) REFERENCES Subjects(Id),
+                        ExamId INTEGER NOT NULL,
+                        Grade_Obtained TEXT NOT NULL,
+                        FOREIGN KEY (ExamId) REFERENCES Subjects(Id),
                         FOREIGN KEY (StudentId) REFERENCES Students(Id)
                     );
                     CREATE TABLE IF NOT EXISTS Rooms (
@@ -110,18 +120,25 @@ namespace UnicomTICManagementSystem.Repositories
                         RoomType TEXT CHECK(RoomType IN ('Lab', 'Hall')) NOT NULL,
                         Capacity INTEGER
                     );
+                        CREATE TABLE IF NOT EXISTS Attendances (
+                        Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        StudentId INTEGER NOT NULL,
+                        Date TEXT NOT NULL,
+                        Status TEXT NOT NULL,
+                        FOREIGN KEY (StudentId) REFERENCES Students(PersonId)  ON DELETE CASCADE
+                    );
 
                 
                     CREATE TABLE IF NOT EXISTS TimeTables (
-                        Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                        TimeSlot DATETIME NOT NULL,
-                        StudentId INTEGER NOT NULL,
+                        Id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,
+                        Group INTEGER NOT NULL,
+                        TimeSlotId INTEGER NOT NULL,
                         SubjectId INTEGER NOT NULL,
-                        ExamId INTEGER NOT NULL,
+                        ExamId INTEGER NOT NULL DEFAULT -1,
                         LecturerId INTEGER NOT NULL,                        
                         RoomId INTEGER NOT NULL,
-                        FOREIGN KEY (RoomId) REFERENCES Rooms(Id)
-                        FOREIGN KEY (StudentId) REFERENCES Students(Id),
+                        FOREIGN KEY (RoomId) REFERENCES Rooms(Id),
+                        FOREIGN KEY (TimeSlotId) REFERENCES TimeSlots(Id),
                         FOREIGN KEY (SubjectId) REFERENCES Subjects(Id),
                         FOREIGN KEY (ExamId) REFERENCES Exams(Id),
                         FOREIGN KEY (LecturerId) REFERENCES Lecturers(Id)
@@ -154,10 +171,12 @@ namespace UnicomTICManagementSystem.Repositories
                     
                     CREATE TABLE IF NOT EXISTS ErrorLogs (
                         LogID INTEGER PRIMARY KEY AUTOINCREMENT,
+                        UserId INTEGER NOT NULL,
                         LogType TEXT NOT NULL,
                         Timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
                         Message TEXT NOT NULL,
-                        Details TEXT
+                        Details TEXT,
+                        FOREIGN KEY (UserId) REFERENCES Users(Id) ON DELETE CASCADE
                     );
                 ";
 
