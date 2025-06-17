@@ -8,8 +8,11 @@ namespace UnicomTICManagementSystem.Models
 {
     internal class Staff: Person
     {
-        public int Id { get; set; }
-        private string StaffId { get; set; }
-        private int UserId { get; set; }
+        public int StfId { get; set; }
+        public string EmployeeId { get; set; }
+        public string JoinedDate { get; set; }
+//        puplic int UserId { get; set; }
+ //       public int PersonId { get; set; }
+
     }
 }

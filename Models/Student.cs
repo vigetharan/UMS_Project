@@ -10,9 +10,11 @@ namespace UnicomTICManagementSystem.Models
     {
         public int SId { get; set; }
         public string UTNumber { get; set; }
-        public Enums.Group Group { get; set; }
+        public Enums.Group Group_Assigned { get; set; }
         public int CourseId { get; set; }
-        public DateTime JoinedDate { get; set; }
+        public string JoinedDate { get; set; }
         public string ParentContact { get; set; }
+ //       public int PersonId { get; set; }
+ //       public int UserId { get; set; }
     }
 }

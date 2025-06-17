@@ -111,6 +111,7 @@ namespace UnicomTICManagementSystem.Repositories
                         StudentId INTEGER NOT NULL,
                         ExamId INTEGER NOT NULL,
                         Grade_Obtained TEXT NOT NULL,
+                        UpdatedBy INTEGER NOT NULL,
                         FOREIGN KEY (ExamId) REFERENCES Subjects(Id),
                         FOREIGN KEY (StudentId) REFERENCES Students(Id)
                     );
@@ -123,15 +124,15 @@ namespace UnicomTICManagementSystem.Repositories
                         CREATE TABLE IF NOT EXISTS Attendances (
                         Id INTEGER PRIMARY KEY AUTOINCREMENT,
                         StudentId INTEGER NOT NULL,
-                        Date TEXT NOT NULL,
+                        Date DATETIME NOT NULL,
                         Status TEXT NOT NULL,
                         FOREIGN KEY (StudentId) REFERENCES Students(PersonId)  ON DELETE CASCADE
                     );
 
                 
                     CREATE TABLE IF NOT EXISTS TimeTables (
-                        Id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,
-                        Group INTEGER NOT NULL,
+                        Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        Group_Assigned INTEGER NOT NULL,
                         TimeSlotId INTEGER NOT NULL,
                         SubjectId INTEGER NOT NULL,
                         ExamId INTEGER NOT NULL DEFAULT -1,

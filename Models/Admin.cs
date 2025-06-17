@@ -8,8 +8,12 @@ namespace UnicomTICManagementSystem.Models
 {
     internal class Admin : Person
     {
-        public int Id { get; set; }
-        public int UserId { get; set; }
+        public int AId { get; set; }
+//        public int UserId { get; set; }
+        public string JoinedDate{get; set;}
+ //       public int UserId { get;set;}
         public int PrivilageLevel { get; set; }
+ //       public int PersonId { get; set; }
+    
     }
 }
