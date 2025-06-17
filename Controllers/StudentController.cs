@@ -19,12 +19,14 @@ namespace UnicomTICManagementSystem.Controllers
         {
             using (var dbconn = DatabaseManager.GetConnection())
             {
-                string addStudentQuery = "INSERT INTO Students ( UTNumber,CourseId,JoinedDate,UserId) VALUES (@utnumber,@courseid,@joinedDate,@userid)";
+                string addStudentQuery = "INSERT INTO Students ( StudentId,UTNumber,CourseId,JoinedDate,Group_Assigned,ParentContact) VALUES (@studentid,@utnumber,@courseid,@joinedDate,@group,@parentcontact)";
                 SQLiteCommand addCommand = new SQLiteCommand(addStudentQuery, dbconn);
+                addCommand.Parameters.AddWithValue("@studentid", st.StudentId);
                 addCommand.Parameters.AddWithValue("@utnumber", st.UTNumber);
                 addCommand.Parameters.AddWithValue("@courseid", st.CourseId);
                 addCommand.Parameters.AddWithValue("@joinedDate", st.JoinedDate);
-                addCommand.Parameters.AddWithValue("@userid", st.UserId);
+                addCommand.Parameters.AddWithValue("@group", st.Group_Assigned);
+                addCommand.Parameters.AddWithValue("@parentcontact", st.ParentContact);
                 addCommand.ExecuteNonQuery();
             }
             return "STUDENT ADDED SUCCESSFULLY";
@@ -66,17 +68,29 @@ namespace UnicomTICManagementSystem.Controllers
             {
                 string query = @"
                         SELECT 
-                            p.FirstName,
-                            p.LastName,
-                            p.DOB,
+                            p.Name,
+                            p.NicNo,
                             p.Address,
+                            p.Email,
+                            p.ContactNo,
+                            CASE p.Gender  WHEN 1 THEN 'MALE'  WHEN 2 THEN 'FEMALE'   END AS Gender,
+                            p.DateOfBirth,
+                            CAST(strftime('%Y', 'now') AS INTEGER) - CAST(strftime('%Y', p.DateOfBirth) AS INTEGER)
+                            - CASE 
+                                WHEN strftime('%m-%d', 'now') < strftime('%m-%d', p.DateOfBirth) 
+                                THEN 1 
+                                ELSE 0 
+                              END AS Age,
+                            CASE p.UserRole WHEN 0 THEN 'ADMIN' WHEN 1 THEN 'STUDENT' WHEN 2 THEN 'STAFF' WHEN 3 THEN 'LECTURER' END AS UserRole,
                             s.UtNumber,
+                            CASE s.Group_Assigned WHEN 0 THEN 'GROUP-A' WHEN 1 THEN 'GROUP-B' END AS Group_Assigned,
                             s.JoinedDate,
+                            s.ParentContact,
                             c.CourseName
                         FROM 
-                            Person p
+                            Persons p
                         INNER JOIN 
-                            Student s ON p.Id = s.PersonId
+                            Students s ON p.Id = s.StudentId
                         LEFT JOIN
                             Courses c ON s.CourseId = c.Id";
 

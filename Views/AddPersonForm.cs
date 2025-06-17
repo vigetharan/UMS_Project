@@ -25,6 +25,8 @@ namespace UnicomTICManagementSystem.Views
         {
             InitializeComponent();
             LoadComboBoxData();
+            tb_parent.Text = "Enter Parent's / Guardian's Contact Number";
+            tb_parent.ForeColor = Color.LightGray;
         }
 
         private void combo_course_SelectedIndexChanged(object sender, EventArgs e)
@@ -121,21 +123,24 @@ namespace UnicomTICManagementSystem.Views
                     Email = tb_email.Text,
                     ContactNo = tb_contactno.Text,
                     Gender = (Gender)cb_gender.SelectedIndex,
+                    DateOfBirth = DateTime.Parse(tb_dob.Text),
                     UserId = userid
                 };
 
                 PersonController pController = new PersonController();
-                string getMessage = pController.AddPerson(p);
+                int personId = pController.AddPerson(p);
 
-                MessageBox.Show(getMessage);
+                MessageBox.Show(personId.ToString());
                 if (cb_role.SelectedItem.ToString() == "STUDENT")
                 {
                     Student st = new Student
                     {
+                        StudentId = personId,
                         UTNumber = tb_utno.Text,
+                        Group_Assigned = (Group)cb_group.SelectedIndex,
                         CourseId = Convert.ToInt32(cb_course.SelectedValue),
-                        JoinedDate = dtp_datejoined.Value.Date,
-                        UserId = userid
+                        JoinedDate = dtp_datejoined.ToString(),
+                        ParentContact = tb_parent.Text,
                     };
                     StudentController sController = new StudentController();
                     string message = sController.AddStudent(st);
@@ -269,11 +274,14 @@ namespace UnicomTICManagementSystem.Views
         private void cb_role_SelectedIndexChanged(object sender, EventArgs e)
         {
             tb_utno.Visible = false;
+            tb_parent.Visible = false;
             cb_group.Visible = false;
             cb_course.Visible = false;
             label_utno.Visible = false;
             label_group.Visible = false;
             label_course.Visible = false;
+            lable_parent.Visible = false;
+            
             string selectedRole = cb_role.SelectedItem.ToString();
             switch (selectedRole)
             {
@@ -289,6 +297,8 @@ namespace UnicomTICManagementSystem.Views
                     label_utno.Visible = true;
                     label_group.Visible = true;
                     label_course.Visible = true;
+                    lable_parent.Visible = true;
+                    tb_parent.Visible = true;
                     break;
 
                 case "STAFF":
@@ -306,6 +316,12 @@ namespace UnicomTICManagementSystem.Views
         private void tb_datejoined_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void tb_parent_Enter(object sender, EventArgs e)
+        {
+            tb_parent.ForeColor = Color.Black;
+            tb_parent.Text = string.Empty;
         }
     }
 }

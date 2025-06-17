@@ -33,6 +33,7 @@ namespace UnicomTICManagementSystem
             if (LoginController.CheckLogin(tb_username.Text, tb_password.Text))
             {
                 Main_Form f = new Main_Form();
+                f.StartPosition = FormStartPosition.CenterScreen;
                 f.Show();
                 this.Hide();
             }

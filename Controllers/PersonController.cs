@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.SQLite;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -12,11 +13,12 @@ namespace UnicomTICManagementSystem.Controllers
 {
     internal class PersonController
     {
-        public string AddPerson(Person p)
+        public int AddPerson(Person p)
         {
+            int personId;
             using (var dbconn = DatabaseManager.GetConnection())
             {
-                string addStudentQuery = "INSERT INTO Persons ( NicNo,Name,Address,Email,ContactNo,Gender, UserId) VALUES (@nicno,@name,@address,@email,@contactno, @gender, @userid)";
+                string addStudentQuery = "INSERT INTO Persons ( NicNo,Name,Address,Email,ContactNo,Gender,DateOfBirth, UserId, UserRole) VALUES (@nicno,@name,@address,@email,@contactno, @gender,@dob, @userid,@userrole)";
                 SQLiteCommand addCommand = new SQLiteCommand(addStudentQuery, dbconn);
                 addCommand.Parameters.AddWithValue("@nicno", p.NicNo);
                 addCommand.Parameters.AddWithValue("@name", p.Name);
@@ -24,10 +26,17 @@ namespace UnicomTICManagementSystem.Controllers
                 addCommand.Parameters.AddWithValue("@email", p.Email);
                 addCommand.Parameters.AddWithValue("@contactno", p.ContactNo);
                 addCommand.Parameters.AddWithValue("@gender", p.Gender);
+                addCommand.Parameters.AddWithValue("@dob", p.DateOfBirth);
                 addCommand.Parameters.AddWithValue("@userid", p.UserId);
+                addCommand.Parameters.AddWithValue("@userrole", p.UserRole);
                 addCommand.ExecuteNonQuery();
+
+                string LastIdQuery = "SELECT last_insert_rowid()";
+                SQLiteCommand idCommand = new SQLiteCommand(LastIdQuery, dbconn);
+                personId = Convert.ToInt32(idCommand.ExecuteScalar());
             }
-            return "PERSON ADDED SUCCESSFULLY";
+            MessageBox.Show(personId.ToString());
+            return personId;
         }
         public bool CheckNic(string nic)
         {

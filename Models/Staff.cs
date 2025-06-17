@@ -11,8 +11,5 @@ namespace UnicomTICManagementSystem.Models
         public int StfId { get; set; }
         public string EmployeeId { get; set; }
         public string JoinedDate { get; set; }
-//        puplic int UserId { get; set; }
- //       public int PersonId { get; set; }
-
     }
 }

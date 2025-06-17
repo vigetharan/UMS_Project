@@ -51,6 +51,7 @@ namespace UnicomTICManagementSystem
             Student_Details sdform = new Student_Details();
             sdform.TopLevel = false;
             sdform.FormBorderStyle = FormBorderStyle.None;
+            sdform.StartPosition = FormStartPosition.CenterParent;
             sdform.Dock = DockStyle.Fill;
             centerPanel.Controls.Add(sdform);
             sdform.Show();
@@ -196,10 +197,6 @@ namespace UnicomTICManagementSystem
             staffForm.Show();
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-
-        }
 
         private void btn_course_Click(object sender, EventArgs e)
         {
@@ -297,6 +294,14 @@ namespace UnicomTICManagementSystem
             marks.Dock = DockStyle.Fill;
             centerPanel.Controls.Add(marks);
             marks.Show();
+        }
+
+        private void btn_addcourse_Click(object sender, EventArgs e)
+        {
+            CourseSubject popup = new CourseSubject();
+            popup.Text = "Add New Course";
+            popup.StartPosition = FormStartPosition.CenterParent; // or CenterParent
+            popup.Show();
         }
     }
 }

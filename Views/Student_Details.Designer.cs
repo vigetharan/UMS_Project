@@ -31,6 +31,7 @@
             this.student_view = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.tb_filterbyname = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.student_view)).BeginInit();
             this.SuspendLayout();
             // 
@@ -38,16 +39,15 @@
             // 
             this.student_view.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.student_view.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.student_view.Dock = System.Windows.Forms.DockStyle.Left;
-            this.student_view.Location = new System.Drawing.Point(0, 0);
+            this.student_view.Location = new System.Drawing.Point(-1, 35);
             this.student_view.Name = "student_view";
-            this.student_view.Size = new System.Drawing.Size(801, 450);
+            this.student_view.Size = new System.Drawing.Size(762, 372);
             this.student_view.TabIndex = 1;
             this.student_view.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.student_view_CellContentClick);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(73, 404);
+            this.button1.Location = new System.Drawing.Point(12, 417);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(108, 23);
             this.button1.TabIndex = 2;
@@ -56,18 +56,27 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(211, 404);
+            this.button2.Location = new System.Drawing.Point(191, 417);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(108, 23);
             this.button2.TabIndex = 2;
             this.button2.Text = "button1";
             this.button2.UseVisualStyleBackColor = true;
             // 
+            // tb_filterbyname
+            // 
+            this.tb_filterbyname.Location = new System.Drawing.Point(146, 9);
+            this.tb_filterbyname.Name = "tb_filterbyname";
+            this.tb_filterbyname.Size = new System.Drawing.Size(100, 20);
+            this.tb_filterbyname.TabIndex = 3;
+            this.tb_filterbyname.TextChanged += new System.EventHandler(this.tb_filterbyname_TextChanged);
+            // 
             // Student_Details
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(762, 452);
+            this.Controls.Add(this.tb_filterbyname);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.student_view);
@@ -75,6 +84,7 @@
             this.Text = "Student_Details";
             ((System.ComponentModel.ISupportInitialize)(this.student_view)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -82,5 +92,6 @@
         private System.Windows.Forms.DataGridView student_view;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox tb_filterbyname;
     }
 }

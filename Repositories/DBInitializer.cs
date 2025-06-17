@@ -26,9 +26,7 @@ namespace UnicomTICManagementSystem.Repositories
                         Username TEXT NOT NULL UNIQUE,
                         Password TEXT NOT NULL,
                         Role INTEGER NOT NULL,
-                        Status INTEGER NOT NULL DEFAULT O,
-                        PersonID INTEGER UNIQUE,
-                        FOREIGN KEY(PersonID) REFERENCES Person(PersonID) ON DELETE CASCADE
+                        Status INTEGER NOT NULL DEFAULT O
                     );
 
                     CREATE TABLE IF NOT EXISTS Persons (
@@ -46,16 +44,12 @@ namespace UnicomTICManagementSystem.Repositories
                     );
 
                     CREATE TABLE IF NOT EXISTS Students (
-                        Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        StudentId INTEGER PRIMARY KEY AUTOINCREMENT,
                         UTNumber TEXT NOT NULL,
                         Group_Assigned INTEGER,
                         JoinedDate TEXT,
                         ParentContact TEXT NOT NULL,
-                        PersonId INTEGER NOT NULL,
-                        UserId INTEGER NOT NULL,
                         CourseId INTEGER NOT NULL,
-                        FOREIGN KEY (PersonId) REFERENCES Persons(Id),
-                        FOREIGN KEY (UserId) REFERENCES Users(Id),
                         FOREIGN KEY (CourseId) REFERENCES Courses(Id)
                         
                     );

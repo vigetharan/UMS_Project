@@ -39,8 +39,11 @@
             this.btn_student = new System.Windows.Forms.Button();
             this.centerPanel = new System.Windows.Forms.Panel();
             this.UpPanel = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_addcourse = new System.Windows.Forms.Button();
             this.btn_add_person = new System.Windows.Forms.Button();
+            this.btn_addtimeslot = new System.Windows.Forms.Button();
+            this.btn_addexam = new System.Windows.Forms.Button();
+            this.btn_addsubject = new System.Windows.Forms.Button();
             this.leftPanel.SuspendLayout();
             this.UpPanel.SuspendLayout();
             this.SuspendLayout();
@@ -154,7 +157,10 @@
             // UpPanel
             // 
             this.UpPanel.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.UpPanel.Controls.Add(this.button1);
+            this.UpPanel.Controls.Add(this.btn_addsubject);
+            this.UpPanel.Controls.Add(this.btn_addexam);
+            this.UpPanel.Controls.Add(this.btn_addtimeslot);
+            this.UpPanel.Controls.Add(this.btn_addcourse);
             this.UpPanel.Controls.Add(this.btn_add_person);
             this.UpPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.UpPanel.Location = new System.Drawing.Point(111, 0);
@@ -162,15 +168,15 @@
             this.UpPanel.Size = new System.Drawing.Size(889, 40);
             this.UpPanel.TabIndex = 2;
             // 
-            // button1
+            // btn_addcourse
             // 
-            this.button1.Location = new System.Drawing.Point(104, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(99, 37);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "EDIT A PERSON DETAILS";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.btn_addcourse.Location = new System.Drawing.Point(104, 3);
+            this.btn_addcourse.Name = "btn_addcourse";
+            this.btn_addcourse.Size = new System.Drawing.Size(85, 37);
+            this.btn_addcourse.TabIndex = 1;
+            this.btn_addcourse.Text = "ADD A COURSE";
+            this.btn_addcourse.UseVisualStyleBackColor = true;
+            this.btn_addcourse.Click += new System.EventHandler(this.btn_addcourse_Click);
             // 
             // btn_add_person
             // 
@@ -181,6 +187,33 @@
             this.btn_add_person.Text = "ADD A PERSON";
             this.btn_add_person.UseVisualStyleBackColor = true;
             this.btn_add_person.Click += new System.EventHandler(this.btn_add_person_Click);
+            // 
+            // btn_addtimeslot
+            // 
+            this.btn_addtimeslot.Location = new System.Drawing.Point(312, 3);
+            this.btn_addtimeslot.Name = "btn_addtimeslot";
+            this.btn_addtimeslot.Size = new System.Drawing.Size(85, 37);
+            this.btn_addtimeslot.TabIndex = 2;
+            this.btn_addtimeslot.Text = "ADD A TIME SLOT";
+            this.btn_addtimeslot.UseVisualStyleBackColor = true;
+            // 
+            // btn_addexam
+            // 
+            this.btn_addexam.Location = new System.Drawing.Point(419, 3);
+            this.btn_addexam.Name = "btn_addexam";
+            this.btn_addexam.Size = new System.Drawing.Size(85, 37);
+            this.btn_addexam.TabIndex = 3;
+            this.btn_addexam.Text = "ADD AN EXAM";
+            this.btn_addexam.UseVisualStyleBackColor = true;
+            // 
+            // btn_addsubject
+            // 
+            this.btn_addsubject.Location = new System.Drawing.Point(207, 3);
+            this.btn_addsubject.Name = "btn_addsubject";
+            this.btn_addsubject.Size = new System.Drawing.Size(85, 37);
+            this.btn_addsubject.TabIndex = 4;
+            this.btn_addsubject.Text = "ADD A SUBJECT";
+            this.btn_addsubject.UseVisualStyleBackColor = true;
             // 
             // Main_Form
             // 
@@ -213,6 +246,9 @@
         private System.Windows.Forms.Button btn_add_person;
         private System.Windows.Forms.Button btn_exam;
         private System.Windows.Forms.Button btn_timetable;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_addcourse;
+        private System.Windows.Forms.Button btn_addsubject;
+        private System.Windows.Forms.Button btn_addexam;
+        private System.Windows.Forms.Button btn_addtimeslot;
     }
 }
