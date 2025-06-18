@@ -20,13 +20,21 @@ namespace UnicomTICManagementSystem.Repositories
                         Id INTEGER PRIMARY KEY AUTOINCREMENT,
                         CourseName TEXT NOT NULL
                     );
+
+                    CREATE TABLE IF NOT EXISTS TimeSlots (
+                        Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        StartTime DATETIME NOT NULL,
+                        EndTime DATETIME NOT NULL,
+                        TimeSlot TEXT NOT NULL
+                    );
                     
                     CREATE TABLE IF NOT EXISTS Users(
                         Id INTEGER PRIMARY KEY AUTOINCREMENT,
                         Username TEXT NOT NULL UNIQUE,
                         Password TEXT NOT NULL,
                         Role INTEGER NOT NULL,
-                        Status INTEGER NOT NULL DEFAULT O
+                        Status INTEGER NOT NULL DEFAULT O,
+                        AccessLevel INTEGER NOT NULL DEFAULT 0
                     );
 
                     CREATE TABLE IF NOT EXISTS Persons (
@@ -44,11 +52,12 @@ namespace UnicomTICManagementSystem.Repositories
                     );
 
                     CREATE TABLE IF NOT EXISTS Students (
-                        StudentId INTEGER PRIMARY KEY AUTOINCREMENT,
+                        StudentId INTEGER PRIMARY KEY,
                         UTNumber TEXT NOT NULL,
                         Group_Assigned INTEGER,
                         JoinedDate TEXT,
                         ParentContact TEXT NOT NULL,
+                        PrivilageLevel INTEGER NOT NULL,
                         CourseId INTEGER NOT NULL,
                         FOREIGN KEY (CourseId) REFERENCES Courses(Id)
                         
@@ -62,34 +71,27 @@ namespace UnicomTICManagementSystem.Repositories
                     );
 
                     CREATE TABLE IF NOT EXISTS Lecturers (
-                        Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                        EmployeeId TEXT NOT NULL UNIQUE,
+                        LecturerId INTEGER PRIMARY KEY,
+                        EmployeeNo TEXT NOT NULL UNIQUE,
                         Salary DECIMAL NOT NULL,
                         JoinedDate TEXT,
-                        UserId INTEGER NOT NULL,
-                        PersonId INTEGER NOT NULL UNIQUE,
-                        FOREIGN KEY (PersonId) REFERENCES Persons(Id),
-                        FOREIGN KEY (UserId) REFERENCES Users(Id)
+                        PrivilageLevel INTEGER NOT NULL
                     );
 
                     CREATE TABLE IF NOT EXISTS Staffs (
-                        Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                        EmployeeId TEXT NOT NULL UNIQUE,
+                        StaffId INTEGER PRIMARY KEY,
+                        EmployeeNo TEXT NOT NULL UNIQUE,
+                        Salary DECIMAL NOT NULL,
                         JoinedDate TEXT,
-                        UserId INTEGER NOT NULL,
-                        PersonId INTEGER NOT NULL UNIQUE,
-                        FOREIGN KEY (PersonId) REFERENCES Persons(Id),
-                        FOREIGN KEY (UserId) REFERENCES Users(Id)
+                        PrivilageLevel INTEGER NOT NULL
                     );
 
                     CREATE TABLE IF NOT EXISTS Admins (
-                        Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                        EmployeeId TEXT NOT NULL UNIQUE,
+                        AdminId INTEGER PRIMARY KEY,
+                        EmployeeNo TEXT NOT NULL UNIQUE,
+                        Salary DECIMAL NOT NULL,
                         JoinedDate TEXT,
-                        UserId INTEGER NOT NULL,
-                        PersonId INTEGER NOT NULL UNIQUE,
-                        FOREIGN KEY (PersonId) REFERENCES Persons(Id),
-                        FOREIGN KEY (UserId) REFERENCES Users(Id)
+                        PrivilageLevel INTEGER NOT NULL
                     );
                     CREATE TABLE IF NOT EXISTS Exams (
                         Id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -111,9 +113,7 @@ namespace UnicomTICManagementSystem.Repositories
                     );
                     CREATE TABLE IF NOT EXISTS Rooms (
                         Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                        RoomName TEXT NOT NULL,
-                        RoomType TEXT CHECK(RoomType IN ('Lab', 'Hall')) NOT NULL,
-                        Capacity INTEGER
+                        RoomName TEXT NOT NULL
                     );
                         CREATE TABLE IF NOT EXISTS Attendances (
                         Id INTEGER PRIMARY KEY AUTOINCREMENT,

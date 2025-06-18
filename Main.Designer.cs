@@ -39,11 +39,14 @@
             this.btn_student = new System.Windows.Forms.Button();
             this.centerPanel = new System.Windows.Forms.Panel();
             this.UpPanel = new System.Windows.Forms.Panel();
+            this.btn_addsubject = new System.Windows.Forms.Button();
+            this.btn_addexam = new System.Windows.Forms.Button();
+            this.btn_addtimeslot = new System.Windows.Forms.Button();
             this.btn_addcourse = new System.Windows.Forms.Button();
             this.btn_add_person = new System.Windows.Forms.Button();
-            this.btn_addtimeslot = new System.Windows.Forms.Button();
-            this.btn_addexam = new System.Windows.Forms.Button();
-            this.btn_addsubject = new System.Windows.Forms.Button();
+            this.label_welcome = new System.Windows.Forms.Label();
+            this.ilabel_icon = new System.Windows.Forms.Label();
+            this.linkLabel_logout = new System.Windows.Forms.LinkLabel();
             this.leftPanel.SuspendLayout();
             this.UpPanel.SuspendLayout();
             this.SuspendLayout();
@@ -148,6 +151,7 @@
             // 
             this.centerPanel.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.centerPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.centerPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.centerPanel.Location = new System.Drawing.Point(111, 40);
             this.centerPanel.Name = "centerPanel";
             this.centerPanel.Size = new System.Drawing.Size(889, 610);
@@ -157,16 +161,47 @@
             // UpPanel
             // 
             this.UpPanel.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.UpPanel.Controls.Add(this.ilabel_icon);
+            this.UpPanel.Controls.Add(this.label_welcome);
             this.UpPanel.Controls.Add(this.btn_addsubject);
             this.UpPanel.Controls.Add(this.btn_addexam);
             this.UpPanel.Controls.Add(this.btn_addtimeslot);
             this.UpPanel.Controls.Add(this.btn_addcourse);
             this.UpPanel.Controls.Add(this.btn_add_person);
+            this.UpPanel.Controls.Add(this.linkLabel_logout);
             this.UpPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.UpPanel.Location = new System.Drawing.Point(111, 0);
             this.UpPanel.Name = "UpPanel";
             this.UpPanel.Size = new System.Drawing.Size(889, 40);
             this.UpPanel.TabIndex = 2;
+            // 
+            // btn_addsubject
+            // 
+            this.btn_addsubject.Location = new System.Drawing.Point(207, 3);
+            this.btn_addsubject.Name = "btn_addsubject";
+            this.btn_addsubject.Size = new System.Drawing.Size(85, 37);
+            this.btn_addsubject.TabIndex = 4;
+            this.btn_addsubject.Text = "ADD A SUBJECT";
+            this.btn_addsubject.UseVisualStyleBackColor = true;
+            // 
+            // btn_addexam
+            // 
+            this.btn_addexam.Location = new System.Drawing.Point(419, 3);
+            this.btn_addexam.Name = "btn_addexam";
+            this.btn_addexam.Size = new System.Drawing.Size(85, 37);
+            this.btn_addexam.TabIndex = 3;
+            this.btn_addexam.Text = "ADD AN EXAM";
+            this.btn_addexam.UseVisualStyleBackColor = true;
+            // 
+            // btn_addtimeslot
+            // 
+            this.btn_addtimeslot.Location = new System.Drawing.Point(312, 3);
+            this.btn_addtimeslot.Name = "btn_addtimeslot";
+            this.btn_addtimeslot.Size = new System.Drawing.Size(85, 37);
+            this.btn_addtimeslot.TabIndex = 2;
+            this.btn_addtimeslot.Text = "ADD A TIME SLOT";
+            this.btn_addtimeslot.UseVisualStyleBackColor = true;
+            this.btn_addtimeslot.Click += new System.EventHandler(this.btn_addtimeslot_Click);
             // 
             // btn_addcourse
             // 
@@ -188,32 +223,37 @@
             this.btn_add_person.UseVisualStyleBackColor = true;
             this.btn_add_person.Click += new System.EventHandler(this.btn_add_person_Click);
             // 
-            // btn_addtimeslot
+            // label_welcome
             // 
-            this.btn_addtimeslot.Location = new System.Drawing.Point(312, 3);
-            this.btn_addtimeslot.Name = "btn_addtimeslot";
-            this.btn_addtimeslot.Size = new System.Drawing.Size(85, 37);
-            this.btn_addtimeslot.TabIndex = 2;
-            this.btn_addtimeslot.Text = "ADD A TIME SLOT";
-            this.btn_addtimeslot.UseVisualStyleBackColor = true;
+            this.label_welcome.AutoSize = true;
+            this.label_welcome.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_welcome.Location = new System.Drawing.Point(649, 11);
+            this.label_welcome.Name = "label_welcome";
+            this.label_welcome.Size = new System.Drawing.Size(72, 16);
+            this.label_welcome.TabIndex = 5;
+            this.label_welcome.Text = "Welcome";
             // 
-            // btn_addexam
+            // ilabel_icon
             // 
-            this.btn_addexam.Location = new System.Drawing.Point(419, 3);
-            this.btn_addexam.Name = "btn_addexam";
-            this.btn_addexam.Size = new System.Drawing.Size(85, 37);
-            this.btn_addexam.TabIndex = 3;
-            this.btn_addexam.Text = "ADD AN EXAM";
-            this.btn_addexam.UseVisualStyleBackColor = true;
+            this.ilabel_icon.AutoSize = true;
+            this.ilabel_icon.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ilabel_icon.Location = new System.Drawing.Point(836, -1);
+            this.ilabel_icon.Name = "ilabel_icon";
+            this.ilabel_icon.Size = new System.Drawing.Size(35, 29);
+            this.ilabel_icon.TabIndex = 7;
+            this.ilabel_icon.Text = "👩‍🎓";
             // 
-            // btn_addsubject
+            // linkLabel_logout
             // 
-            this.btn_addsubject.Location = new System.Drawing.Point(207, 3);
-            this.btn_addsubject.Name = "btn_addsubject";
-            this.btn_addsubject.Size = new System.Drawing.Size(85, 37);
-            this.btn_addsubject.TabIndex = 4;
-            this.btn_addsubject.Text = "ADD A SUBJECT";
-            this.btn_addsubject.UseVisualStyleBackColor = true;
+            this.linkLabel_logout.AutoSize = true;
+            this.linkLabel_logout.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel_logout.Location = new System.Drawing.Point(828, 23);
+            this.linkLabel_logout.Name = "linkLabel_logout";
+            this.linkLabel_logout.Size = new System.Drawing.Size(54, 16);
+            this.linkLabel_logout.TabIndex = 8;
+            this.linkLabel_logout.TabStop = true;
+            this.linkLabel_logout.Text = "Logout";
+            this.linkLabel_logout.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel_logout_LinkClicked);
             // 
             // Main_Form
             // 
@@ -224,10 +264,12 @@
             this.Controls.Add(this.UpPanel);
             this.Controls.Add(this.leftPanel);
             this.Name = "Main_Form";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main_Form";
             this.Load += new System.EventHandler(this.Main_Form_Load);
             this.leftPanel.ResumeLayout(false);
             this.UpPanel.ResumeLayout(false);
+            this.UpPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -250,5 +292,8 @@
         private System.Windows.Forms.Button btn_addsubject;
         private System.Windows.Forms.Button btn_addexam;
         private System.Windows.Forms.Button btn_addtimeslot;
+        private System.Windows.Forms.Label label_welcome;
+        private System.Windows.Forms.Label ilabel_icon;
+        private System.Windows.Forms.LinkLabel linkLabel_logout;
     }
 }

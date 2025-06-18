@@ -13,6 +13,7 @@ using System.Xml.Linq;
 using UnicomTICManagementSystem.Controllers;
 using UnicomTICManagementSystem.Models;
 using UnicomTICManagementSystem.Repositories;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static UnicomTICManagementSystem.Models.Enums;
 
 namespace UnicomTICManagementSystem.Views
@@ -20,6 +21,7 @@ namespace UnicomTICManagementSystem.Views
     public partial class AddPersonForm : Form
     {
         public object DateOnly { get; private set; }
+        public Enums.PrivilageLevel accessLevel;
 
         public AddPersonForm()
         {
@@ -68,7 +70,6 @@ namespace UnicomTICManagementSystem.Views
         private void LoadComboBoxData()
         {
  //           string query = "SELECT Id, CourseName FROM Courses";
- //gsgsfrgsf
 
             try
             {
@@ -103,6 +104,7 @@ namespace UnicomTICManagementSystem.Views
         //comment
         private void btn_add_Click(object sender, EventArgs e)
         {
+
             try
             {
                 User user = new User
@@ -110,7 +112,8 @@ namespace UnicomTICManagementSystem.Views
                     Username = cb_authentication.Checked ? null : tb_username.Text,
                     Password = cb_authentication.Checked ? null : tb_password.Text,
                     Role = Enums.UserRole.STUDENT,
-                    Status = Enums.UserStatus.ACTIVE
+                    Status = Enums.UserStatus.ACTIVE,
+                    AccessLevel = accessLevel
                 };
                 UsersController uController = new UsersController();
                 int userid = uController.AddUser(user);
@@ -139,8 +142,9 @@ namespace UnicomTICManagementSystem.Views
                         UTNumber = tb_utno.Text,
                         Group_Assigned = (Group)cb_group.SelectedIndex,
                         CourseId = Convert.ToInt32(cb_course.SelectedValue),
-                        JoinedDate = dtp_datejoined.ToString(),
+                        JoinedDate = dtp_datejoined.Value.ToString("yyyyMMdd"),
                         ParentContact = tb_parent.Text,
+                        PrivilageLevel =accessLevel
                     };
                     StudentController sController = new StudentController();
                     string message = sController.AddStudent(st);
@@ -151,25 +155,45 @@ namespace UnicomTICManagementSystem.Views
                 {
                     Lecturer l = new Lecturer
                     {
-                        Name = tb_name.Text,
- //                       EmployeeId = tb_employeeid.Text,
- //                       Salary = tb_salary.Text,
-                        UserId = userid
+                        LecturerId = personId,
+                        EmployeeNo = tb_utno.Text,
+                        Salary = Convert.ToDecimal(tb_salary.Text),
+                        JoinedDate = dtp_datejoined.Value.ToString("yyyyMMdd"),
+                        PrivilageLevel = accessLevel
                     };
                     LecturerController lController = new LecturerController();
                     string message = lController.AddLecturer(l);
                     MessageBox.Show(message);
                 }
-                /*
-                                              else if (cb_role.SelectedItem.ToString() == "STAFF")
-                                              {
-                                                  // Handle staff addition logic here
-                                              }
-                                              else if (cb_role.SelectedItem.ToString() == "ADMIN")
-                                              {
-                                                  // Handle admin addition logic here
-                                              }
-                                  */
+                else if (cb_role.SelectedItem.ToString() == "STAFF")
+                {
+                    Staff s = new Staff
+                    {
+                        StaffId = personId,
+                        EmployeeNo = tb_utno.Text, // Assuming tb_utno is used for employee ID
+                        Salary = Convert.ToDecimal(tb_salary.Text),
+                        JoinedDate = dtp_datejoined.Value.ToString("yyyy-MM-dd"),
+                        PrivilageLevel =  accessLevel
+                    };
+                    StaffController sController = new StaffController();
+                    string message = sController.AddStaff(s);
+                    MessageBox.Show(message);
+                }
+                else if (cb_role.SelectedItem.ToString() == "ADMIN")
+                {
+                    Admin a = new Admin
+                    {
+                        AdminId = personId,
+                        EmployeeNo = tb_utno.Text,
+                        Salary = Convert.ToDecimal(tb_salary.Text),
+                        UserId = userid,
+                        JoinedDate = dtp_datejoined.Value.ToString("yyyy-MM-dd"),
+                        PrivilageLevel = accessLevel
+                    };
+                    AdminController aController = new AdminController();
+                    string message = aController.AddAdmin(a);
+                    MessageBox.Show(message);
+                }
             }
             catch (Exception ex)
             {
@@ -281,16 +305,25 @@ namespace UnicomTICManagementSystem.Views
             label_group.Visible = false;
             label_course.Visible = false;
             lable_parent.Visible = false;
+            label_salary.Visible = false;
+            tb_salary.Visible = false;
             
             string selectedRole = cb_role.SelectedItem.ToString();
             switch (selectedRole)
             {
                 case "ADMIN":
-                    MessageBox.Show("ADMIN SELECTED");
-                    // Show admin-specific controls here if needed
+                    accessLevel = Enums.PrivilageLevel.ADMIN;
+                    label_employeno.Visible = true;
+                    tb_utno.Visible = true;
+                    tb_utno.Text = "Enter Employee No";
+                    tb_utno.ForeColor = Color.LightGray;
+                    label_salary.Visible = true;
+                    tb_salary.Visible = true;
                     break;
 
                 case "STUDENT":
+                    accessLevel = Enums.PrivilageLevel.STUDENT;
+                    label_employeno.Visible = false;
                     tb_utno.Visible = true;
                     cb_group.Visible = true;
                     cb_course.Visible = true;
@@ -302,13 +335,23 @@ namespace UnicomTICManagementSystem.Views
                     break;
 
                 case "STAFF":
-                    MessageBox.Show("STAFF SELECTED");
-                    // Show staff-specific controls if needed
+                    accessLevel = Enums.PrivilageLevel.STAFF;
+                    label_employeno.Visible = true;
+                    tb_utno.Visible = true;
+                    tb_utno.Text = "Enter Employee No";
+                    tb_utno.ForeColor = Color.LightGray;
+                    label_salary.Visible = true;
+                    tb_salary.Visible = true;
                     break;
 
                 case "LECTURER":
-                    MessageBox.Show("LECTURER SELECTED");
-                    // Show lecturer-specific controls if needed
+                    accessLevel = Enums.PrivilageLevel.LECTURER;
+                    label_employeno.Visible = true;
+                    tb_utno.Visible = true;
+                    tb_utno.Text = "Enter Employee No";
+                    tb_utno.ForeColor = Color.LightGray;
+                    label_salary.Visible = true;
+                    tb_salary.Visible = true;
                     break;
             }
         }
@@ -322,6 +365,12 @@ namespace UnicomTICManagementSystem.Views
         {
             tb_parent.ForeColor = Color.Black;
             tb_parent.Text = string.Empty;
+        }
+
+        private void tb_utno_Enter(object sender, EventArgs e)
+        {
+            tb_utno.Text = string.Empty;
+            tb_utno.ForeColor = Color.Black;
         }
     }
 }

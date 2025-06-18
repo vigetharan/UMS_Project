@@ -8,8 +8,10 @@ namespace UnicomTICManagementSystem.Models
 {
     internal class Staff: Person
     {
-        public int StfId { get; set; }
-        public string EmployeeId { get; set; }
+        public int StaffId { get; set; }
+        public string EmployeeNo { get; set; }
+        public decimal Salary { get; set; }
         public string JoinedDate { get; set; }
+        public Enums.PrivilageLevel PrivilageLevel { get; set; }
     }
 }

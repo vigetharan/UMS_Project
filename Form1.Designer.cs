@@ -58,13 +58,13 @@ namespace UnicomTICManagementSystem
             // 
             // btn_login
             // 
+            this.btn_login.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.btn_login.ForeColor = System.Drawing.Color.BlueViolet;
             this.btn_login.Location = new System.Drawing.Point(278, 162);
             this.btn_login.Name = "btn_login";
             this.btn_login.Size = new System.Drawing.Size(90, 30);
             this.btn_login.TabIndex = 2;
             this.btn_login.Text = "Login";
-            this.btn_login.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.btn_login.ForeColor = System.Drawing.Color.BlueViolet;
             this.btn_login.UseVisualStyleBackColor = true;
             this.btn_login.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -106,7 +106,7 @@ namespace UnicomTICManagementSystem
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(558, 450);
+            this.ClientSize = new System.Drawing.Size(558, 205);
             this.Controls.Add(this.label_error);
             this.Controls.Add(this.btn_login);
             this.Controls.Add(this.tb_password);
@@ -115,6 +115,7 @@ namespace UnicomTICManagementSystem
             this.Controls.Add(this.label1);
             this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Name = "login_Form";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login Form            -UNICOMTIC MANAGEMENT SYSTEM-";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);

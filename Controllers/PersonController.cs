@@ -55,8 +55,6 @@ namespace UnicomTICManagementSystem.Controllers
 
         public DateTime GetDob(string nic)
         {
-            // Logic to extract the date of birth from the NIC
-            // Assuming the NIC format is YYYYMMDDXXXXXX, where YYYYMMDD is the date of birth
 
             if (nic.Length == 12)
             {
@@ -67,7 +65,7 @@ namespace UnicomTICManagementSystem.Controllers
                     daypart -= 500;
                 }
                 int year = int.Parse(nic.Substring(0, 4));
-                //want to checks for leap
+                //for checks for leap
                 if (DateTime.IsLeapYear(year))
                 {
                     DateTime dateOfBirth = new DateTime(year, 1, 1).AddDays(daypart - 1);
@@ -122,6 +120,7 @@ namespace UnicomTICManagementSystem.Controllers
 
             }
         }
+        // check the gender by NIC number
         public static Enums.Gender CheckGender(string nic)
         {
             if (nic.Length == 12)

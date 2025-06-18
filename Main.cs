@@ -9,15 +9,22 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using UnicomTICManagementSystem.Views;
 using UnicomTICManagementSystem.Repositories;
+using UnicomTICManagementSystem.Dto;
 
 namespace UnicomTICManagementSystem
 {
     public partial class Main_Form : Form
     {
+        LoggedInUser _currentuser;
         public Main_Form()
         {
             InitializeComponent();
 
+        }
+        public Main_Form(LoggedInUser currentuser) : this()
+        {
+            _currentuser= currentuser;
+            label_welcome.Text = $"Welcome, {_currentuser.Name}";
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
@@ -302,6 +309,19 @@ namespace UnicomTICManagementSystem
             popup.Text = "Add New Course";
             popup.StartPosition = FormStartPosition.CenterParent; // or CenterParent
             popup.Show();
+        }
+
+        private void linkLabel_logout_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            login_Form l = new login_Form();
+            l.Show();
+            this.Hide();
+
+        }
+
+        private void btn_addtimeslot_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

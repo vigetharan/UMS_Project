@@ -8,9 +8,10 @@ namespace UnicomTICManagementSystem.Models
 {
     internal class Lecturer : Person
     {
-        public int ecturerLId { get; set; }
-        public string EmployeeId { get; set; }
+        public int LecturerId { get; set; }
+        public string EmployeeNo { get; set; }
         public decimal Salary { get; set; }
-        public int JoinedDate { get; set; }
+        public string JoinedDate { get; set; }
+        public Enums.PrivilageLevel PrivilageLevel { get; set; }
     }
 }

@@ -19,7 +19,7 @@ namespace UnicomTICManagementSystem.Controllers
         {
             using (var dbconn = DatabaseManager.GetConnection())
             {
-                string addStudentQuery = "INSERT INTO Students ( StudentId,UTNumber,CourseId,JoinedDate,Group_Assigned,ParentContact) VALUES (@studentid,@utnumber,@courseid,@joinedDate,@group,@parentcontact)";
+                string addStudentQuery = "INSERT INTO Students ( StudentId,UTNumber,CourseId,JoinedDate,Group_Assigned,ParentContact, PrivilageLevel) VALUES (@studentid,@utnumber,@courseid,@joinedDate,@group,@parentcontact, @plevel)";
                 SQLiteCommand addCommand = new SQLiteCommand(addStudentQuery, dbconn);
                 addCommand.Parameters.AddWithValue("@studentid", st.StudentId);
                 addCommand.Parameters.AddWithValue("@utnumber", st.UTNumber);
@@ -27,6 +27,7 @@ namespace UnicomTICManagementSystem.Controllers
                 addCommand.Parameters.AddWithValue("@joinedDate", st.JoinedDate);
                 addCommand.Parameters.AddWithValue("@group", st.Group_Assigned);
                 addCommand.Parameters.AddWithValue("@parentcontact", st.ParentContact);
+                addCommand.Parameters.AddWithValue("@plevel", (int)st.PrivilageLevel);
                 addCommand.ExecuteNonQuery();
             }
             return "STUDENT ADDED SUCCESSFULLY";

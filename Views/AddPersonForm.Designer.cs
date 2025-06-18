@@ -76,12 +76,15 @@
             this.dtp_datejoined = new System.Windows.Forms.DateTimePicker();
             this.lable_parent = new System.Windows.Forms.Label();
             this.tb_parent = new System.Windows.Forms.TextBox();
+            this.label_employeno = new System.Windows.Forms.Label();
+            this.tb_salary = new System.Windows.Forms.TextBox();
+            this.label_salary = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label_utno
             // 
             this.label_utno.AutoSize = true;
-            this.label_utno.Location = new System.Drawing.Point(588, 9);
+            this.label_utno.Location = new System.Drawing.Point(588, 75);
             this.label_utno.Name = "label_utno";
             this.label_utno.Size = new System.Drawing.Size(72, 13);
             this.label_utno.TabIndex = 36;
@@ -90,12 +93,13 @@
             // 
             // tb_utno
             // 
-            this.tb_utno.Location = new System.Drawing.Point(678, 9);
+            this.tb_utno.Location = new System.Drawing.Point(678, 71);
             this.tb_utno.Name = "tb_utno";
             this.tb_utno.Size = new System.Drawing.Size(121, 20);
             this.tb_utno.TabIndex = 1;
             this.tb_utno.Text = "UT";
             this.tb_utno.Visible = false;
+            this.tb_utno.Enter += new System.EventHandler(this.tb_utno_Enter);
             // 
             // label2
             // 
@@ -212,7 +216,7 @@
             // label_course
             // 
             this.label_course.AutoSize = true;
-            this.label_course.Location = new System.Drawing.Point(588, 106);
+            this.label_course.Location = new System.Drawing.Point(588, 168);
             this.label_course.Name = "label_course";
             this.label_course.Size = new System.Drawing.Size(52, 13);
             this.label_course.TabIndex = 17;
@@ -222,7 +226,7 @@
             // cb_course
             // 
             this.cb_course.FormattingEnabled = true;
-            this.cb_course.Location = new System.Drawing.Point(678, 103);
+            this.cb_course.Location = new System.Drawing.Point(678, 165);
             this.cb_course.Name = "cb_course";
             this.cb_course.Size = new System.Drawing.Size(121, 21);
             this.cb_course.TabIndex = 9;
@@ -250,7 +254,7 @@
             // error_utno
             // 
             this.error_utno.AutoSize = true;
-            this.error_utno.Location = new System.Drawing.Point(680, 32);
+            this.error_utno.Location = new System.Drawing.Point(680, 94);
             this.error_utno.Name = "error_utno";
             this.error_utno.Size = new System.Drawing.Size(195, 13);
             this.error_utno.TabIndex = 21;
@@ -321,7 +325,7 @@
             // error_course
             // 
             this.error_course.AutoSize = true;
-            this.error_course.Location = new System.Drawing.Point(680, 124);
+            this.error_course.Location = new System.Drawing.Point(680, 186);
             this.error_course.Name = "error_course";
             this.error_course.Size = new System.Drawing.Size(155, 13);
             this.error_course.TabIndex = 28;
@@ -364,7 +368,7 @@
             // cb_group
             // 
             this.cb_group.FormattingEnabled = true;
-            this.cb_group.Location = new System.Drawing.Point(678, 61);
+            this.cb_group.Location = new System.Drawing.Point(678, 123);
             this.cb_group.Name = "cb_group";
             this.cb_group.Size = new System.Drawing.Size(121, 21);
             this.cb_group.TabIndex = 38;
@@ -374,7 +378,7 @@
             // label_group
             // 
             this.label_group.AutoSize = true;
-            this.label_group.Location = new System.Drawing.Point(588, 61);
+            this.label_group.Location = new System.Drawing.Point(588, 123);
             this.label_group.Name = "label_group";
             this.label_group.Size = new System.Drawing.Size(46, 13);
             this.label_group.TabIndex = 39;
@@ -410,7 +414,7 @@
             // error_group
             // 
             this.error_group.AutoSize = true;
-            this.error_group.Location = new System.Drawing.Point(680, 82);
+            this.error_group.Location = new System.Drawing.Point(680, 144);
             this.error_group.Name = "error_group";
             this.error_group.Size = new System.Drawing.Size(149, 13);
             this.error_group.TabIndex = 43;
@@ -465,7 +469,7 @@
             // label_datejoined
             // 
             this.label_datejoined.AutoSize = true;
-            this.label_datejoined.Location = new System.Drawing.Point(588, 221);
+            this.label_datejoined.Location = new System.Drawing.Point(588, 10);
             this.label_datejoined.Name = "label_datejoined";
             this.label_datejoined.Size = new System.Drawing.Size(78, 13);
             this.label_datejoined.TabIndex = 49;
@@ -473,7 +477,7 @@
             // 
             // dtp_datejoined
             // 
-            this.dtp_datejoined.Location = new System.Drawing.Point(683, 218);
+            this.dtp_datejoined.Location = new System.Drawing.Point(683, 7);
             this.dtp_datejoined.MaxDate = new System.DateTime(2030, 12, 31, 0, 0, 0, 0);
             this.dtp_datejoined.MinDate = new System.DateTime(2025, 1, 1, 0, 0, 0, 0);
             this.dtp_datejoined.Name = "dtp_datejoined";
@@ -484,7 +488,7 @@
             // lable_parent
             // 
             this.lable_parent.AutoSize = true;
-            this.lable_parent.Location = new System.Drawing.Point(588, 181);
+            this.lable_parent.Location = new System.Drawing.Point(588, 243);
             this.lable_parent.Name = "lable_parent";
             this.lable_parent.Size = new System.Drawing.Size(58, 26);
             this.lable_parent.TabIndex = 51;
@@ -493,18 +497,49 @@
             // 
             // tb_parent
             // 
-            this.tb_parent.Location = new System.Drawing.Point(678, 181);
+            this.tb_parent.Location = new System.Drawing.Point(678, 243);
             this.tb_parent.Name = "tb_parent";
             this.tb_parent.Size = new System.Drawing.Size(205, 20);
             this.tb_parent.TabIndex = 52;
             this.tb_parent.Visible = false;
             this.tb_parent.Enter += new System.EventHandler(this.tb_parent_Enter);
             // 
+            // label_employeno
+            // 
+            this.label_employeno.AutoSize = true;
+            this.label_employeno.Location = new System.Drawing.Point(588, 77);
+            this.label_employeno.Name = "label_employeno";
+            this.label_employeno.Size = new System.Drawing.Size(82, 13);
+            this.label_employeno.TabIndex = 53;
+            this.label_employeno.Text = "EMPLOYEE No";
+            this.label_employeno.Visible = false;
+            // 
+            // tb_salary
+            // 
+            this.tb_salary.Location = new System.Drawing.Point(678, 120);
+            this.tb_salary.Name = "tb_salary";
+            this.tb_salary.Size = new System.Drawing.Size(120, 20);
+            this.tb_salary.TabIndex = 54;
+            this.tb_salary.Visible = false;
+            // 
+            // label_salary
+            // 
+            this.label_salary.AutoSize = true;
+            this.label_salary.Location = new System.Drawing.Point(588, 123);
+            this.label_salary.Name = "label_salary";
+            this.label_salary.Size = new System.Drawing.Size(49, 13);
+            this.label_salary.TabIndex = 55;
+            this.label_salary.Text = "SALARY";
+            this.label_salary.Visible = false;
+            // 
             // AddPersonForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1000, 650);
+            this.Controls.Add(this.tb_salary);
+            this.Controls.Add(this.label_salary);
+            this.Controls.Add(this.label_employeno);
             this.Controls.Add(this.tb_parent);
             this.Controls.Add(this.lable_parent);
             this.Controls.Add(this.dtp_datejoined);
@@ -607,5 +642,8 @@
         private System.Windows.Forms.DateTimePicker dtp_datejoined;
         private System.Windows.Forms.Label lable_parent;
         private System.Windows.Forms.TextBox tb_parent;
+        private System.Windows.Forms.Label label_employeno;
+        private System.Windows.Forms.TextBox tb_salary;
+        private System.Windows.Forms.Label label_salary;
     }
 }

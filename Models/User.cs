@@ -14,6 +14,7 @@ namespace UnicomTICManagementSystem.Models
         public string Password { get; set; }
         public Enums.UserRole Role { get; set; }
         public Enums.UserStatus Status { get; set; }
+        public Enums.PrivilageLevel AccessLevel {  get; set; }
 
     }
 }

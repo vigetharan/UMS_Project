@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace UnicomTICManagementSystem.Views
 {
-    public partial class Admin : Form
+    public partial class AdminForm : Form
     {
-        public Admin()
+        public AdminForm()
         {
             InitializeComponent();
         }

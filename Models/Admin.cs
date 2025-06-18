@@ -9,11 +9,11 @@ namespace UnicomTICManagementSystem.Models
     internal class Admin : Person
     {
         public int AdminId { get; set; }
-//        public int UserId { get; set; }
+        public string EmployeeNo { get; set; }
+        public decimal Salary { get; set; }
         public string JoinedDate{get; set;}
- //       public int UserId { get;set;}
-        public int PrivilageLevel { get; set; }
- //       public int PersonId { get; set; }
+         public Enums.PrivilageLevel PrivilageLevel { get; set; }
+ 
     
     }
 }

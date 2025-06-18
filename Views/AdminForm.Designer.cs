@@ -1,6 +1,6 @@
 ﻿namespace UnicomTICManagementSystem.Views
 {
-    partial class Admin
+    partial class AdminForm
     {
         /// <summary>
         /// Required designer variable.
