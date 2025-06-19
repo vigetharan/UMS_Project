@@ -582,9 +582,9 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.tb_utno);
             this.Controls.Add(this.btn_cancel);
             this.Controls.Add(this.label_utno);
+            this.Controls.Add(this.tb_utno);
             this.Name = "AddPersonForm";
             this.Text = "Student_Form";
             this.Load += new System.EventHandler(this.Student_Form_Load);

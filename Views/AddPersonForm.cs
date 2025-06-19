@@ -65,6 +65,16 @@ namespace UnicomTICManagementSystem.Views
         {
             tb_address.Clear();
             tb_name.Clear();
+            tb_contactno.Clear();
+            tb_email.Clear();
+            tb_dob.Clear();
+            tb_parent.Text = "Enter Parent's / Guardian's Contact Number";
+            tb_parent.ForeColor = Color.LightGray;
+            tb_salary.Clear();
+            tb_username.Clear();
+            tb_password.Clear();
+            tb_utno.Clear();
+
 
         }
 
@@ -134,66 +144,70 @@ namespace UnicomTICManagementSystem.Views
                 PersonController pController = new PersonController();
                 int personId = pController.AddPerson(p);
 
-                MessageBox.Show(personId.ToString());
-                if (cb_role.SelectedItem.ToString() == "STUDENT")
+                string selectedRole = cb_role.SelectedItem.ToString();
+                switch (selectedRole)
                 {
-                    Student st = new Student
-                    {
-                        StudentId = personId,
-                        UTNumber = tb_utno.Text,
-                        Group_Assigned = (Group)cb_group.SelectedIndex,
-                        CourseId = Convert.ToInt32(cb_course.SelectedValue),
-                        JoinedDate = dtp_datejoined.Value.ToString("yyyyMMdd"),
-                        ParentContact = tb_parent.Text,
-                        PrivilageLevel =accessLevel
-                    };
-                    StudentController sController = new StudentController();
-                    string message = sController.AddStudent(st);
-                    MessageBox.Show(message);
-                }
-
-                else if (cb_role.SelectedItem.ToString() == "LECTURER")
-                {
-                    Lecturer l = new Lecturer
-                    {
-                        LecturerId = personId,
-                        EmployeeNo = tb_utno.Text,
-                        Salary = Convert.ToDecimal(tb_salary.Text),
-                        JoinedDate = dtp_datejoined.Value.ToString("yyyyMMdd"),
-                        PrivilageLevel = accessLevel
-                    };
-                    LecturerController lController = new LecturerController();
-                    string message = lController.AddLecturer(l);
-                    MessageBox.Show(message);
-                }
-                else if (cb_role.SelectedItem.ToString() == "STAFF")
-                {
-                    Staff s = new Staff
-                    {
-                        StaffId = personId,
-                        EmployeeNo = tb_utno.Text, // Assuming tb_utno is used for employee ID
-                        Salary = Convert.ToDecimal(tb_salary.Text),
-                        JoinedDate = dtp_datejoined.Value.ToString("yyyy-MM-dd"),
-                        PrivilageLevel =  accessLevel
-                    };
-                    StaffController sController = new StaffController();
-                    string message = sController.AddStaff(s);
-                    MessageBox.Show(message);
-                }
-                else if (cb_role.SelectedItem.ToString() == "ADMIN")
-                {
-                    Admin a = new Admin
-                    {
-                        AdminId = personId,
-                        EmployeeNo = tb_utno.Text,
-                        Salary = Convert.ToDecimal(tb_salary.Text),
-                        UserId = userid,
-                        JoinedDate = dtp_datejoined.Value.ToString("yyyy-MM-dd"),
-                        PrivilageLevel = accessLevel
-                    };
-                    AdminController aController = new AdminController();
-                    string message = aController.AddAdmin(a);
-                    MessageBox.Show(message);
+                    case "STUDENT":
+                        Student st = new Student
+                        {
+                            StudentId = personId,
+                            UTNumber = tb_utno.Text,
+                            Group_Assigned = (Group)cb_group.SelectedIndex,
+                            CourseId = Convert.ToInt32(cb_course.SelectedValue),
+                            JoinedDate = dtp_datejoined.Value.ToString("yyyyMMdd"),
+                            ParentContact = tb_parent.Text,
+                            PrivilageLevel = accessLevel
+                        };
+                        StudentController sController = new StudentController();
+                        string message = sController.AddStudent(st);
+                        MessageBox.Show(message);
+                        break;
+                    case "LECTURER":
+                        {
+                            Lecturer l = new Lecturer
+                            {
+                                LecturerId = personId,
+                                EmployeeNo = tb_utno.Text,
+                                Salary = Convert.ToDecimal(tb_salary.Text),
+                                JoinedDate = dtp_datejoined.Value.ToString("yyyyMMdd"),
+                                PrivilageLevel = accessLevel
+                            };
+                            LecturerController lController = new LecturerController();
+                            string messag = lController.AddLecturer(l);
+                            MessageBox.Show(messag);
+                            break;
+                        }
+                    case "STAFF":
+                        {
+                            Staff s = new Staff
+                            {
+                                StaffId = personId,
+                                EmployeeNo = tb_utno.Text, // Assuming tb_utno is used for employee ID
+                                Salary = Convert.ToDecimal(tb_salary.Text),
+                                JoinedDate = dtp_datejoined.Value.ToString("yyyy-MM-dd"),
+                                PrivilageLevel = accessLevel
+                            };
+                            StaffController stfController = new StaffController();
+                            string mess = stfController.AddStaff(s);
+                            MessageBox.Show(mess);
+                            break;
+                        }
+                    case "ADMIN":
+                        {
+                            Admin a = new Admin
+                            {
+                                AdminId = personId,
+                                EmployeeNo = tb_utno.Text,
+                                Salary = Convert.ToDecimal(tb_salary.Text),
+                                UserId = userid,
+                                JoinedDate = dtp_datejoined.Value.ToString("yyyy-MM-dd"),
+                                PrivilageLevel = accessLevel
+                            };
+                            AdminController aController = new AdminController();
+                            string mes = aController.AddAdmin(a);
+                            MessageBox.Show(mes);
+                            break;
+                        }
                 }
             }
             catch (Exception ex)

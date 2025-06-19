@@ -12,10 +12,11 @@ namespace UnicomTICManagementSystem.Models
     {
         public enum UserRole
         {
-            ADMIN,
-            STUDENT,
-            STAFF,
-            LECTURER
+            NONE = 0,
+            ADMIN = 1,
+            STUDENT = 2,
+            STAFF = 3,
+            LECTURER = 4
         }
 
         public enum Gender

@@ -17,49 +17,42 @@ namespace UnicomTICManagementSystem.Controllers
 {
     internal class LoginController
     {
-        public static void CheckLogin(string username, string Password, string Role, string Status)
+        public static bool CheckLogin(string username, string password)
         {
+            string query = @"
+        SELECT Users.Id, Users.Role, Persons.Name, Persons.Id
+        FROM Users
+        LEFT JOIN Persons ON Users.Id = Persons.Id
+        WHERE Users.Username = @username AND Users.Password = @password";
 
-        }
-        public static bool CheckLogin(string user, string pass)
-        {
-            string query = "SELECT * FROM Users WHERE Username = @username AND Password = @password";
             using (var dbconn = DatabaseManager.GetConnection())
             {
                 using (var cmd = new SQLiteCommand(query, dbconn))
                 {
-                    cmd.Parameters.AddWithValue("@username", user);
-                    cmd.Parameters.AddWithValue("@password", pass);
+                    cmd.Parameters.AddWithValue("@username", username);
+                    cmd.Parameters.AddWithValue("@password", password);
 
-                    using (SQLiteDataReader reader = cmd.ExecuteReader())
+                    using (var reader = cmd.ExecuteReader())
                     {
                         if (reader.Read())
                         {
                             LoggedInUser.UserId = reader.GetInt32(0);
-                            LoggedInUser.Role = (UserRole)reader.GetInt32(3);
+                            LoggedInUser.Role = (UserRole)reader.GetInt32(1);
 
-                            int userid = LoggedInUser.UserId;
-                            string persontablequery = "SELECT Id, Name FROM Persons WHERE Id = @userId";
-                            using (var cmd1 = new SQLiteCommand(persontablequery, dbconn))
+                            // Persons.Name might be null if no matching person found
+                            if (!reader.IsDBNull(2))
                             {
-                                cmd1.Parameters.AddWithValue("@userId", userid);
-                                using (SQLiteDataReader reader1 = cmd1.ExecuteReader())
-                                {
-                                    if (reader1.Read())
-                                    {
-                                        LoggedInUser.Name = reader1.GetString(1);
-                                        MessageBox.Show(LoggedInUser.Name);
-
-                                    }
-                                    else
-                                    {
-                                        throw new Exception("Person not found for the user");
-                                    }
-                                }
+                                LoggedInUser.Name = reader.GetString(2);
+                                LoggedInUser.PersonId = reader.GetInt32(3);
+                                MessageBox.Show(LoggedInUser.Name);
                             }
+                            else
+                            {
+                                throw new Exception("Person not found for the user");
+                            }
+
                             MessageBox.Show("Login Succeeded");
                             return true;
-
                         }
                         else
                         {
@@ -68,9 +61,9 @@ namespace UnicomTICManagementSystem.Controllers
                         }
                     }
                 }
-                
-
             }
         }
+
+
     }
 }

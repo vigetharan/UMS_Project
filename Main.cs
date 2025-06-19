@@ -87,65 +87,7 @@ namespace UnicomTICManagementSystem
             AddPersonForm popup = new AddPersonForm();
             popup.StartPosition = FormStartPosition.CenterScreen; // or CenterParent
             popup.Show();
-
-
-
-
-            /*           if (studentButtonClicked)
-                       {
-                           Student_Form popup = new Student_Form();
-                           popup.StartPosition = FormStartPosition.CenterScreen; // or CenterParent
-                           popup.Show();
-                       }
-                       else if (lecturerButtonClicked)
-                       {
-                           Lecturer_Form popup = new Lecturer_Form();
-                           popup.StartPosition = FormStartPosition.CenterScreen; // or CenterParent
-                           popup.Show();
-                       }
-                       else if (staffButtonClicked)
-                       {
-                           Staff_Form popup = new Staff_Form();
-                           popup.StartPosition = FormStartPosition.CenterScreen; // or CenterParent
-                           popup.Show();
-                       }
-                       else if (adminButtonClicked)
-                       {
-                           Admin popup = new Admin();
-                           popup.StartPosition = FormStartPosition.CenterScreen; // or CenterParent
-                           popup.Show();
-                       }
-                       else if (timetableButtonClicked)
-                       {
-                           TimeTable popup = new TimeTable();
-                           popup.StartPosition = FormStartPosition.CenterScreen; // or CenterParent
-                           popup.Show();
-                       }
-                       else if (examButtonClicked)
-                       {
-                           Marks_Form popup = new Marks_Form();
-                           popup.StartPosition = FormStartPosition.CenterScreen; // or CenterParent
-                           popup.Show();
-                       }
-                       else if (attendanceButtonClicked)
-                       {
-                           Attendance popup = new Attendance();
-                           popup.StartPosition = FormStartPosition.CenterScreen; // or CenterParent
-                           popup.Show();
-                       }
-                       else if (courseButtonClicked)
-                       {
-                           CourseSubject popup = new CourseSubject();
-                           popup.StartPosition = FormStartPosition.CenterScreen; // or CenterParent
-                           popup.Show();
-                       }
-                       else
-                       {
-                           MessageBox.Show("❌\nPlease Select one for add a new entry !");
-                       }
-           */
         }
-
         private void Main_Form_Load(object sender, EventArgs e)
         {
 
@@ -308,6 +250,10 @@ namespace UnicomTICManagementSystem
         private void linkLabel_logout_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             login_Form l = new login_Form();
+            LoggedInUser.Name = "";
+            LoggedInUser.PersonId = -1;
+            LoggedInUser.UserId = -1;
+            LoggedInUser.Role =Enums.UserRole.NONE;
             l.Show();
             this.Hide();
 
