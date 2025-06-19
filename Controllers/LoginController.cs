@@ -8,15 +8,16 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using UnicomTICManagementSystem.Dto;
+using System.Xml.Linq;
 using UnicomTICManagementSystem.Models;
 using UnicomTICManagementSystem.Repositories;
+using static UnicomTICManagementSystem.Models.Enums;
 
 namespace UnicomTICManagementSystem.Controllers
 {
     internal class LoginController
     {
-        public static void CheckLogin(string username, string Password, string Role, string Status )
+        public static void CheckLogin(string username, string Password, string Role, string Status)
         {
 
         }
@@ -32,11 +33,33 @@ namespace UnicomTICManagementSystem.Controllers
 
                     using (SQLiteDataReader reader = cmd.ExecuteReader())
                     {
-                        if (reader.HasRows)
+                        if (reader.Read())
                         {
+                            LoggedInUser.UserId = reader.GetInt32(0);
+                            LoggedInUser.Role = (UserRole)reader.GetInt32(3);
+
+                            int userid = LoggedInUser.UserId;
+                            string persontablequery = "SELECT Id, Name FROM Persons WHERE Id = @userId";
+                            using (var cmd1 = new SQLiteCommand(persontablequery, dbconn))
+                            {
+                                cmd1.Parameters.AddWithValue("@userId", userid);
+                                using (SQLiteDataReader reader1 = cmd1.ExecuteReader())
+                                {
+                                    if (reader1.Read())
+                                    {
+                                        LoggedInUser.Name = reader1.GetString(1);
+                                        MessageBox.Show(LoggedInUser.Name);
+
+                                    }
+                                    else
+                                    {
+                                        throw new Exception("Person not found for the user");
+                                    }
+                                }
+                            }
                             MessageBox.Show("Login Succeeded");
                             return true;
-                            
+
                         }
                         else
                         {
@@ -45,62 +68,8 @@ namespace UnicomTICManagementSystem.Controllers
                         }
                     }
                 }
-            }
+                
 
-        }
-        public LoggedInUser GetLoggedInUser(string username)
-        {
-            int userId;
-            int personID;
-            string name;
-            Enums.UserRole role;
-            Enums.PrivilageLevel accesslevel;
-
-            string usertablequery = "SELECT Id, Role, AccessLevel FROM Users WHERE Username = @username";
-            using (var dbconn = DatabaseManager.GetConnection())
-            {
-                using (var cmd = new SQLiteCommand(usertablequery, dbconn))
-                {
-                    cmd.Parameters.AddWithValue("@username", username);
-                    using (SQLiteDataReader reader = cmd.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
-                            userId = reader.GetInt32(0);
-                            role = (Enums.UserRole)reader.GetInt32(1);
-                            accesslevel = (Enums.PrivilageLevel)reader.GetInt32(2);
-                        }
-                        else
-                        {
-                            throw new Exception("User not found");
-                        }
-                    }
-                }
-                string persontablequery = "SELECT Id, Name FROM Persons WHERE UserId = @userId";
-                using (var cmd = new SQLiteCommand(persontablequery, dbconn))
-                {
-                    cmd.Parameters.AddWithValue("@userId", userId);
-                    using (SQLiteDataReader reader = cmd.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
-                            personID = reader.GetInt32(0);
-                            name = reader.GetString(1);
-                        }
-                        else
-                        {
-                            throw new Exception("Person not found for the user");
-                        }
-                    }
-                }
-                return new LoggedInUser
-                {
-                    UserId = userId,
-                    Role = role,
-                    PersonId = personID,
-                    Name = name,
-                    PrivilageLevel = accesslevel
-                };
             }
         }
     }

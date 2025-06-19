@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using UnicomTICManagementSystem.Repositories;
 using UnicomTICManagementSystem.Controllers;
-using UnicomTICManagementSystem.Dto;
+using UnicomTICManagementSystem.Models;
 
 namespace UnicomTICManagementSystem
 {
@@ -33,9 +33,7 @@ namespace UnicomTICManagementSystem
 
             if (LoginController.CheckLogin(tb_username.Text, tb_password.Text))
             {
-                LoginController lc = new LoginController();
-                LoggedInUser currentuser = lc.GetLoggedInUser(tb_username.Text);
-                Main_Form f = new Main_Form(currentuser);
+                Main_Form f = new Main_Form();
                 f.StartPosition = FormStartPosition.CenterScreen;
                 f.Show();
                 this.Hide();

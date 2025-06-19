@@ -51,6 +51,7 @@ namespace UnicomTICManagementSystem.Views
 
                 // Bind the list to the ComboBox
                 cb_gender.DataSource = genderList;
+
                 var groupList = new List<string> { "--Select--" };
                 groupList.AddRange(Enum.GetValues(typeof(Group)).Cast<Group>().Select(g => g.ToString()));
                 cb_group.DataSource = groupList;

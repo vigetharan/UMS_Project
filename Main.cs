@@ -9,22 +9,16 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using UnicomTICManagementSystem.Views;
 using UnicomTICManagementSystem.Repositories;
-using UnicomTICManagementSystem.Dto;
+using UnicomTICManagementSystem.Models;
 
 namespace UnicomTICManagementSystem
 {
     public partial class Main_Form : Form
     {
-        LoggedInUser _currentuser;
         public Main_Form()
         {
             InitializeComponent();
-
-        }
-        public Main_Form(LoggedInUser currentuser) : this()
-        {
-            _currentuser= currentuser;
-            label_welcome.Text = $"Welcome, {_currentuser.Name}";
+            label_welcome.Text = $"Welcome, {LoggedInUser.Name}";
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)

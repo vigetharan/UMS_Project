@@ -204,6 +204,7 @@
             this.cb_lecturer.Name = "cb_lecturer";
             this.cb_lecturer.Size = new System.Drawing.Size(121, 21);
             this.cb_lecturer.TabIndex = 15;
+            this.cb_lecturer.SelectedIndexChanged += new System.EventHandler(this.cb_lecturer_SelectedIndexChanged);
             // 
             // label10
             // 
