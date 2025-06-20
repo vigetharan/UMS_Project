@@ -25,5 +25,32 @@ namespace UnicomTICManagementSystem.Controllers
             }
                 return "Admin added successfully";
         }
+        public Admin GetAdminById(int adminId)
+        {
+
+            using (var dbconn = DatabaseManager.GetConnection())
+            {
+                string getAdminQuery = "SELECT * FROM Admins WHERE AdminId = @adminId";
+                SQLiteCommand getCommand = new SQLiteCommand(getAdminQuery, dbconn);
+                getCommand.Parameters.AddWithValue("@adminId", adminId);
+                SQLiteDataReader reader = getCommand.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    return new Admin
+                    {
+                        AdminId = reader.GetInt32(0),
+                        EmployeeNo = reader.GetString(1),
+                        Salary = reader.GetDecimal(2),
+                        JoinedDate = reader["JoinedDate"].ToString()
+                    };
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
+
     }
 }

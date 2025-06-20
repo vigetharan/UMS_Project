@@ -34,13 +34,7 @@ namespace UnicomTICManagementSystem.Models
         public enum Grade {A,B,C,D,S,F}
         public enum ExamMode {LAB, ONLINE, WRITTEN, VIVA}
         public enum ScheduleType {EXAM , LECTURE_AT_HALL, LAB_SESSION, PRESENTATION, GROUP_ACTIVITY }
-        public enum PrivilageLevel
-        {
-            ADMIN,
-            LECTURER,
-            STUDENT,
-            STAFF
-        }
+
 
     }
 }

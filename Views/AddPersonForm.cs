@@ -20,7 +20,8 @@ namespace UnicomTICManagementSystem.Views
 {
     public partial class AddPersonForm : Form
     {
-        public object DateOnly { get; private set; }
+    public bool IsViewOnly { get; set; } = false;
+
 
         public AddPersonForm()
         {
@@ -29,6 +30,9 @@ namespace UnicomTICManagementSystem.Views
             tb_parent.Text = "Enter Parent's / Guardian's Contact Number";
             tb_parent.ForeColor = Color.LightGray;
         }
+
+            
+           
 
         private void combo_course_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -42,20 +46,25 @@ namespace UnicomTICManagementSystem.Views
 
         private void Student_Form_Load(object sender, EventArgs e)
         {
-                // Create a list with a default placeholder
-                var genderList = new List<string> { "--Select--" };
-
-                // Add enum values to the list
-                genderList.AddRange(Enum.GetValues(typeof(Gender)).Cast<Gender>().Select(g => g.ToString()));
-
-                // Bind the list to the ComboBox
-                cb_gender.DataSource = genderList;
-
-
+            if (IsViewOnly)
+            {
+                foreach (Control control in this.Controls)
+                {
+                    if (control.GetType().Name == "TextBox" || control.GetType().Name == "ComboBox" || control.GetType().Name == "DateTimePicker")
+                    {
+                        control.Enabled = false;
+                    }
+                }
+            }
 
                 var rolelist = new List<string> { "--select--" };
-                rolelist.AddRange(Enum.GetValues(typeof(UserRole)).Cast<UserRole>().Select(g => g.ToString()));
-                cb_role.DataSource = rolelist;
+            rolelist.AddRange(Enum.GetValues(typeof(Gender)).Cast<Gender>().Select(g => g.ToString()));
+            cb_gender.DataSource = rolelist;
+
+            var rolelist1 = new List<string> { "--select--" };
+                rolelist1.AddRange(Enum.GetValues(typeof(UserRole)).Cast<UserRole>().Select(g => g.ToString()));
+                cb_role.DataSource = rolelist1;
+
         }
         private void Clear_Form()
         {
@@ -70,15 +79,11 @@ namespace UnicomTICManagementSystem.Views
             tb_username.Clear();
             tb_password.Clear();
             tb_utno.Clear();
-
-
         }
 
         private void LoadComboBoxData()
         {
- //           string query = "SELECT Id, CourseName FROM Courses";
-
-            try
+             try
             {
                 using (var dbconn = DatabaseManager.GetConnection())
                 {
@@ -111,8 +116,6 @@ namespace UnicomTICManagementSystem.Views
         //comment
         private void btn_add_Click(object sender, EventArgs e)
         {
-            
-
             try
             {
                 
@@ -213,6 +216,85 @@ namespace UnicomTICManagementSystem.Views
             }
         }
 
+        public void LoadPersonData(int personId)
+        {
+            try
+            {
+                // Load Person
+                PersonController pController = new PersonController();
+                var person = pController.GetPersonById(personId);
+
+                if (person == null)
+                {
+                    MessageBox.Show("Person not found");
+                    return;
+                }
+
+
+                tb_nic.Text = person.NicNo;
+                tb_name.Text = person.Name;
+                tb_address.Text = person.Address;
+                tb_email.Text = person.Email;
+                tb_contactno.Text = person.ContactNo;
+                cb_gender.SelectedItem = Enum.TryParse<Gender>(person.Gender.ToString(), out var gender)? gender.ToString() : null;
+                tb_dob.Text = person.DateOfBirth.ToString("yyyy-MM-dd") ?? "";
+                cb_role.SelectedItem = Enum.TryParse<UserRole>(person.UserRole.ToString(), out var role) ? role.ToString() : null; 
+
+                switch (person.UserRole)
+                {
+                    case Enums.UserRole.STUDENT:
+                        StudentController sController = new StudentController();
+                        var student = sController.GetStudentByPersonId(personId);
+                        if (student != null)
+                        {
+                            tb_utno.Text = student.UTNumber;
+                            cb_course.SelectedValue = student.CourseId;
+                            dtp_datejoined.Value = DateTime.ParseExact(student.JoinedDate, "yyyyMMdd", null);
+                            tb_parent.Text = student.ParentContact;
+                        }
+                        break;
+
+                    case Enums.UserRole.LECTURER:
+                        LecturerController lController = new LecturerController();
+                        var lecturer = lController.GetLecturerById(personId);
+                        if (lecturer != null)
+                        {
+                            tb_utno.Text = lecturer.EmployeeNo;
+                            tb_salary.Text = lecturer.Salary.ToString();
+                            dtp_datejoined.Value = DateTime.ParseExact(lecturer.JoinedDate, "yyyyMMdd", null);
+                        }
+                        break;
+
+                    case Enums.UserRole.STAFF:
+                        StaffController stController = new StaffController();
+                        var staff = stController.GetStaffById(personId);
+                        if (staff != null)
+                        {
+                            tb_utno.Text = staff.EmployeeNo;
+                            tb_salary.Text = staff.Salary.ToString();
+                            dtp_datejoined.Value = DateTime.Parse(staff.JoinedDate);
+                        }
+                        break;
+
+                    case Enums.UserRole.ADMIN:
+                        AdminController aController = new AdminController();
+                        var admin = aController.GetAdminById(personId);
+                        if (admin != null)
+                        {
+                            tb_utno.Text = admin.EmployeeNo;
+                            tb_salary.Text = admin.Salary.ToString();
+                            dtp_datejoined.Value = DateTime.Parse(admin.JoinedDate);
+                        }
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to load person data: " + ex.Message);
+            }
+        }
+
+
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
 
@@ -279,26 +361,29 @@ namespace UnicomTICManagementSystem.Views
 
         private void tb_nic_Leave(object sender, EventArgs e)
         {
-            PersonController pc = new PersonController();
-            if (!pc.CheckNic(tb_nic.Text))
+            if (!IsViewOnly)
             {
-                error_nic.Visible = true;
-                error_nic.Text = "Invalid NIC ! Please enter a valid one as Format of (123456789V)";
-            }
-            else
-            {
-                error_nic.Visible = false;
-                try
-                {
-                    DateTime dob = pc.GetDob(tb_nic.Text);
-                    tb_dob.Text = dob.ToString("yyyy-MM-dd");
-                    Enums.Gender gender = PersonController.CheckGender(tb_nic.Text);
-                    cb_gender.SelectedItem = gender.ToString();
-                }
-                catch (ArgumentException ex)
+                PersonController pc = new PersonController();
+                if (!pc.CheckNic(tb_nic.Text))
                 {
                     error_nic.Visible = true;
-                    error_nic.Text = ex.Message;
+                    error_nic.Text = "Invalid NIC ! Please enter a valid one as Format of (123456789V)";
+                }
+                else
+                {
+                    error_nic.Visible = false;
+                    try
+                    {
+                        DateTime dob = pc.GetDob(tb_nic.Text);
+                        tb_dob.Text = dob.ToString("yyyy-MM-dd");
+                        Enums.Gender gender = PersonController.CheckGender(tb_nic.Text);
+                        cb_gender.SelectedItem = gender.ToString();
+                    }
+                    catch (ArgumentException ex)
+                    {
+                        error_nic.Visible = true;
+                        error_nic.Text = ex.Message;
+                    }
                 }
             }
         }

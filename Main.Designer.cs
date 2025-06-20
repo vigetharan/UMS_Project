@@ -39,6 +39,7 @@
             this.btn_persondetails = new System.Windows.Forms.Button();
             this.centerPanel = new System.Windows.Forms.Panel();
             this.UpPanel = new System.Windows.Forms.Panel();
+            this.btn_schedule = new System.Windows.Forms.Button();
             this.ilabel_icon = new System.Windows.Forms.Label();
             this.label_welcome = new System.Windows.Forms.Label();
             this.btn_addsubject = new System.Windows.Forms.Button();
@@ -47,7 +48,6 @@
             this.btn_addcourse = new System.Windows.Forms.Button();
             this.btn_add_person = new System.Windows.Forms.Button();
             this.linkLabel_logout = new System.Windows.Forms.LinkLabel();
-            this.btn_schedule = new System.Windows.Forms.Button();
             this.leftPanel.SuspendLayout();
             this.UpPanel.SuspendLayout();
             this.SuspendLayout();
@@ -177,6 +177,15 @@
             this.UpPanel.Size = new System.Drawing.Size(889, 40);
             this.UpPanel.TabIndex = 2;
             // 
+            // btn_schedule
+            // 
+            this.btn_schedule.Location = new System.Drawing.Point(523, 3);
+            this.btn_schedule.Name = "btn_schedule";
+            this.btn_schedule.Size = new System.Drawing.Size(85, 37);
+            this.btn_schedule.TabIndex = 9;
+            this.btn_schedule.Text = "ADD A SCHEDULE";
+            this.btn_schedule.UseVisualStyleBackColor = true;
+            // 
             // ilabel_icon
             // 
             this.ilabel_icon.AutoSize = true;
@@ -256,15 +265,6 @@
             this.linkLabel_logout.TabStop = true;
             this.linkLabel_logout.Text = "Logout";
             this.linkLabel_logout.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel_logout_LinkClicked);
-            // 
-            // btn_schedule
-            // 
-            this.btn_schedule.Location = new System.Drawing.Point(523, 3);
-            this.btn_schedule.Name = "btn_schedule";
-            this.btn_schedule.Size = new System.Drawing.Size(85, 37);
-            this.btn_schedule.TabIndex = 9;
-            this.btn_schedule.Text = "ADD A SCHEDULE";
-            this.btn_schedule.UseVisualStyleBackColor = true;
             // 
             // Main_Form
             // 

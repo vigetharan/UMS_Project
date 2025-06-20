@@ -25,5 +25,31 @@ namespace UnicomTICManagementSystem.Controllers
                 }
                 return "Lecturer added successfully";
         }
+
+        public Lecturer GetLecturerById(int personId)
+        {
+            using (var dbconn = DatabaseManager.GetConnection())
+            {
+                string getLecturerQuery = "SELECT * FROM Lecturers WHERE PersonId = @personId";
+                SQLiteCommand getCommand = new SQLiteCommand(getLecturerQuery, dbconn);
+                getCommand.Parameters.AddWithValue("@personId", personId);
+                SQLiteDataReader reader = getCommand.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    return new Lecturer
+                    {
+                        LecturerId = reader.GetInt32(0),
+                        EmployeeNo = reader.GetString(1),
+                        Salary = reader.GetDecimal(2),
+                        JoinedDate = reader["JoinedDate"].ToString()
+                    };
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
     }
 }

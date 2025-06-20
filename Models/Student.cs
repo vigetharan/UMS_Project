@@ -14,6 +14,6 @@ namespace UnicomTICManagementSystem.Models
         public int CourseId { get; set; }
         public string JoinedDate { get; set; }
         public string ParentContact { get; set; }
-        public Enums.PrivilageLevel PrivilageLevel { get; set; }
+        public Enums.UserRole userRole { get; set; }
     }
 }

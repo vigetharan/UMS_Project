@@ -12,6 +12,6 @@ namespace UnicomTICManagementSystem.Models
         public string EmployeeNo { get; set; }
         public decimal Salary { get; set; }
         public string JoinedDate { get; set; }
-        public Enums.PrivilageLevel PrivilageLevel { get; set; }
+        public Enums.UserRole userRole { get; set; }
     }
 }

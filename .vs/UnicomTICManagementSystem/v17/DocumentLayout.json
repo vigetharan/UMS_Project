@@ -3,76 +3,104 @@
   "WorkspaceRootPath": "C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\views\\student_details.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|solutionrelative:views\\student_details.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\controllers\\personcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|solutionrelative:controllers\\personcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|solutionrelative:main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|c:\\users\\mikey\\desktop\\csharp assignment\\2025.06.13night\\ums_project\\views\\addpersonform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|solutionrelative:views\\addpersonform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|solutionrelative:main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\controllers\\personcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|solutionrelative:controllers\\personcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\views\\addpersonform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|solutionrelative:views\\addpersonform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\repositories\\dbinitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|solutionrelative:repositories\\dbinitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\views\\student_details.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|solutionrelative:views\\student_details.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|c:\\users\\mikey\\desktop\\csharp assignment\\2025.06.13night\\ums_project\\views\\person_details.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|solutionrelative:views\\person_details.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\models\\enums.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|solutionrelative:models\\enums.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|c:\\users\\mikey\\desktop\\csharp assignment\\2025.06.13night\\ums_project\\controllers\\staffcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|solutionrelative:controllers\\staffcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|c:\\users\\mikey\\desktop\\csharp assignment\\2025.06.13night\\ums_project\\controllers\\lecturercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|solutionrelative:controllers\\lecturercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|c:\\users\\mikey\\desktop\\csharp assignment\\2025.06.13night\\ums_project\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|solutionrelative:controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\views\\addpersonform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|solutionrelative:views\\addpersonform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|c:\\users\\mikey\\desktop\\csharp assignment\\2025.06.13night\\ums_project\\controllers\\lecturercoursecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|solutionrelative:controllers\\lecturercoursecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\controllers\\studentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|solutionrelative:controllers\\studentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|c:\\users\\mikey\\desktop\\csharp assignment\\2025.06.13night\\ums_project\\models\\lecturer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|solutionrelative:models\\lecturer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\models\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|solutionrelative:models\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|c:\\users\\mikey\\desktop\\csharp assignment\\2025.06.13night\\ums_project\\models\\staff.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|solutionrelative:models\\staff.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|c:\\users\\mikey\\desktop\\csharp assignment\\2025.06.13night\\ums_project\\models\\admin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|solutionrelative:models\\admin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|c:\\users\\mikey\\desktop\\csharp assignment\\2025.06.13night\\ums_project\\views\\person_details.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|solutionrelative:views\\person_details.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|c:\\users\\mikey\\desktop\\csharp assignment\\2025.06.13night\\ums_project\\views\\viewperson.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|solutionrelative:views\\viewperson.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|c:\\users\\mikey\\desktop\\csharp assignment\\2025.06.13night\\ums_project\\controllers\\lecturercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|solutionrelative:controllers\\lecturercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|c:\\users\\mikey\\desktop\\csharp assignment\\2025.06.13night\\ums_project\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|solutionrelative:controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\repositories\\dbinitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|solutionrelative:repositories\\dbinitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|solutionrelative:main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|c:\\users\\mikey\\desktop\\csharp assignment\\2025.06.13night\\ums_project\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|c:\\users\\mikey\\desktop\\csharp assignment\\2025.06.13night\\ums_project\\controllers\\staffcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|solutionrelative:controllers\\staffcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\controllers\\studentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|solutionrelative:controllers\\studentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\models\\loggedinuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|solutionrelative:models\\loggedinuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|c:\\users\\mikey\\desktop\\csharp assignment\\2025.06.13night\\ums_project\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|solutionrelative:controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|c:\\users\\mikey\\desktop\\csharp assignment\\2025.06.13night\\ums_project\\controllers\\lecturercoursecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|solutionrelative:controllers\\lecturercoursecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\models\\person.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -93,10 +121,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\controllers\\coursecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|solutionrelative:controllers\\coursecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\models\\loggedinuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B0D423F5-2820-4CD4-98D6-FBB7C4A7505C}|UnicomTICManagementSystem.csproj|solutionrelative:models\\loggedinuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -106,17 +130,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 19,
+          "SelectedChildIndex": 18,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 3,
               "Title": "AddPersonForm.cs",
               "DocumentMoniker": "C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\Views\\AddPersonForm.cs",
               "RelativeDocumentMoniker": "Views\\AddPersonForm.cs",
               "ToolTip": "C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\Views\\AddPersonForm.cs",
               "RelativeToolTip": "Views\\AddPersonForm.cs",
-              "ViewState": "AQIAAK8AAAAAAAAAAAAAAJcAAAAzAAAA",
+              "ViewState": "AQIAACQAAAAAAAAAAAAowDgAAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-15T08:42:01.818Z",
               "IsPinned": true,
@@ -130,7 +154,7 @@
               "RelativeDocumentMoniker": "Main.cs",
               "ToolTip": "C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\Main.cs",
               "RelativeToolTip": "Main.cs",
-              "ViewState": "AQIAACkAAAAAAAAAAAAwwDYAAABCAAAA",
+              "ViewState": "AQIAADgAAAAAAAAAAAAIwEUAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-15T17:26:25.632Z",
               "IsPinned": true,
@@ -150,20 +174,96 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Lecturer.cs",
+              "DocumentMoniker": "C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\Models\\Lecturer.cs",
+              "RelativeDocumentMoniker": "Models\\Lecturer.cs",
+              "ToolTip": "C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\Models\\Lecturer.cs",
+              "RelativeToolTip": "Models\\Lecturer.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAA0AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-20T18:12:30.865Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Staff.cs",
+              "DocumentMoniker": "C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\Models\\Staff.cs",
+              "RelativeDocumentMoniker": "Models\\Staff.cs",
+              "ToolTip": "C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\Models\\Staff.cs",
+              "RelativeToolTip": "Models\\Staff.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAA0AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-20T18:12:12.951Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 10,
+              "Title": "Admin.cs",
+              "DocumentMoniker": "C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\Models\\Admin.cs",
+              "RelativeDocumentMoniker": "Models\\Admin.cs",
+              "ToolTip": "C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\Models\\Admin.cs",
+              "RelativeToolTip": "Models\\Admin.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAA1AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-20T18:11:26.982Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "ViewPerson.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\Views\\ViewPerson.cs",
+              "RelativeDocumentMoniker": "Views\\ViewPerson.cs",
+              "ToolTip": "C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\Views\\ViewPerson.cs [Design]",
+              "RelativeToolTip": "Views\\ViewPerson.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-20T16:30:53.898Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AddPersonForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\Views\\AddPersonForm.cs",
+              "RelativeDocumentMoniker": "Views\\AddPersonForm.cs",
+              "ToolTip": "C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\Views\\AddPersonForm.cs [Design]",
+              "RelativeToolTip": "Views\\AddPersonForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-20T16:01:42.665Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "LoginController.cs",
+              "DocumentMoniker": "C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\Controllers\\LoginController.cs",
+              "RelativeDocumentMoniker": "Controllers\\LoginController.cs",
+              "ToolTip": "C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\Controllers\\LoginController.cs",
+              "RelativeToolTip": "Controllers\\LoginController.cs",
+              "ViewState": "AQIAABcAAAAAAAAAAAAowCcAAABNAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-20T15:35:56.693Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
               "Title": "LecturerController.cs",
               "DocumentMoniker": "C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\Controllers\\LecturerController.cs",
               "RelativeDocumentMoniker": "Controllers\\LecturerController.cs",
               "ToolTip": "C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\Controllers\\LecturerController.cs",
               "RelativeToolTip": "Controllers\\LecturerController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAABMAAAA",
+              "ViewState": "AQIAAAcAAAAAAAAAAAAowDQAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-20T04:22:04.473Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 24,
               "Title": "LecturerCourseController.cs",
               "DocumentMoniker": "C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\Controllers\\LecturerCourseController.cs",
               "RelativeDocumentMoniker": "Controllers\\LecturerCourseController.cs",
@@ -176,46 +276,46 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 19,
               "Title": "StaffController.cs",
               "DocumentMoniker": "C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\Controllers\\StaffController.cs",
               "RelativeDocumentMoniker": "Controllers\\StaffController.cs",
               "ToolTip": "C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\Controllers\\StaffController.cs",
               "RelativeToolTip": "Controllers\\StaffController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAABCAAAA",
+              "ViewState": "AQIAABkAAAAAAAAAAAAgwB0AAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-20T04:21:37.853Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 6,
               "Title": "AdminController.cs",
               "DocumentMoniker": "C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\Controllers\\AdminController.cs",
               "RelativeDocumentMoniker": "Controllers\\AdminController.cs",
               "ToolTip": "C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\Controllers\\AdminController.cs",
               "RelativeToolTip": "Controllers\\AdminController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAACWAAAA",
+              "ViewState": "AQIAAA0AAAAAAAAAAAA1wDQAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-20T04:19:54.461Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 22,
               "Title": "UsersController.cs",
               "DocumentMoniker": "C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\Controllers\\UsersController.cs",
               "RelativeDocumentMoniker": "Controllers\\UsersController.cs",
               "ToolTip": "C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\Controllers\\UsersController.cs",
               "RelativeToolTip": "Controllers\\UsersController.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-20T04:00:45.184Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 26,
               "Title": "User.cs",
               "DocumentMoniker": "C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\Models\\User.cs",
               "RelativeDocumentMoniker": "Models\\User.cs",
@@ -228,7 +328,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 25,
               "Title": "Person.cs",
               "DocumentMoniker": "C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\Models\\Person.cs",
               "RelativeDocumentMoniker": "Models\\Person.cs",
@@ -241,20 +341,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "PersonController.cs",
               "DocumentMoniker": "C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\Controllers\\PersonController.cs",
               "RelativeDocumentMoniker": "Controllers\\PersonController.cs",
               "ToolTip": "C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\Controllers\\PersonController.cs",
               "RelativeToolTip": "Controllers\\PersonController.cs",
-              "ViewState": "AQIAAHoAAAAAAAAAAAAewIsAAAAfAAAA",
+              "ViewState": "AQIAAPYAAAAAAAAAAAAAAPwAAAAZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-20T02:24:38.497Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 16,
               "Title": "Main.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\Main.cs",
               "RelativeDocumentMoniker": "Main.cs",
@@ -266,33 +366,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 8,
               "Title": "Student.cs",
               "DocumentMoniker": "C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\Models\\Student.cs",
               "RelativeDocumentMoniker": "Models\\Student.cs",
               "ToolTip": "C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\Models\\Student.cs",
               "RelativeToolTip": "Models\\Student.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAxAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAA0AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-19T19:13:25.897Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 20,
               "Title": "StudentController.cs",
               "DocumentMoniker": "C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\Controllers\\StudentController.cs",
               "RelativeDocumentMoniker": "Controllers\\StudentController.cs",
               "ToolTip": "C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\Controllers\\StudentController.cs",
               "RelativeToolTip": "Controllers\\StudentController.cs",
-              "ViewState": "AQIAABIAAAAAAAAAAAAcwBUAAAC3AAAA",
+              "ViewState": "AQIAAGMAAAAAAAAAAAAqwHsAAABRAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-19T15:33:53.429Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 29,
               "Title": "CourseController.cs",
               "DocumentMoniker": "C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\Controllers\\CourseController.cs",
               "RelativeDocumentMoniker": "Controllers\\CourseController.cs",
@@ -304,7 +404,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 28,
               "Title": "CourseSubject.cs",
               "DocumentMoniker": "C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\Views\\CourseSubject.cs",
               "RelativeDocumentMoniker": "Views\\CourseSubject.cs",
@@ -316,32 +416,32 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Student_Details.cs",
-              "DocumentMoniker": "C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\Views\\Student_Details.cs",
-              "RelativeDocumentMoniker": "Views\\Student_Details.cs",
-              "ToolTip": "C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\Views\\Student_Details.cs*",
-              "RelativeToolTip": "Views\\Student_Details.cs*",
-              "ViewState": "AQIAABoAAAAAAAAAAAAUwDUAAAA5AAAA",
+              "DocumentIndex": 4,
+              "Title": "Person_Details.cs",
+              "DocumentMoniker": "C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\Views\\Person_Details.cs",
+              "RelativeDocumentMoniker": "Views\\Person_Details.cs",
+              "ToolTip": "C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\Views\\Person_Details.cs",
+              "RelativeToolTip": "Views\\Person_Details.cs",
+              "ViewState": "AQIAADIAAAAAAAAAAAA6wD4AAAAaAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-19T15:29:44.825Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Student_Details.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\Views\\Student_Details.cs",
-              "RelativeDocumentMoniker": "Views\\Student_Details.cs",
-              "ToolTip": "C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\Views\\Student_Details.cs [Design]*",
-              "RelativeToolTip": "Views\\Student_Details.cs [Design]*",
+              "DocumentIndex": 11,
+              "Title": "Person_Details.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\Views\\Person_Details.cs",
+              "RelativeDocumentMoniker": "Views\\Person_Details.cs",
+              "ToolTip": "C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\Views\\Person_Details.cs [Design]",
+              "RelativeToolTip": "Views\\Person_Details.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-19T15:29:38.936Z",
               "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 27,
               "Title": "CourseSubject.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\Views\\CourseSubject.cs",
               "RelativeDocumentMoniker": "Views\\CourseSubject.cs",
@@ -352,71 +452,72 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 15,
               "Title": "DBInitializer.cs",
               "DocumentMoniker": "C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\Repositories\\DBInitializer.cs",
               "RelativeDocumentMoniker": "Repositories\\DBInitializer.cs",
               "ToolTip": "C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\Repositories\\DBInitializer.cs",
               "RelativeToolTip": "Repositories\\DBInitializer.cs",
-              "ViewState": "AQIAACsAAAAAAAAAAAAgwCQAAAA5AAAA",
+              "ViewState": "AQIAABkAAAAAAAAAAAAgwCQAAAA5AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-17T13:13:03.782Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 5,
               "Title": "Enums.cs",
               "DocumentMoniker": "C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\Models\\Enums.cs",
               "RelativeDocumentMoniker": "Models\\Enums.cs",
               "ToolTip": "C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\Models\\Enums.cs",
               "RelativeToolTip": "Models\\Enums.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAABIAAAAYAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACgAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-11T10:07:36.484Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAA6wBMAAAAAAAAA",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAQwBYAAAACAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-18T14:00:47.026Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 21,
               "Title": "LoggedInUser.cs",
               "DocumentMoniker": "C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\Models\\LoggedInUser.cs",
               "RelativeDocumentMoniker": "Models\\LoggedInUser.cs",
               "ToolTip": "C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\Models\\LoggedInUser.cs",
               "RelativeToolTip": "Models\\LoggedInUser.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAANAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T15:40:44.955Z"
+              "WhenOpened": "2025-06-17T15:40:44.955Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 23,
               "Title": "Form1.cs",
               "DocumentMoniker": "C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",
               "ToolTip": "C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\Form1.cs",
               "RelativeToolTip": "Form1.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAADIAAAAAAAAA",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAYwDIAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-15T17:02:19.815Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 18,
               "Title": "Form1.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Mikey\\Desktop\\cSharp assignment\\2025.06.13night\\UMS_Project\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",

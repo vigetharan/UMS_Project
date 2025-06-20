@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.student_view = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_viewPerson = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.tb_filterbyname = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -59,14 +59,15 @@
             this.student_view.TabIndex = 1;
             this.student_view.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.student_view_CellContentClick);
             // 
-            // button1
+            // btn_viewPerson
             // 
-            this.button1.Location = new System.Drawing.Point(32, 4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(108, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_viewPerson.Location = new System.Drawing.Point(32, 4);
+            this.btn_viewPerson.Name = "btn_viewPerson";
+            this.btn_viewPerson.Size = new System.Drawing.Size(108, 23);
+            this.btn_viewPerson.TabIndex = 2;
+            this.btn_viewPerson.Text = "VIEW DETAILS";
+            this.btn_viewPerson.UseVisualStyleBackColor = true;
+            this.btn_viewPerson.Click += new System.EventHandler(this.btn_viewPerson_Click);
             // 
             // button2
             // 
@@ -164,7 +165,7 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.button1);
+            this.panel2.Controls.Add(this.btn_viewPerson);
             this.panel2.Controls.Add(this.button2);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 541);
@@ -199,7 +200,7 @@
 
         #endregion
         private System.Windows.Forms.DataGridView student_view;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_viewPerson;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox tb_filterbyname;
         private System.Windows.Forms.Label label1;

@@ -18,7 +18,19 @@ namespace UnicomTICManagementSystem
         public Main_Form()
         {
             InitializeComponent();
-            label_welcome.Text = $"Welcome, {LoggedInUser.Name}";
+            label_welcome.Text = $"Welcome, {LoggedInUser.Name}/n{LoggedInUser.Role}";
+        }
+        private void Main_Form_Load(object sender, EventArgs e)
+        {
+            if (LoggedInUser.Role == Enums.UserRole.ADMIN)
+            {
+                btn_add_person.Visible = true;
+                btn_course.Visible = true;
+                btn_addtimeslot.Visible = true;
+                btn_addsubject.Visible = true;
+                btn_addexam.Visible = true;
+                btn_schedule.Visible = true;
+            }
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
@@ -49,37 +61,19 @@ namespace UnicomTICManagementSystem
             examButtonClicked = false;
  */
             //Load lecturerForm into center panel
-            Person_Details sdform = new Person_Details();
-            sdform.TopLevel = false;
-            sdform.FormBorderStyle = FormBorderStyle.None;
-            sdform.StartPosition = FormStartPosition.CenterParent;
+            Person_Details pform = new Person_Details();
+            pform.TopLevel = false;
+            pform.FormBorderStyle = FormBorderStyle.None;
+            pform.StartPosition = FormStartPosition.CenterParent;
             centerPanel.AutoScroll = true;
-            centerPanel.Controls.Add(sdform);
-            sdform.Show();
+            centerPanel.Controls.Add(pform);
+            pform.Show();
 
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            // clear center viewing panel to empty, and other button clicks set to false
 
-            centerPanel.Controls.Clear();
-            studentButtonClicked = false;
-            lecturerButtonClicked = true;
-            staffButtonClicked = false;
-            adminButtonClicked = false;
-            timetableButtonClicked = false;
-            courseButtonClicked = false;
-            attendanceButtonClicked = false;
-            examButtonClicked = false;
-
-            //Load lecturerForm into center panel
-            LecturerDetails lecForm = new LecturerDetails();
-            lecForm.TopLevel = false;
-            lecForm.FormBorderStyle = FormBorderStyle.None;
-            lecForm.Dock = DockStyle.Fill;
-            centerPanel.Controls.Add(lecForm);
-            lecForm.Show();
         }
 
         private void btn_add_person_Click(object sender, EventArgs e)
@@ -88,56 +82,15 @@ namespace UnicomTICManagementSystem
             popup.StartPosition = FormStartPosition.CenterScreen; // or CenterParent
             popup.Show();
         }
-        private void Main_Form_Load(object sender, EventArgs e)
-        {
 
-        }
 
         private void btn_admin_Click(object sender, EventArgs e)
         {
-            // clear center viewing panel to empty, and other button clicks set to false
-
-            centerPanel.Controls.Clear();
-            studentButtonClicked = false;
-            lecturerButtonClicked = false;
-            staffButtonClicked = false;
-            adminButtonClicked = true;
-            timetableButtonClicked = false;
-            courseButtonClicked = false;
-            attendanceButtonClicked = false;
-            examButtonClicked = false;
-
-            //Load Admin Form into center panel
-            AdminDetails adminForm = new AdminDetails();
-            adminForm.TopLevel = false;
-            adminForm.FormBorderStyle = FormBorderStyle.None;
-            adminForm.Dock = DockStyle.Fill;
-            centerPanel.Controls.Add(adminForm);
-            adminForm.Show();
 
         }
 
         private void btn_staff_Click(object sender, EventArgs e)
         {
-            // clear center viewing panel to empty, and other button clicks set to false
-
-            centerPanel.Controls.Clear();
-            studentButtonClicked = false;
-            lecturerButtonClicked = false;
-            staffButtonClicked = true;
-            adminButtonClicked = false;
-            timetableButtonClicked = false;
-            courseButtonClicked = false;
-            attendanceButtonClicked = false;
-            examButtonClicked = false;
-
-            //Load Staff Form into center panel
-            StaffDetails staffForm = new StaffDetails();
-            staffForm.TopLevel = false;
-            staffForm.FormBorderStyle = FormBorderStyle.None;
-            staffForm.Dock = DockStyle.Fill;
-            centerPanel.Controls.Add(staffForm);
-            staffForm.Show();
         }
 
 

@@ -26,6 +26,34 @@ namespace UnicomTICManagementSystem.Controllers
             }
             return "Staff added successfully";
         }
+
+        public Staff GetStaffById(int staffId)
+        {
+
+            using (var dbconn = DatabaseManager.GetConnection())
+            {
+                string getStaffQuery = "SELECT * FROM Staffs WHERE StaffId = @staffId";
+                SQLiteCommand getCommand = new SQLiteCommand(getStaffQuery, dbconn);
+                getCommand.Parameters.AddWithValue("@staffId", staffId);
+                SQLiteDataReader reader = getCommand.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    return new Staff
+                    {
+                        StaffId = reader.GetInt32(0),
+                        EmployeeNo = reader.GetString(1),
+                        Salary = reader.GetDecimal(2),
+                        JoinedDate = reader["JoinedDate"].ToString()
+                    };
+                }
+                else
+                {
+                    return null; // No staff found with the given ID
+                }
+            }
+
+        }
     }
 }
 

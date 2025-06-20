@@ -26,7 +26,7 @@ namespace UnicomTICManagementSystem.Views
         public void LoadDataIntoGrid()
         {
             PersonController pc = new PersonController();
-            dt = pc.GetAllPersons();
+            dt = pc.ViewAllPerson();
             student_view.DataSource = dt;
         }
 
@@ -52,6 +52,17 @@ namespace UnicomTICManagementSystem.Views
         {
             PersonController pc = new PersonController();
             student_view.DataSource = pc.ViewAllPerson();
+        }
+
+        private void btn_viewPerson_Click(object sender, EventArgs e)
+        {
+            int selectedPersonId = Convert.ToInt32(student_view.SelectedRows[0].Cells["Id"].Value);
+
+            var aPForm = new AddPersonForm();
+            aPForm.IsViewOnly = true;      // Disable editing
+            aPForm.LoadPersonData(selectedPersonId);
+            aPForm.ShowDialog();
+            aPForm.Name = "PERSONNAL DETAILS";
         }
     }
 }

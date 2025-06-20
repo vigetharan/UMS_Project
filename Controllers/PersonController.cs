@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using UnicomTICManagementSystem.Models;
 using UnicomTICManagementSystem.Repositories;
 using System.Data;
+using static UnicomTICManagementSystem.Models.Enums;
 
 namespace UnicomTICManagementSystem.Controllers
 {
@@ -52,12 +53,13 @@ namespace UnicomTICManagementSystem.Controllers
             }
         }
 
-        public DataTable GetAllPersons()
+        public DataTable ViewAllPerson()
         {
             using (var dbconn = DatabaseManager.GetConnection())
             {
                 string query = @"
                     SELECT 
+                        p.Id AS Id,
                         p.Name,
                         p.NicNo,
                         p.Address,
@@ -75,13 +77,42 @@ namespace UnicomTICManagementSystem.Controllers
                             ELSE 0 
                           END AS Age,
                         CASE p.UserRole 
-                            WHEN 0 THEN 'ADMIN' 
-                            WHEN 1 THEN 'STUDENT' 
-                            WHEN 2 THEN 'STAFF' 
-                            WHEN 3 THEN 'LECTURER' 
-                        END AS UserRole
+                            WHEN 1 THEN 'ADMIN' 
+                            WHEN 2 THEN 'STUDENT' 
+                            WHEN 3 THEN 'STAFF' 
+                            WHEN 4 THEN 'LECTURER' 
+                        END AS UserRole,
+        
+                        -- Additional details from specific tables based on UserRole
+                        CASE 
+                            WHEN p.UserRole = 2 THEN s.UTNumber
+                            WHEN p.UserRole = 4 THEN l.EmployeeNo
+                            WHEN p.UserRole = 3 THEN st.EmployeeNo
+                            WHEN p.UserRole = 1 THEN a.EmployeeNo
+                            ELSE NULL 
+                        END AS UT_EMP_No,
+                        CASE 
+                            WHEN p.UserRole = 2 THEN s.CourseId 
+                            ELSE NULL 
+                        END AS CourseId,
+                        CASE 
+                            WHEN p.UserRole = 2 THEN s.ParentContact 
+                            ELSE NULL 
+                        END AS PARENTS_CONTACT,
+       
+                        CASE 
+                            WHEN p.UserRole = 4 THEN l.Salary
+                            WHEN p.UserRole = 3 THEN st.Salary
+                            WHEN p.UserRole = 1 THEN a.Salary
+                            ELSE NULL
+                        END AS Salary
+        
                     FROM 
-                        Persons p";
+                        Persons p
+                        LEFT JOIN Students s ON p.Id = s.PersonId AND p.UserRole = 2
+                        LEFT JOIN Staffs st ON p.Id = st.StaffId AND p.UserRole = 3
+                        LEFT JOIN Lecturers l ON p.Id = l.PersonId AND p.UserRole = 4
+                        LEFT JOIN Admins a ON p.Id = a.AdminId AND p.UserRole = 1";
 
 
                 using (SQLiteCommand cmd = new SQLiteCommand(query, dbconn))
@@ -92,76 +123,6 @@ namespace UnicomTICManagementSystem.Controllers
                     return dt;
                 }
             }
-        }
-        public DataTable ViewAllPerson()
-        {
-                using (var dbconn = DatabaseManager.GetConnection())
-                {
-                    string query= @"
-    SELECT 
-        p.Name,
-        p.NicNo,
-        p.Address,
-        p.Email,
-        p.ContactNo,
-        CASE p.Gender  
-            WHEN 1 THEN 'MALE'  
-            WHEN 2 THEN 'FEMALE'   
-        END AS Gender,
-        p.DateOfBirth,
-        CAST(strftime('%Y', 'now') AS INTEGER) - CAST(strftime('%Y', p.DateOfBirth) AS INTEGER)
-        - CASE 
-            WHEN strftime('%m-%d', 'now') < strftime('%m-%d', p.DateOfBirth) 
-            THEN 1 
-            ELSE 0 
-          END AS Age,
-        CASE p.UserRole 
-            WHEN 1 THEN 'ADMIN' 
-            WHEN 2 THEN 'STUDENT' 
-            WHEN 3 THEN 'STAFF' 
-            WHEN 4 THEN 'LECTURER' 
-        END AS UserRole,
-        
-        -- Additional details from specific tables based on UserRole
-        CASE 
-            WHEN p.UserRole = 2 THEN s.UTNumber
-            WHEN p.UserRole = 4 THEN l.EmployeeNo
-            WHEN p.UserRole = 3 THEN st.EmployeeNo
-            WHEN p.UserRole = 1 THEN a.EmployeeNo
-            ELSE NULL 
-        END AS UT_EMP_No,
-        CASE 
-            WHEN p.UserRole = 2 THEN s.CourseId 
-            ELSE NULL 
-        END AS CourseId,
-        CASE 
-            WHEN p.UserRole = 2 THEN s.ParentContact 
-            ELSE NULL 
-        END AS PARENTS_CONTACT,
-       
-        CASE 
-            WHEN p.UserRole = 4 THEN l.Salary
-            WHEN p.UserRole = 3 THEN st.Salary
-            WHEN p.UserRole = 1 THEN a.Salary
-            ELSE NULL
-        END AS Salary
-        
-    FROM 
-        Persons p
-        LEFT JOIN Students s ON p.Id = s.PersonId AND p.UserRole = 2
-        LEFT JOIN Staffs st ON p.Id = st.StaffId AND p.UserRole = 3
-        LEFT JOIN Lecturers l ON p.Id = l.PersonId AND p.UserRole = 4
-        LEFT JOIN Admins a ON p.Id = a.AdminId AND p.UserRole = 1";
-
-
-                using (SQLiteCommand cmd = new SQLiteCommand(query, dbconn))
-                    using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(cmd))
-                    {
-                        DataTable dt = new DataTable();
-                        adapter.Fill(dt);
-                        return dt;
-                    }
-                }
         }
 
         public DateTime GetDob(string nic)
@@ -237,7 +198,7 @@ namespace UnicomTICManagementSystem.Controllers
             if (nic.Length == 12)
             {
                 int daypart = int.Parse(nic.Substring(4, 3));
-                if(daypart <500)
+                if (daypart < 500)
                 {
                     return Enums.Gender.MALE;
                 }
@@ -261,5 +222,57 @@ namespace UnicomTICManagementSystem.Controllers
             }
         }
 
+        public Person GetPersonById(int personId)
+        {
+            using (var conn = DatabaseManager.GetConnection())
+            {
+                string query = @"
+            SELECT 
+                Id,
+                NicNo,
+                Name,
+                Address,
+                Email,
+                ContactNo,
+                Gender,
+                DateOfBirth,
+                UserRole,
+                UserId
+            FROM 
+                Persons
+            WHERE 
+                Id = @PersonId";
+
+                using (var cmd = new SQLiteCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@PersonId", personId);
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return new Person
+                            {
+                                Id = Convert.ToInt32(reader["Id"]),
+                                NicNo = reader["NicNo"].ToString(),
+                                Name = reader["Name"].ToString(),
+                                Address = reader["Address"].ToString(),
+                                Email = reader["Email"].ToString(),
+                                ContactNo = reader["ContactNo"].ToString(),
+                                Gender = (Gender)Convert.ToInt32(reader["Gender"]),
+                                DateOfBirth = Convert.ToDateTime(reader["DateOfBirth"]),
+                                UserRole = (Enums.UserRole)Convert.ToInt32(reader["UserRole"]),
+                                UserId = Convert.ToInt32(reader["UserId"])
+                            };
+                           
+                        }
+                    }
+                    
+                }
+            }
+
+            return null; // If no person is found with the given PersonId
+        }
     }
 }
+

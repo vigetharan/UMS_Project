@@ -103,6 +103,32 @@ namespace UnicomTICManagementSystem.Controllers
                 }
             }
         }
-       
+
+            public Student GetStudentByPersonId(int personId)
+            {
+                using (var conn = DatabaseManager.GetConnection())
+                {
+                    string query = "SELECT * FROM Students WHERE PersonId = @PersonId";
+                    using (var cmd = new SQLiteCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@PersonId", personId);
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                return new Student
+                                {
+                                    PersonId = Convert.ToInt32(reader["PersonId"]),
+                                    UTNumber = reader["UTNumber"].ToString(),
+                                    CourseId = Convert.ToInt32(reader["CourseId"]),
+                                    JoinedDate = reader["JoinedDate"].ToString(),
+                                    ParentContact = reader["ParentContact"].ToString()
+                                };
+                            }
+                        }
+                    }
+                }
+                return null; // If no student found for that PersonId
+            }
     }
 }
