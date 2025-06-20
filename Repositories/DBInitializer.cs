@@ -24,7 +24,8 @@ namespace UnicomTICManagementSystem.Repositories
                     CREATE TABLE IF NOT EXISTS TimeSlots (
                         Id INTEGER PRIMARY KEY AUTOINCREMENT,
                         StartTime DATETIME NOT NULL,
-                        EndTime DATETIME NOT NULL,
+                        EndTime DATETIME NOT NULL,                       
+                        IsAvailable INTEGER NOT NULL DEFAULT 1 CHECK (IsAvailable IN (0, 1)),
                         TimeSlot TEXT NOT NULL
                     );
                     
@@ -33,8 +34,7 @@ namespace UnicomTICManagementSystem.Repositories
                         Username TEXT NOT NULL UNIQUE,
                         Password TEXT NOT NULL,
                         Role INTEGER NOT NULL,
-                        Status INTEGER NOT NULL DEFAULT O,
-                        AccessLevel INTEGER NOT NULL DEFAULT 0
+                        Status INTEGER NOT NULL DEFAULT 0
                     );
 
                     CREATE TABLE IF NOT EXISTS Persons (
@@ -52,13 +52,12 @@ namespace UnicomTICManagementSystem.Repositories
                     );
 
                     CREATE TABLE IF NOT EXISTS Students (
-                        StudentId INTEGER PRIMARY KEY,
+                        PersonId INTEGER PRIMARY KEY,
                         UTNumber TEXT NOT NULL,
-                        Group_Assigned INTEGER,
                         JoinedDate TEXT,
                         ParentContact TEXT NOT NULL,
-                        PrivilageLevel INTEGER NOT NULL,
                         CourseId INTEGER NOT NULL,
+                        FOREIGN KEY (PersonId) REFERENCES Persons(Id) ON DELETE CASCADE,
                         FOREIGN KEY (CourseId) REFERENCES Courses(Id)
                         
                     );
@@ -67,78 +66,92 @@ namespace UnicomTICManagementSystem.Repositories
                         Id INTEGER PRIMARY KEY AUTOINCREMENT,
                         Name TEXT NOT NULL,
                         CourseId INTEGER NOT NULL,
-                        FOREIGN KEY (CourseId) REFERENCES Courses(Id)
+                        FOREIGN KEY (CourseId) REFERENCES Courses(Id) ON DELETE CASCADE
                     );
 
                     CREATE TABLE IF NOT EXISTS Lecturers (
-                        LecturerId INTEGER PRIMARY KEY,
+                        PersonId INTEGER PRIMARY KEY,
                         EmployeeNo TEXT NOT NULL UNIQUE,
                         Salary DECIMAL NOT NULL,
                         JoinedDate TEXT,
-                        PrivilageLevel INTEGER NOT NULL
+                        FOREIGN KEY (PersonId) REFERENCES Persons(Id) ON DELETE CASCADE
+                                                
+
                     );
 
                     CREATE TABLE IF NOT EXISTS Staffs (
                         StaffId INTEGER PRIMARY KEY,
                         EmployeeNo TEXT NOT NULL UNIQUE,
                         Salary DECIMAL NOT NULL,
-                        JoinedDate TEXT,
-                        PrivilageLevel INTEGER NOT NULL
+                        JoinedDate TEXT
                     );
 
                     CREATE TABLE IF NOT EXISTS Admins (
                         AdminId INTEGER PRIMARY KEY,
                         EmployeeNo TEXT NOT NULL UNIQUE,
                         Salary DECIMAL NOT NULL,
-                        JoinedDate TEXT,
-                        PrivilageLevel INTEGER NOT NULL
+                        JoinedDate TEXT
                     );
                     CREATE TABLE IF NOT EXISTS Exams (
                         Id INTEGER PRIMARY KEY AUTOINCREMENT,
                         Name TEXT NOT NULL,
-                        SubjectId INTEGER NOT NULL,
-                        ExamDate TEXT NOT NULL,
-                        FOREIGN KEY (SubjectId) REFERENCES Subjects(Id)
+                        ExamType INTEGER NOT NULL,
+			            SubjectID INTEGER,
+			            FOREIGN KEY (SubjectID) REFERENCES Subjects(SubjectID)
                     );
 
                         CREATE TABLE IF NOT EXISTS Marks (
-                        Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                        Marks INTEGER NOT NULL,
-                        StudentId INTEGER NOT NULL,
-                        ExamId INTEGER NOT NULL,
-                        Grade_Obtained TEXT NOT NULL,
-                        UpdatedBy INTEGER NOT NULL,
-                        FOREIGN KEY (ExamId) REFERENCES Subjects(Id),
-                        FOREIGN KEY (StudentId) REFERENCES Students(Id)
-                    );
+                            Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                            Marks INTEGER NOT NULL,
+                            StudentId INTEGER NOT NULL,
+                            ExamId INTEGER NOT NULL,
+                            Grade_Obtained TEXT NOT NULL,
+                            UpdatedBy INTEGER NOT NULL,
+                            FOREIGN KEY (StudentId) REFERENCES Students(PersonId) ON DELETE CASCADE,
+                            FOREIGN KEY (ExamId) REFERENCES Exams(Id),
+                            FOREIGN KEY (UpdatedBy) REFERENCES Users(Id)
+                        );
+
                     CREATE TABLE IF NOT EXISTS Rooms (
                         Id INTEGER PRIMARY KEY AUTOINCREMENT,
                         RoomName TEXT NOT NULL
                     );
+
                         CREATE TABLE IF NOT EXISTS Attendances (
                         Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                        StudentId INTEGER NOT NULL,
+                        PersonId INTEGER NOT NULL,
                         Date DATETIME NOT NULL,
                         Status TEXT NOT NULL,
-                        FOREIGN KEY (StudentId) REFERENCES Students(PersonId)  ON DELETE CASCADE
+                        Markedby INTEGER NOT NULL,
+                        FOREIGN KEY (PersonId) REFERENCES Students(PersonId) ON DELETE CASCADE
                     );
 
                 
                     CREATE TABLE IF NOT EXISTS TimeTables (
                         Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                        Group_Assigned INTEGER NOT NULL,
                         TimeSlotId INTEGER NOT NULL,
-                        Type TEXT NOT NULL,
-                        SubjectId INTEGER NOT NULL DEFAULT -1,
-                        ExamId INTEGER NOT NULL DEFAULT -1,
-                        LecturerId INTEGER NOT NULL,                        
-                        RoomId INTEGER NOT NULL,
-                        IsActive INTEGER NOT NULL,
-                        FOREIGN KEY (RoomId) REFERENCES Rooms(Id),
+			            RoomId INTEGER NOT NULL,
+                        CourseId INTEGER NOT NULL,
+                        ExamId INTEGER,
+			            SubjectId INTEGER,
+                        LecturerId INTEGER,
                         FOREIGN KEY (TimeSlotId) REFERENCES TimeSlots(Id),
-                        FOREIGN KEY (SubjectId) REFERENCES Subjects(Id),
+			            FOREIGN KEY (RoomId) REFERENCES Rooms(Id),
+                        FOREIGN KEY (CourseId) REFERENCES Courses(Id),
                         FOREIGN KEY (ExamId) REFERENCES Exams(Id),
-                        FOREIGN KEY (LecturerId) REFERENCES Lecturers(Id)
+			            FOREIGN KEY (SubjectID) REFERENCES Subjects(SubjectID),
+                        FOREIGN KEY (LecturerId) REFERENCES Lecturers(PersonId),
+			            CHECK (
+        			        (ExamID IS NOT NULL AND SubjectID IS NULL AND LecturerID IS NULL) OR
+        			        (ExamID IS NULL AND SubjectID IS NOT NULL AND LecturerID IS NOT NULL)
+    				        )			
+                    );
+                    CREATE TABLE IF NOT EXISTS CourseSubject (
+                        CourseId INTEGER,
+                        SubjectId INTEGER,
+                        PRIMARY KEY (CourseId, SubjectId),
+                        FOREIGN KEY (CourseId) REFERENCES Courses(Id) ON DELETE CASCADE,
+                        FOREIGN KEY (SubjectId) REFERENCES Subjects(Id)
                     );
 
 
@@ -165,6 +178,15 @@ namespace UnicomTICManagementSystem.Repositories
                         FOREIGN KEY (LecturerId) REFERENCES Lecturers(Id),
                         FOREIGN KEY (SubjectId) REFERENCES Subjects(Id)
                     );
+                    CREATE TABLE IF NOT EXISTS StudentExam (
+                        StudentId INTEGER,
+                        ExamId INTEGER,
+                        MarksObtained INTEGER,
+                        PRIMARY KEY (StudentId, ExamId),
+                        FOREIGN KEY (StudentId) REFERENCES Students(PersonId) ON DELETE CASCADE,
+                        FOREIGN KEY (ExamId) REFERENCES Exams(Id) ON DELETE CASCADE
+                    );
+
                     
                     CREATE TABLE IF NOT EXISTS ErrorLogs (
                         LogID INTEGER PRIMARY KEY AUTOINCREMENT,

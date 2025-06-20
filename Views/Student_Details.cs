@@ -14,10 +14,10 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace UnicomTICManagementSystem.Views
 {
-    public partial class Student_Details : Form
+    public partial class Person_Details : Form
     {
         private DataTable dt;
-        public Student_Details()
+        public Person_Details()
         {
             InitializeComponent();
             LoadDataIntoGrid();
@@ -25,8 +25,8 @@ namespace UnicomTICManagementSystem.Views
 
         public void LoadDataIntoGrid()
         {
-            StudentController Stc = new StudentController();
-            dt = Stc.GetAllStudents();
+            PersonController pc = new PersonController();
+            dt = pc.GetAllPersons();
             student_view.DataSource = dt;
         }
 
@@ -46,6 +46,12 @@ namespace UnicomTICManagementSystem.Views
             dv.RowFilter = $"Name LIKE '%{tb_filterbyname.Text.Replace("'", "''")}%'"; // escape quotes
             student_view.DataSource = dv;
             student_view.Refresh();
+        }
+
+        private void checkBox_all_CheckedChanged(object sender, EventArgs e)
+        {
+            PersonController pc = new PersonController();
+            student_view.DataSource = pc.ViewAllPerson();
         }
     }
 }

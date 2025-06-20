@@ -36,8 +36,8 @@ namespace UnicomTICManagementSystem
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // clear center viewing panel to empty, and other button clicks set to false
-            btn_student.FlatStyle = FlatStyle.Popup;
+ /*           // clear center viewing panel to empty, and other button clicks set to false
+            btn_persondetails.FlatStyle = FlatStyle.Popup;
             centerPanel.Controls.Clear();
             studentButtonClicked = true;
             lecturerButtonClicked = false;
@@ -47,13 +47,13 @@ namespace UnicomTICManagementSystem
             courseButtonClicked = false;
             attendanceButtonClicked = false;
             examButtonClicked = false;
-
+ */
             //Load lecturerForm into center panel
-            Student_Details sdform = new Student_Details();
+            Person_Details sdform = new Person_Details();
             sdform.TopLevel = false;
             sdform.FormBorderStyle = FormBorderStyle.None;
             sdform.StartPosition = FormStartPosition.CenterParent;
-            sdform.Dock = DockStyle.Fill;
+            centerPanel.AutoScroll = true;
             centerPanel.Controls.Add(sdform);
             sdform.Show();
 

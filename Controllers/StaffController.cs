@@ -16,13 +16,12 @@ namespace UnicomTICManagementSystem.Controllers
         {
             using (var dbconn = DatabaseManager.GetConnection())
             {
-                string addStaffQuery = "INSERT INTO Staffs ( StaffId, EmployeeNo, Salary, JoinedDate, PrivilageLevel) VALUES (@stfid, @employeeno, @salary, @joinedDate, @plevel)";
+                string addStaffQuery = "INSERT INTO Staffs ( StaffId, EmployeeNo, Salary, JoinedDate) VALUES (@stfid, @employeeno, @salary, @joinedDate)";
                 SQLiteCommand addCommand = new SQLiteCommand(addStaffQuery, dbconn);
                 addCommand.Parameters.AddWithValue("@stfid", s.StaffId);
                 addCommand.Parameters.AddWithValue("@employeeno", s.EmployeeNo);
                 addCommand.Parameters.AddWithValue("@salary", s.Salary);
                 addCommand.Parameters.AddWithValue("@joinedDate", s.JoinedDate);
-                addCommand.Parameters.AddWithValue("@plevel", s.PrivilageLevel);
                 addCommand.ExecuteNonQuery();
             }
             return "Staff added successfully";

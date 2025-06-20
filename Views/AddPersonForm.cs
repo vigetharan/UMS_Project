@@ -21,7 +21,6 @@ namespace UnicomTICManagementSystem.Views
     public partial class AddPersonForm : Form
     {
         public object DateOnly { get; private set; }
-        public Enums.PrivilageLevel accessLevel;
 
         public AddPersonForm()
         {
@@ -52,9 +51,6 @@ namespace UnicomTICManagementSystem.Views
                 // Bind the list to the ComboBox
                 cb_gender.DataSource = genderList;
 
-                var groupList = new List<string> { "--Select--" };
-                groupList.AddRange(Enum.GetValues(typeof(Group)).Cast<Group>().Select(g => g.ToString()));
-                cb_group.DataSource = groupList;
 
 
                 var rolelist = new List<string> { "--select--" };
@@ -115,16 +111,17 @@ namespace UnicomTICManagementSystem.Views
         //comment
         private void btn_add_Click(object sender, EventArgs e)
         {
+            
 
             try
             {
+                
                 User user = new User
                 {
                     Username = cb_authentication.Checked ? null : tb_username.Text,
                     Password = cb_authentication.Checked ? null : tb_password.Text,
-                    Role = Enums.UserRole.STUDENT,
+                    Role = (Enums.UserRole)Enum.Parse(typeof(Enums.UserRole), cb_role.SelectedItem.ToString().ToUpper()),
                     Status = Enums.UserStatus.ACTIVE,
-                    AccessLevel = accessLevel
                 };
                 UsersController uController = new UsersController();
                 int userid = uController.AddUser(user);
@@ -138,7 +135,8 @@ namespace UnicomTICManagementSystem.Views
                     ContactNo = tb_contactno.Text,
                     Gender = (Gender)cb_gender.SelectedIndex,
                     DateOfBirth = DateTime.Parse(tb_dob.Text),
-                    UserId = userid
+                    UserId = userid,
+                    UserRole = (Enums.UserRole)Enum.Parse(typeof(Enums.UserRole), cb_role.SelectedItem.ToString().ToUpper()),
                 };
 
                 PersonController pController = new PersonController();
@@ -150,13 +148,11 @@ namespace UnicomTICManagementSystem.Views
                     case "STUDENT":
                         Student st = new Student
                         {
-                            StudentId = personId,
+                            PersonId = personId,
                             UTNumber = tb_utno.Text,
-                            Group_Assigned = (Group)cb_group.SelectedIndex,
                             CourseId = Convert.ToInt32(cb_course.SelectedValue),
                             JoinedDate = dtp_datejoined.Value.ToString("yyyyMMdd"),
-                            ParentContact = tb_parent.Text,
-                            PrivilageLevel = accessLevel
+                            ParentContact = tb_parent.Text
                         };
                         StudentController sController = new StudentController();
                         string message = sController.AddStudent(st);
@@ -169,8 +165,7 @@ namespace UnicomTICManagementSystem.Views
                                 LecturerId = personId,
                                 EmployeeNo = tb_utno.Text,
                                 Salary = Convert.ToDecimal(tb_salary.Text),
-                                JoinedDate = dtp_datejoined.Value.ToString("yyyyMMdd"),
-                                PrivilageLevel = accessLevel
+                                JoinedDate = dtp_datejoined.Value.ToString("yyyyMMdd")
                             };
                             LecturerController lController = new LecturerController();
                             string messag = lController.AddLecturer(l);
@@ -184,8 +179,7 @@ namespace UnicomTICManagementSystem.Views
                                 StaffId = personId,
                                 EmployeeNo = tb_utno.Text, // Assuming tb_utno is used for employee ID
                                 Salary = Convert.ToDecimal(tb_salary.Text),
-                                JoinedDate = dtp_datejoined.Value.ToString("yyyy-MM-dd"),
-                                PrivilageLevel = accessLevel
+                                JoinedDate = dtp_datejoined.Value.ToString("yyyy-MM-dd")
                             };
                             StaffController stfController = new StaffController();
                             string mess = stfController.AddStaff(s);
@@ -200,8 +194,7 @@ namespace UnicomTICManagementSystem.Views
                                 EmployeeNo = tb_utno.Text,
                                 Salary = Convert.ToDecimal(tb_salary.Text),
                                 UserId = userid,
-                                JoinedDate = dtp_datejoined.Value.ToString("yyyy-MM-dd"),
-                                PrivilageLevel = accessLevel
+                                JoinedDate = dtp_datejoined.Value.ToString("yyyy-MM-dd")
                             };
                             AdminController aController = new AdminController();
                             string mes = aController.AddAdmin(a);
@@ -314,10 +307,8 @@ namespace UnicomTICManagementSystem.Views
         {
             tb_utno.Visible = false;
             tb_parent.Visible = false;
-            cb_group.Visible = false;
             cb_course.Visible = false;
             label_utno.Visible = false;
-            label_group.Visible = false;
             label_course.Visible = false;
             lable_parent.Visible = false;
             label_salary.Visible = false;
@@ -327,7 +318,6 @@ namespace UnicomTICManagementSystem.Views
             switch (selectedRole)
             {
                 case "ADMIN":
-                    accessLevel = Enums.PrivilageLevel.ADMIN;
                     label_employeno.Visible = true;
                     tb_utno.Visible = true;
                     tb_utno.Text = "Enter Employee No";
@@ -337,20 +327,16 @@ namespace UnicomTICManagementSystem.Views
                     break;
 
                 case "STUDENT":
-                    accessLevel = Enums.PrivilageLevel.STUDENT;
                     label_employeno.Visible = false;
                     tb_utno.Visible = true;
-                    cb_group.Visible = true;
                     cb_course.Visible = true;
                     label_utno.Visible = true;
-                    label_group.Visible = true;
                     label_course.Visible = true;
                     lable_parent.Visible = true;
                     tb_parent.Visible = true;
                     break;
 
                 case "STAFF":
-                    accessLevel = Enums.PrivilageLevel.STAFF;
                     label_employeno.Visible = true;
                     tb_utno.Visible = true;
                     tb_utno.Text = "Enter Employee No";
@@ -360,7 +346,6 @@ namespace UnicomTICManagementSystem.Views
                     break;
 
                 case "LECTURER":
-                    accessLevel = Enums.PrivilageLevel.LECTURER;
                     label_employeno.Visible = true;
                     tb_utno.Visible = true;
                     tb_utno.Text = "Enter Employee No";

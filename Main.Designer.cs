@@ -36,17 +36,18 @@
             this.btn_staff = new System.Windows.Forms.Button();
             this.btn_admin = new System.Windows.Forms.Button();
             this.btn_lecturer = new System.Windows.Forms.Button();
-            this.btn_student = new System.Windows.Forms.Button();
+            this.btn_persondetails = new System.Windows.Forms.Button();
             this.centerPanel = new System.Windows.Forms.Panel();
             this.UpPanel = new System.Windows.Forms.Panel();
+            this.ilabel_icon = new System.Windows.Forms.Label();
+            this.label_welcome = new System.Windows.Forms.Label();
             this.btn_addsubject = new System.Windows.Forms.Button();
             this.btn_addexam = new System.Windows.Forms.Button();
             this.btn_addtimeslot = new System.Windows.Forms.Button();
             this.btn_addcourse = new System.Windows.Forms.Button();
             this.btn_add_person = new System.Windows.Forms.Button();
-            this.label_welcome = new System.Windows.Forms.Label();
-            this.ilabel_icon = new System.Windows.Forms.Label();
             this.linkLabel_logout = new System.Windows.Forms.LinkLabel();
+            this.btn_schedule = new System.Windows.Forms.Button();
             this.leftPanel.SuspendLayout();
             this.UpPanel.SuspendLayout();
             this.SuspendLayout();
@@ -61,7 +62,7 @@
             this.leftPanel.Controls.Add(this.btn_staff);
             this.leftPanel.Controls.Add(this.btn_admin);
             this.leftPanel.Controls.Add(this.btn_lecturer);
-            this.leftPanel.Controls.Add(this.btn_student);
+            this.leftPanel.Controls.Add(this.btn_persondetails);
             this.leftPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.leftPanel.Location = new System.Drawing.Point(0, 0);
             this.leftPanel.Name = "leftPanel";
@@ -137,15 +138,15 @@
             this.btn_lecturer.UseVisualStyleBackColor = true;
             this.btn_lecturer.Click += new System.EventHandler(this.button2_Click);
             // 
-            // btn_student
+            // btn_persondetails
             // 
-            this.btn_student.Location = new System.Drawing.Point(0, 49);
-            this.btn_student.Name = "btn_student";
-            this.btn_student.Size = new System.Drawing.Size(105, 56);
-            this.btn_student.TabIndex = 0;
-            this.btn_student.Text = "STUDENTS";
-            this.btn_student.UseVisualStyleBackColor = true;
-            this.btn_student.Click += new System.EventHandler(this.button1_Click);
+            this.btn_persondetails.Location = new System.Drawing.Point(0, 49);
+            this.btn_persondetails.Name = "btn_persondetails";
+            this.btn_persondetails.Size = new System.Drawing.Size(105, 56);
+            this.btn_persondetails.TabIndex = 0;
+            this.btn_persondetails.Text = "PERSON DETAILS";
+            this.btn_persondetails.UseVisualStyleBackColor = true;
+            this.btn_persondetails.Click += new System.EventHandler(this.button1_Click);
             // 
             // centerPanel
             // 
@@ -161,6 +162,7 @@
             // UpPanel
             // 
             this.UpPanel.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.UpPanel.Controls.Add(this.btn_schedule);
             this.UpPanel.Controls.Add(this.ilabel_icon);
             this.UpPanel.Controls.Add(this.label_welcome);
             this.UpPanel.Controls.Add(this.btn_addsubject);
@@ -174,6 +176,26 @@
             this.UpPanel.Name = "UpPanel";
             this.UpPanel.Size = new System.Drawing.Size(889, 40);
             this.UpPanel.TabIndex = 2;
+            // 
+            // ilabel_icon
+            // 
+            this.ilabel_icon.AutoSize = true;
+            this.ilabel_icon.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ilabel_icon.Location = new System.Drawing.Point(836, -1);
+            this.ilabel_icon.Name = "ilabel_icon";
+            this.ilabel_icon.Size = new System.Drawing.Size(35, 29);
+            this.ilabel_icon.TabIndex = 7;
+            this.ilabel_icon.Text = "👩‍🎓";
+            // 
+            // label_welcome
+            // 
+            this.label_welcome.AutoSize = true;
+            this.label_welcome.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_welcome.Location = new System.Drawing.Point(649, 11);
+            this.label_welcome.Name = "label_welcome";
+            this.label_welcome.Size = new System.Drawing.Size(72, 16);
+            this.label_welcome.TabIndex = 5;
+            this.label_welcome.Text = "Welcome";
             // 
             // btn_addsubject
             // 
@@ -223,26 +245,6 @@
             this.btn_add_person.UseVisualStyleBackColor = true;
             this.btn_add_person.Click += new System.EventHandler(this.btn_add_person_Click);
             // 
-            // label_welcome
-            // 
-            this.label_welcome.AutoSize = true;
-            this.label_welcome.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_welcome.Location = new System.Drawing.Point(649, 11);
-            this.label_welcome.Name = "label_welcome";
-            this.label_welcome.Size = new System.Drawing.Size(72, 16);
-            this.label_welcome.TabIndex = 5;
-            this.label_welcome.Text = "Welcome";
-            // 
-            // ilabel_icon
-            // 
-            this.ilabel_icon.AutoSize = true;
-            this.ilabel_icon.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ilabel_icon.Location = new System.Drawing.Point(836, -1);
-            this.ilabel_icon.Name = "ilabel_icon";
-            this.ilabel_icon.Size = new System.Drawing.Size(35, 29);
-            this.ilabel_icon.TabIndex = 7;
-            this.ilabel_icon.Text = "👩‍🎓";
-            // 
             // linkLabel_logout
             // 
             this.linkLabel_logout.AutoSize = true;
@@ -254,6 +256,15 @@
             this.linkLabel_logout.TabStop = true;
             this.linkLabel_logout.Text = "Logout";
             this.linkLabel_logout.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel_logout_LinkClicked);
+            // 
+            // btn_schedule
+            // 
+            this.btn_schedule.Location = new System.Drawing.Point(523, 3);
+            this.btn_schedule.Name = "btn_schedule";
+            this.btn_schedule.Size = new System.Drawing.Size(85, 37);
+            this.btn_schedule.TabIndex = 9;
+            this.btn_schedule.Text = "ADD A SCHEDULE";
+            this.btn_schedule.UseVisualStyleBackColor = true;
             // 
             // Main_Form
             // 
@@ -284,7 +295,7 @@
         private System.Windows.Forms.Button btn_staff;
         private System.Windows.Forms.Button btn_admin;
         private System.Windows.Forms.Button btn_lecturer;
-        private System.Windows.Forms.Button btn_student;
+        private System.Windows.Forms.Button btn_persondetails;
         private System.Windows.Forms.Button btn_add_person;
         private System.Windows.Forms.Button btn_exam;
         private System.Windows.Forms.Button btn_timetable;
@@ -295,5 +306,6 @@
         private System.Windows.Forms.Label label_welcome;
         private System.Windows.Forms.Label ilabel_icon;
         private System.Windows.Forms.LinkLabel linkLabel_logout;
+        private System.Windows.Forms.Button btn_schedule;
     }
 }

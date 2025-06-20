@@ -19,15 +19,13 @@ namespace UnicomTICManagementSystem.Controllers
         {
             using (var dbconn = DatabaseManager.GetConnection())
             {
-                string addStudentQuery = "INSERT INTO Students ( StudentId,UTNumber,CourseId,JoinedDate,Group_Assigned,ParentContact, PrivilageLevel) VALUES (@studentid,@utnumber,@courseid,@joinedDate,@group,@parentcontact, @plevel)";
+                string addStudentQuery = "INSERT INTO Students ( PersonId,UTNumber,CourseId,JoinedDate,ParentContact) VALUES (@studentid,@utnumber,@courseid,@joinedDate,@parentcontact)";
                 SQLiteCommand addCommand = new SQLiteCommand(addStudentQuery, dbconn);
-                addCommand.Parameters.AddWithValue("@studentid", st.StudentId);
+                addCommand.Parameters.AddWithValue("@studentid", st.PersonId);
                 addCommand.Parameters.AddWithValue("@utnumber", st.UTNumber);
                 addCommand.Parameters.AddWithValue("@courseid", st.CourseId);
                 addCommand.Parameters.AddWithValue("@joinedDate", st.JoinedDate);
-                addCommand.Parameters.AddWithValue("@group", st.Group_Assigned);
                 addCommand.Parameters.AddWithValue("@parentcontact", st.ParentContact);
-                addCommand.Parameters.AddWithValue("@plevel", (int)st.PrivilageLevel);
                 addCommand.ExecuteNonQuery();
             }
             return "STUDENT ADDED SUCCESSFULLY";
@@ -52,13 +50,13 @@ namespace UnicomTICManagementSystem.Controllers
             return "STUDENT UPDATED SUCCESSFULLY";
         }
 
-        public string DeleteStudent(string studentId)
+        public string DeleteStudent(int PersonId)
         {
             using (var dbconn = DatabaseManager.GetConnection())
             {
                 string deleteStudentQuery = "DELETE FROM Students WHERE Id = @sid";
                 SQLiteCommand deleteCommand = new SQLiteCommand(deleteStudentQuery, dbconn);
-                deleteCommand.Parameters.AddWithValue("@sid", studentId);
+                deleteCommand.Parameters.AddWithValue("@sid", PersonId);
                 deleteCommand.ExecuteNonQuery();
             }
             return "STUDENT DELETED SUCCESSFULLY";

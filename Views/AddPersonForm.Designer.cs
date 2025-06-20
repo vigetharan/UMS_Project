@@ -61,8 +61,6 @@
             this.error_contactno = new System.Windows.Forms.Label();
             this.btn_cancel = new System.Windows.Forms.Button();
             this.cb_authentication = new System.Windows.Forms.CheckBox();
-            this.cb_group = new System.Windows.Forms.ComboBox();
-            this.label_group = new System.Windows.Forms.Label();
             this.tb_dob = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.error_dob = new System.Windows.Forms.Label();
@@ -365,26 +363,6 @@
             this.cb_authentication.UseVisualStyleBackColor = true;
             this.cb_authentication.CheckedChanged += new System.EventHandler(this.cb_authentication_CheckedChanged);
             // 
-            // cb_group
-            // 
-            this.cb_group.FormattingEnabled = true;
-            this.cb_group.Location = new System.Drawing.Point(678, 123);
-            this.cb_group.Name = "cb_group";
-            this.cb_group.Size = new System.Drawing.Size(121, 21);
-            this.cb_group.TabIndex = 38;
-            this.cb_group.Visible = false;
-            this.cb_group.SelectedIndexChanged += new System.EventHandler(this.combo_group_SelectedIndexChanged);
-            // 
-            // label_group
-            // 
-            this.label_group.AutoSize = true;
-            this.label_group.Location = new System.Drawing.Point(588, 123);
-            this.label_group.Name = "label_group";
-            this.label_group.Size = new System.Drawing.Size(46, 13);
-            this.label_group.TabIndex = 39;
-            this.label_group.Text = "GROUP";
-            this.label_group.Visible = false;
-            // 
             // tb_dob
             // 
             this.tb_dob.Location = new System.Drawing.Point(179, 228);
@@ -516,7 +494,7 @@
             // 
             // tb_salary
             // 
-            this.tb_salary.Location = new System.Drawing.Point(678, 120);
+            this.tb_salary.Location = new System.Drawing.Point(678, 119);
             this.tb_salary.Name = "tb_salary";
             this.tb_salary.Size = new System.Drawing.Size(120, 20);
             this.tb_salary.TabIndex = 54;
@@ -525,7 +503,7 @@
             // label_salary
             // 
             this.label_salary.AutoSize = true;
-            this.label_salary.Location = new System.Drawing.Point(588, 123);
+            this.label_salary.Location = new System.Drawing.Point(588, 122);
             this.label_salary.Name = "label_salary";
             this.label_salary.Size = new System.Drawing.Size(49, 13);
             this.label_salary.TabIndex = 55;
@@ -553,8 +531,6 @@
             this.Controls.Add(this.error_dob);
             this.Controls.Add(this.tb_dob);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.cb_group);
-            this.Controls.Add(this.label_group);
             this.Controls.Add(this.cb_authentication);
             this.Controls.Add(this.error_contactno);
             this.Controls.Add(this.error_course);
@@ -627,8 +603,6 @@
         private System.Windows.Forms.Label error_contactno;
         private System.Windows.Forms.Button btn_cancel;
         private System.Windows.Forms.CheckBox cb_authentication;
-        private System.Windows.Forms.ComboBox cb_group;
-        private System.Windows.Forms.Label label_group;
         private System.Windows.Forms.TextBox tb_dob;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label error_dob;
