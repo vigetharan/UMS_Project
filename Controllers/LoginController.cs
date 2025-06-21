@@ -21,7 +21,7 @@ namespace UnicomTICManagementSystem.Controllers
         public static bool CheckLogin(string username, string password)
         {
             string query = @"
-        SELECT Users.Id, Users.Role, Persons.Name, Persons.Id
+        SELECT Users.Id, Users.Role, Persons.Name, Persons.Id, Persons.Gender
         FROM Users
         LEFT JOIN Persons ON Users.Id = Persons.Id
         WHERE Users.Username = @username AND Users.Password = @password";
@@ -45,7 +45,7 @@ namespace UnicomTICManagementSystem.Controllers
                             {
                                 LoggedInUser.Name = reader.GetString(2);
                                 LoggedInUser.PersonId = reader.GetInt32(3);
-                                MessageBox.Show(LoggedInUser.Name);
+                                LoggedInUser.Gender = (Gender)reader.GetInt32(4);
                             }
                             else
                             {

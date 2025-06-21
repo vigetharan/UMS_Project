@@ -80,9 +80,9 @@ namespace UnicomTICManagementSystem.Controllers
                             ELSE NULL 
                         END AS UT_EMP_No,
                         CASE 
-                            WHEN p.UserRole = 2 THEN s.CourseId 
+                            WHEN p.UserRole = 2 THEN c.CourseName 
                             ELSE NULL 
-                        END AS CourseId,
+                        END AS CourseName,
                         CASE 
                             WHEN p.UserRole = 2 THEN s.ParentContact 
                             ELSE NULL 
@@ -93,14 +93,22 @@ namespace UnicomTICManagementSystem.Controllers
                             WHEN p.UserRole = 3 THEN st.Salary
                             WHEN p.UserRole = 1 THEN a.Salary
                             ELSE NULL
-                        END AS Salary
+                        END AS Salary,
+                        CASE 
+                            WHEN p.UserRole = 1 THEN a.JoinedDate
+                            WHEN p.UserRole = 2 THEN s.JoinedDate
+                            WHEN p.UserRole = 3 THEN st.JoinedDate
+                            WHEN p.UserRole = 4 THEN l.JoinedDate
+                            ELSE NULL 
+                        END AS JoinedDate
         
                     FROM 
                         Persons p
                         LEFT JOIN Students s ON p.Id = s.PersonId AND p.UserRole = 2
                         LEFT JOIN Staffs st ON p.Id = st.StaffId AND p.UserRole = 3
                         LEFT JOIN Lecturers l ON p.Id = l.PersonId AND p.UserRole = 4
-                        LEFT JOIN Admins a ON p.Id = a.AdminId AND p.UserRole = 1";
+                        LEFT JOIN Admins a ON p.Id = a.AdminId AND p.UserRole = 1
+                        LEFT JOIN Courses c ON s.CourseId = c.Id";
 
 
                 using (SQLiteCommand cmd = new SQLiteCommand(query, dbconn))

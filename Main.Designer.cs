@@ -189,7 +189,7 @@
             // 
             this.label_welcome.AutoSize = true;
             this.label_welcome.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_welcome.Location = new System.Drawing.Point(649, 11);
+            this.label_welcome.Location = new System.Drawing.Point(588, 0);
             this.label_welcome.Name = "label_welcome";
             this.label_welcome.Size = new System.Drawing.Size(72, 16);
             this.label_welcome.TabIndex = 5;

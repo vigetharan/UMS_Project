@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using UnicomTICManagementSystem.Views;
 using UnicomTICManagementSystem.Repositories;
 using UnicomTICManagementSystem.Models;
+using static UnicomTICManagementSystem.Models.Enums;
 
 namespace UnicomTICManagementSystem
 {
@@ -18,7 +19,8 @@ namespace UnicomTICManagementSystem
         public Main_Form()
         {
             InitializeComponent();
-            label_welcome.Text = $"Welcome, {LoggedInUser.Name}/n{LoggedInUser.Role}";
+            string title = LoggedInUser.Gender == Gender.MALE ? "Mr." : "Ms.";
+            label_welcome.Text = $"Welcome, {title}{LoggedInUser.Name}\nROLE As : {LoggedInUser.Role}";
         }
         private void Main_Form_Load(object sender, EventArgs e)
         {
@@ -54,25 +56,14 @@ namespace UnicomTICManagementSystem
 
         private void button1_Click(object sender, EventArgs e)
         {
- /*           // clear center viewing panel to empty, and other button clicks set to false
-            btn_persondetails.FlatStyle = FlatStyle.Popup;
-            centerPanel.Controls.Clear();
-            studentButtonClicked = true;
-            lecturerButtonClicked = false;
-            staffButtonClicked = false;
-            adminButtonClicked = false;
-            timetableButtonClicked = false;
-            courseButtonClicked = false;
-            attendanceButtonClicked = false;
-            examButtonClicked = false;
- */
-            //Load lecturerForm into center panel
+ //           centerPanel.AutoScroll = true;
             Person_Details pform = new Person_Details();
-            pform.TopLevel = false;
-            pform.FormBorderStyle = FormBorderStyle.None;
-            pform.StartPosition = FormStartPosition.CenterParent;
-            centerPanel.AutoScroll = true;
-            centerPanel.Controls.Add(pform);
+ //           pform.TopLevel = false;
+ //           pform.FormBorderStyle = FormBorderStyle.None;
+            pform.StartPosition = FormStartPosition.CenterScreen;
+ //           pform.Dock = DockStyle.Fill;
+ //           pform.AutoScaleMode = AutoScaleMode.None;
+//            centerPanel.Controls.Add(pform);
             pform.Show();
 
         }

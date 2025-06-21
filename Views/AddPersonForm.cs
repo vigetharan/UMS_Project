@@ -21,7 +21,7 @@ namespace UnicomTICManagementSystem.Views
 {
     public partial class AddPersonForm : Form
     {
-    public bool IsViewOnly { get; set; } = false;
+
 
 
         public AddPersonForm()
@@ -234,8 +234,6 @@ namespace UnicomTICManagementSystem.Views
 
         private void tb_nic_Leave(object sender, EventArgs e)
         {
-            if (!IsViewOnly)
-            {
                 PersonController pc = new PersonController();
                 if (!pc.CheckNic(tb_nic.Text))
                 {
@@ -258,7 +256,6 @@ namespace UnicomTICManagementSystem.Views
                         error_nic.Text = ex.Message;
                     }
                 }
-            }
         }
 
         private void cb_role_SelectedIndexChanged(object sender, EventArgs e)

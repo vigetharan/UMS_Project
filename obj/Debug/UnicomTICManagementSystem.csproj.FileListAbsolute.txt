@@ -34,3 +34,4 @@ Z:\cSharp\project ums\UnicomTICManagementSystem\obj\Debug\UnicomTICManagementSys
 Z:\cSharp\project ums\UnicomTICManagementSystem\obj\Debug\UnicomTICManagementSystem.Views.TimeTable.resources
 C:\Users\Mikey\Desktop\cSharp assignment\2025.06.13night\UMS_Project\obj\Debug\UnicomTICManagementSystem.Views.Person_Details.resources
 C:\Users\Mikey\Desktop\cSharp assignment\2025.06.13night\UMS_Project\obj\Debug\UnicomTICManagementSystem.Views.TimeTableForm.resources
+C:\Users\Mikey\Desktop\cSharp assignment\2025.06.13night\UMS_Project\obj\Debug\UnicomTICManagementSystem.Views.ViewPerson.resources

@@ -12,6 +12,7 @@ namespace UnicomTICManagementSystem.Models
                 public static Enums.UserRole Role { get; set; }
                 public static int PersonId { get; set; }
                 public static string Name { get; set; }
+                public static Enums.Gender Gender { get; set; }
                 public static Enums.UserRole UserRole { get; set; }
             }
 }

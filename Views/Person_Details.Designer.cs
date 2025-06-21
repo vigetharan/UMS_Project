@@ -28,36 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.student_view = new System.Windows.Forms.DataGridView();
             this.btn_viewPerson = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.tb_filterbyname = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.checkBox_all = new System.Windows.Forms.CheckBox();
-            this.checkBox_Staffs = new System.Windows.Forms.CheckBox();
-            this.checkBox_Lecturers = new System.Windows.Forms.CheckBox();
-            this.checkBox_admins = new System.Windows.Forms.CheckBox();
-            this.checkBox_students = new System.Windows.Forms.CheckBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.label_filterbyname = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            ((System.ComponentModel.ISupportInitialize)(this.student_view)).BeginInit();
+            this.rb_student = new System.Windows.Forms.RadioButton();
+            this.tb_filterbyid = new System.Windows.Forms.TextBox();
+            this.rb_admin = new System.Windows.Forms.RadioButton();
+            this.label_filterbyid = new System.Windows.Forms.Label();
+            this.rb_lecturer = new System.Windows.Forms.RadioButton();
+            this.rb_all = new System.Windows.Forms.RadioButton();
+            this.rb_staff = new System.Windows.Forms.RadioButton();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.student_view = new System.Windows.Forms.DataGridView();
+            this.gb_radio = new System.Windows.Forms.GroupBox();
             this.panel2.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.student_view)).BeginInit();
+            this.gb_radio.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // student_view
-            // 
-            this.student_view.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.student_view.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.student_view.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.student_view.Location = new System.Drawing.Point(0, 30);
-            this.student_view.MultiSelect = false;
-            this.student_view.Name = "student_view";
-            this.student_view.ReadOnly = true;
-            this.student_view.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.student_view.Size = new System.Drawing.Size(873, 511);
-            this.student_view.TabIndex = 1;
-            this.student_view.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.student_view_CellContentClick);
             // 
             // btn_viewPerson
             // 
@@ -80,7 +71,7 @@
             // 
             // tb_filterbyname
             // 
-            this.tb_filterbyname.Location = new System.Drawing.Point(573, 10);
+            this.tb_filterbyname.Location = new System.Drawing.Point(420, 4);
             this.tb_filterbyname.Name = "tb_filterbyname";
             this.tb_filterbyname.Size = new System.Drawing.Size(125, 20);
             this.tb_filterbyname.TabIndex = 3;
@@ -89,129 +80,189 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(29, 13);
+            this.label1.Location = new System.Drawing.Point(3, 1);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 13);
+            this.label1.Size = new System.Drawing.Size(35, 26);
             this.label1.TabIndex = 4;
-            this.label1.Text = "VIEW BY";
+            this.label1.Text = "VIEW\r\n  BY";
             // 
-            // checkBox_all
+            // label_filterbyname
             // 
-            this.checkBox_all.AutoSize = true;
-            this.checkBox_all.Location = new System.Drawing.Point(87, 12);
-            this.checkBox_all.Name = "checkBox_all";
-            this.checkBox_all.Size = new System.Drawing.Size(37, 17);
-            this.checkBox_all.TabIndex = 5;
-            this.checkBox_all.Text = "All";
-            this.checkBox_all.UseVisualStyleBackColor = true;
-            this.checkBox_all.CheckedChanged += new System.EventHandler(this.checkBox_all_CheckedChanged);
-            // 
-            // checkBox_Staffs
-            // 
-            this.checkBox_Staffs.AutoSize = true;
-            this.checkBox_Staffs.Location = new System.Drawing.Point(346, 12);
-            this.checkBox_Staffs.Name = "checkBox_Staffs";
-            this.checkBox_Staffs.Size = new System.Drawing.Size(53, 17);
-            this.checkBox_Staffs.TabIndex = 6;
-            this.checkBox_Staffs.Text = "Staffs";
-            this.checkBox_Staffs.UseVisualStyleBackColor = true;
-            // 
-            // checkBox_Lecturers
-            // 
-            this.checkBox_Lecturers.AutoSize = true;
-            this.checkBox_Lecturers.Location = new System.Drawing.Point(270, 12);
-            this.checkBox_Lecturers.Name = "checkBox_Lecturers";
-            this.checkBox_Lecturers.Size = new System.Drawing.Size(70, 17);
-            this.checkBox_Lecturers.TabIndex = 7;
-            this.checkBox_Lecturers.Text = "Lecturers";
-            this.checkBox_Lecturers.UseVisualStyleBackColor = true;
-            // 
-            // checkBox_admins
-            // 
-            this.checkBox_admins.AutoSize = true;
-            this.checkBox_admins.Location = new System.Drawing.Point(204, 12);
-            this.checkBox_admins.Name = "checkBox_admins";
-            this.checkBox_admins.Size = new System.Drawing.Size(60, 17);
-            this.checkBox_admins.TabIndex = 8;
-            this.checkBox_admins.Text = "Admins";
-            this.checkBox_admins.UseVisualStyleBackColor = true;
-            // 
-            // checkBox_students
-            // 
-            this.checkBox_students.AutoSize = true;
-            this.checkBox_students.Location = new System.Drawing.Point(130, 12);
-            this.checkBox_students.Name = "checkBox_students";
-            this.checkBox_students.Size = new System.Drawing.Size(68, 17);
-            this.checkBox_students.TabIndex = 9;
-            this.checkBox_students.Text = "Students";
-            this.checkBox_students.UseVisualStyleBackColor = true;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(466, 13);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(95, 13);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "FILTER BY NAME";
-            // 
-            // panel1
-            // 
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(873, 30);
-            this.panel1.TabIndex = 11;
+            this.label_filterbyname.AutoSize = true;
+            this.label_filterbyname.Location = new System.Drawing.Point(359, 3);
+            this.label_filterbyname.Name = "label_filterbyname";
+            this.label_filterbyname.Size = new System.Drawing.Size(55, 26);
+            this.label_filterbyname.TabIndex = 10;
+            this.label_filterbyname.Text = "FILTER\r\nBY NAME";
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.btn_viewPerson);
             this.panel2.Controls.Add(this.button2);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 541);
+            this.panel2.Location = new System.Drawing.Point(0, 531);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(873, 30);
+            this.panel2.Size = new System.Drawing.Size(843, 30);
             this.panel2.TabIndex = 12;
+            // 
+            // rb_student
+            // 
+            this.rb_student.AutoSize = true;
+            this.rb_student.Location = new System.Drawing.Point(42, 4);
+            this.rb_student.Name = "rb_student";
+            this.rb_student.Size = new System.Drawing.Size(67, 17);
+            this.rb_student.TabIndex = 13;
+            this.rb_student.TabStop = true;
+            this.rb_student.Text = "Students";
+            this.rb_student.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.rb_student.UseVisualStyleBackColor = true;
+            this.rb_student.CheckedChanged += new System.EventHandler(this.rb_student_CheckedChanged);
+            // 
+            // tb_filterbyid
+            // 
+            this.tb_filterbyid.Location = new System.Drawing.Point(671, 4);
+            this.tb_filterbyid.Name = "tb_filterbyid";
+            this.tb_filterbyid.Size = new System.Drawing.Size(125, 20);
+            this.tb_filterbyid.TabIndex = 11;
+            this.tb_filterbyid.TextChanged += new System.EventHandler(this.tb_filterbyid_TextChanged);
+            // 
+            // rb_admin
+            // 
+            this.rb_admin.AutoSize = true;
+            this.rb_admin.Location = new System.Drawing.Point(115, 4);
+            this.rb_admin.Name = "rb_admin";
+            this.rb_admin.Size = new System.Drawing.Size(59, 17);
+            this.rb_admin.TabIndex = 13;
+            this.rb_admin.TabStop = true;
+            this.rb_admin.Text = "Admins";
+            this.rb_admin.UseVisualStyleBackColor = true;
+            this.rb_admin.CheckedChanged += new System.EventHandler(this.rb_admin_CheckedChanged);
+            // 
+            // label_filterbyid
+            // 
+            this.label_filterbyid.AutoSize = true;
+            this.label_filterbyid.Location = new System.Drawing.Point(555, 3);
+            this.label_filterbyid.Name = "label_filterbyid";
+            this.label_filterbyid.Size = new System.Drawing.Size(110, 26);
+            this.label_filterbyid.TabIndex = 12;
+            this.label_filterbyid.Text = "FILTER BY\r\nEmployee No /UT No";
+            // 
+            // rb_lecturer
+            // 
+            this.rb_lecturer.AutoSize = true;
+            this.rb_lecturer.Location = new System.Drawing.Point(177, 4);
+            this.rb_lecturer.Name = "rb_lecturer";
+            this.rb_lecturer.Size = new System.Drawing.Size(69, 17);
+            this.rb_lecturer.TabIndex = 13;
+            this.rb_lecturer.TabStop = true;
+            this.rb_lecturer.Text = "Lecturers";
+            this.rb_lecturer.UseVisualStyleBackColor = true;
+            this.rb_lecturer.CheckedChanged += new System.EventHandler(this.rb_lecturer_CheckedChanged);
+            // 
+            // rb_all
+            // 
+            this.rb_all.AutoSize = true;
+            this.rb_all.Location = new System.Drawing.Point(0, 4);
+            this.rb_all.Name = "rb_all";
+            this.rb_all.Size = new System.Drawing.Size(36, 17);
+            this.rb_all.TabIndex = 13;
+            this.rb_all.TabStop = true;
+            this.rb_all.Text = "All";
+            this.rb_all.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.rb_all.UseVisualStyleBackColor = true;
+            this.rb_all.CheckedChanged += new System.EventHandler(this.rb_all_CheckedChanged);
+            // 
+            // rb_staff
+            // 
+            this.rb_staff.AutoSize = true;
+            this.rb_staff.Location = new System.Drawing.Point(252, 4);
+            this.rb_staff.Name = "rb_staff";
+            this.rb_staff.Size = new System.Drawing.Size(52, 17);
+            this.rb_staff.TabIndex = 13;
+            this.rb_staff.TabStop = true;
+            this.rb_staff.Text = "Staffs";
+            this.rb_staff.UseVisualStyleBackColor = true;
+            this.rb_staff.CheckedChanged += new System.EventHandler(this.rb_staff_CheckedChanged);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.tb_filterbyname);
+            this.panel1.Controls.Add(this.label_filterbyname);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.label_filterbyid);
+            this.panel1.Controls.Add(this.tb_filterbyid);
+            this.panel1.Controls.Add(this.gb_radio);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(843, 45);
+            this.panel1.TabIndex = 11;
+            // 
+            // student_view
+            // 
+            this.student_view.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.student_view.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.student_view.Location = new System.Drawing.Point(0, 45);
+            this.student_view.MultiSelect = false;
+            this.student_view.Name = "student_view";
+            this.student_view.ReadOnly = true;
+            this.student_view.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.student_view.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.student_view.Size = new System.Drawing.Size(843, 486);
+            this.student_view.TabIndex = 1;
+            this.student_view.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.student_view_CellContentClick);
+            // 
+            // gb_radio
+            // 
+            this.gb_radio.Controls.Add(this.rb_staff);
+            this.gb_radio.Controls.Add(this.rb_all);
+            this.gb_radio.Controls.Add(this.rb_student);
+            this.gb_radio.Controls.Add(this.rb_lecturer);
+            this.gb_radio.Controls.Add(this.rb_admin);
+            this.gb_radio.Location = new System.Drawing.Point(44, 3);
+            this.gb_radio.Name = "gb_radio";
+            this.gb_radio.Size = new System.Drawing.Size(310, 31);
+            this.gb_radio.TabIndex = 13;
+            this.gb_radio.TabStop = false;
             // 
             // Person_Details
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(873, 571);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.checkBox_students);
-            this.Controls.Add(this.checkBox_admins);
-            this.Controls.Add(this.checkBox_Lecturers);
-            this.Controls.Add(this.checkBox_Staffs);
-            this.Controls.Add(this.checkBox_all);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.tb_filterbyname);
+            this.ClientSize = new System.Drawing.Size(843, 561);
             this.Controls.Add(this.student_view);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.Name = "Person_Details";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Person_Details";
             this.Load += new System.EventHandler(this.Person_Details_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.student_view)).EndInit();
             this.panel2.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.student_view)).EndInit();
+            this.gb_radio.ResumeLayout(false);
+            this.gb_radio.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.DataGridView student_view;
         private System.Windows.Forms.Button btn_viewPerson;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox tb_filterbyname;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.CheckBox checkBox_all;
-        private System.Windows.Forms.CheckBox checkBox_Staffs;
-        private System.Windows.Forms.CheckBox checkBox_Lecturers;
-        private System.Windows.Forms.CheckBox checkBox_admins;
-        private System.Windows.Forms.CheckBox checkBox_students;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label_filterbyname;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.RadioButton rb_student;
+        private System.Windows.Forms.TextBox tb_filterbyid;
+        private System.Windows.Forms.RadioButton rb_admin;
+        private System.Windows.Forms.Label label_filterbyid;
+        private System.Windows.Forms.RadioButton rb_lecturer;
+        private System.Windows.Forms.RadioButton rb_all;
+        private System.Windows.Forms.RadioButton rb_staff;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.DataGridView student_view;
+        private System.Windows.Forms.GroupBox gb_radio;
     }
 }

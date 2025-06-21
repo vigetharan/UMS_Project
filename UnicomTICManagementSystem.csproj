@@ -215,6 +215,9 @@
     <EmbeddedResource Include="Views\TimeTableForm.resx">
       <DependentUpon>TimeTableForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\ViewPerson.resx">
+      <DependentUpon>ViewPerson.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
