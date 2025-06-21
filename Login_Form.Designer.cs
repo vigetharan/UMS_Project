@@ -54,7 +54,7 @@ namespace UnicomTICManagementSystem
             this.tb_username.Name = "tb_username";
             this.tb_username.Size = new System.Drawing.Size(188, 20);
             this.tb_username.TabIndex = 0;
-            this.tb_username.TextChanged += new System.EventHandler(this.tb_username_TextChanged);
+            this.tb_username.Leave += new System.EventHandler(this.tb_username_Leave);
             // 
             // btn_login
             // 
@@ -75,7 +75,7 @@ namespace UnicomTICManagementSystem
             this.tb_password.Size = new System.Drawing.Size(188, 20);
             this.tb_password.TabIndex = 1;
             this.tb_password.UseSystemPasswordChar = true;
-            this.tb_password.TextChanged += new System.EventHandler(this.tb_password_TextChanged);
+            this.tb_password.Leave += new System.EventHandler(this.tb_password_Leave);
             // 
             // label2
             // 
@@ -98,7 +98,6 @@ namespace UnicomTICManagementSystem
             this.label_error.TabIndex = 0;
             this.label_error.Text = "❌Invalid credentials,\nplease try again with correct !";
             this.label_error.Visible = false;
-            this.label_error.Click += new System.EventHandler(this.label_error_Click);
             // 
             // login_Form
             // 

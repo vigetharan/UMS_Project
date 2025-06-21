@@ -37,22 +37,10 @@ namespace UnicomTICManagementSystem.Controllers
                 SQLiteCommand idCommand = new SQLiteCommand(LastIdQuery, dbconn);
                 personId = Convert.ToInt32(idCommand.ExecuteScalar());
             }
-            MessageBox.Show(personId.ToString());
             return personId;
         }
-        public bool CheckNic(string nic)
-        {
-            if (!string.IsNullOrWhiteSpace(nic) && (nic.Length == 12 || nic.Length == 10 && nic.ToUpper().EndsWith("V", StringComparison.OrdinalIgnoreCase)))
-            {
-                return true;
-            }
-
-            else
-            {
-                return false;
-            }
-        }
-
+        //
+        //to get all persons to datagridview
         public DataTable ViewAllPerson()
         {
             using (var dbconn = DatabaseManager.GetConnection())
@@ -124,13 +112,29 @@ namespace UnicomTICManagementSystem.Controllers
                 }
             }
         }
+        //
+        //to get validation for nic textbox
+        //
+        public bool CheckNic(string nic)
+        {
+            if (!string.IsNullOrWhiteSpace(nic) && (nic.Length == 12 || nic.Length == 10 && nic.ToUpper().EndsWith("V", StringComparison.OrdinalIgnoreCase)))
+            {
+                return true;
+            }
 
+            else
+            {
+                return false;
+            }
+        }
+        //
+        //to get the date of birth by NIC number
+        //
         public DateTime GetDob(string nic)
         {
-
+            //for 12 digit nic format
             if (nic.Length == 12)
             {
-                //                throw new ArgumentException("Invalid NIC format");
                 int daypart = int.Parse(nic.Substring(4, 3));
                 if (daypart > 500)
                 {
@@ -158,6 +162,7 @@ namespace UnicomTICManagementSystem.Controllers
                 }
 
             }
+            //for 10 digit nic formats
             else if (nic.Length == 10 && nic.EndsWith("V"))
             {
                 int daypart = int.Parse(nic.Substring(2, 3));
@@ -221,7 +226,7 @@ namespace UnicomTICManagementSystem.Controllers
 
             }
         }
-
+        //Getting a persons personnal details by PersonId
         public Person GetPersonById(int personId)
         {
             using (var conn = DatabaseManager.GetConnection())

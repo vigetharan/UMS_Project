@@ -63,11 +63,11 @@
     <Compile Include="Controllers\StudentLectureController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Models\LoggedInUser.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="Login_Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Login_Form.Designer.cs">
+      <DependentUpon>Login_Form.cs</DependentUpon>
     </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
@@ -176,11 +176,11 @@
     <Compile Include="Views\AddPersonForm.Designer.cs">
       <DependentUpon>AddPersonForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\TimeTable.cs">
+    <Compile Include="Views\TimeTableForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\TimeTable.Designer.cs">
-      <DependentUpon>TimeTable.cs</DependentUpon>
+    <Compile Include="Views\TimeTableForm.Designer.cs">
+      <DependentUpon>TimeTableForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\TimeTableDetails.cs">
       <SubType>Form</SubType>
@@ -188,8 +188,8 @@
     <Compile Include="Views\TimeTableDetails.Designer.cs">
       <DependentUpon>TimeTableDetails.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Login_Form.resx">
+      <DependentUpon>Login_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
@@ -212,8 +212,8 @@
     <EmbeddedResource Include="Views\AddPersonForm.resx">
       <DependentUpon>AddPersonForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\TimeTable.resx">
-      <DependentUpon>TimeTable.cs</DependentUpon>
+    <EmbeddedResource Include="Views\TimeTableForm.resx">
+      <DependentUpon>TimeTableForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

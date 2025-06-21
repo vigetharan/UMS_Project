@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Data.SQLite;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -51,7 +52,7 @@ namespace UnicomTICManagementSystem.Controllers
                                 throw new Exception("Person not found for the user");
                             }
 
-                            MessageBox.Show("Login Succeeded");
+                            MessageBox.Show($"Login Succeeded\n welcome{LoggedInUser.Name}");
                             return true;
                         }
                         else
@@ -62,6 +63,27 @@ namespace UnicomTICManagementSystem.Controllers
                     }
                 }
             }
+        }
+        public bool IsUsernameTaken(string username)
+        {
+            bool isTaken = false;
+
+            
+                string query = "SELECT Username FROM Users WHERE Username = @username";
+
+            using (var dbconn = DatabaseManager.GetConnection())
+            {
+                using (var cmd = new SQLiteCommand(query, dbconn))
+                {
+                    cmd.Parameters.AddWithValue("@username", username);
+
+                    dbconn.Open();
+                    int count = (int)cmd.ExecuteScalar();
+                    isTaken = count > 0;
+                }
+            }
+
+            return isTaken;
         }
 
 

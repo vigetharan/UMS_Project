@@ -56,13 +56,12 @@ namespace UnicomTICManagementSystem.Views
 
         private void btn_viewPerson_Click(object sender, EventArgs e)
         {
-            int selectedPersonId = Convert.ToInt32(student_view.SelectedRows[0].Cells["Id"].Value);
 
-            var aPForm = new AddPersonForm();
-            aPForm.IsViewOnly = true;      // Disable editing
-            aPForm.LoadPersonData(selectedPersonId);
-            aPForm.ShowDialog();
-            aPForm.Name = "PERSONNAL DETAILS";
+        }
+
+        private void Person_Details_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

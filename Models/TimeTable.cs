@@ -9,7 +9,7 @@ namespace UnicomTICManagementSystem.Models
     internal class TimeTable
     {
         public int Id { get; set; }
-        public Enums.Group Group { get; set; }
+        public int CourseId { get; set; }
         public int TimeSlotId {  get; set; }
         public int SubjectId { get; set; }
         public string Type { get; set; }

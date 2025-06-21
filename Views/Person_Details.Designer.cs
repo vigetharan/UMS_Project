@@ -191,6 +191,7 @@
             this.Controls.Add(this.panel2);
             this.Name = "Person_Details";
             this.Text = "Person_Details";
+            this.Load += new System.EventHandler(this.Person_Details_Load);
             ((System.ComponentModel.ISupportInitialize)(this.student_view)).EndInit();
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);

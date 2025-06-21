@@ -1,6 +1,6 @@
 ﻿namespace UnicomTICManagementSystem.Views
 {
-    partial class TimeTable
+    partial class TimeTableForm
     {
         /// <summary>
         /// Required designer variable.
@@ -143,6 +143,7 @@
             this.cb_group.Name = "cb_group";
             this.cb_group.Size = new System.Drawing.Size(121, 21);
             this.cb_group.TabIndex = 9;
+            this.cb_group.SelectedIndexChanged += new System.EventHandler(this.cb_group_SelectedIndexChanged);
             // 
             // cb_subject
             // 
@@ -184,9 +185,9 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(33, 247);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(46, 13);
+            this.label8.Size = new System.Drawing.Size(52, 13);
             this.label8.TabIndex = 14;
-            this.label8.Text = "GROUP";
+            this.label8.Text = "COURSE";
             // 
             // label9
             // 
@@ -222,6 +223,7 @@
             this.cb_type.Name = "cb_type";
             this.cb_type.Size = new System.Drawing.Size(121, 21);
             this.cb_type.TabIndex = 17;
+            this.cb_type.SelectedIndexChanged += new System.EventHandler(this.cb_type_SelectedIndexChanged);
             // 
             // button1
             // 
@@ -240,7 +242,7 @@
             this.dataGridView1.Size = new System.Drawing.Size(547, 337);
             this.dataGridView1.TabIndex = 20;
             // 
-            // TimeTable
+            // TimeTableForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -266,9 +268,9 @@
             this.Controls.Add(this.dtp_end);
             this.Controls.Add(this.dtp_start);
             this.Controls.Add(this.label1);
-            this.Name = "TimeTable";
+            this.Name = "TimeTableForm";
             this.Text = "TimeTable";
-            this.Load += new System.EventHandler(this.TimeTable_Load);
+            this.Load += new System.EventHandler(this.TimeTableForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

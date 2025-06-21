@@ -29,7 +29,6 @@ namespace UnicomTICManagementSystem.Models
             ACTIVE,
             INACTIVE
         }
-        public enum Group        {GROUP_A, GROUP_B        }
         public enum AttendanceStatus        { PRESENT , ABSENT , LATE , EXCUSED        }
         public enum Grade {A,B,C,D,S,F}
         public enum ExamMode {LAB, ONLINE, WRITTEN, VIVA}

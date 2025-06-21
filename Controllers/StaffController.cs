@@ -26,7 +26,7 @@ namespace UnicomTICManagementSystem.Controllers
             }
             return "Staff added successfully";
         }
-
+        //get a staffs details by personId
         public Staff GetStaffById(int staffId)
         {
 

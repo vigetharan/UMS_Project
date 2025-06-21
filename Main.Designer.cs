@@ -39,7 +39,6 @@
             this.btn_persondetails = new System.Windows.Forms.Button();
             this.centerPanel = new System.Windows.Forms.Panel();
             this.UpPanel = new System.Windows.Forms.Panel();
-            this.btn_schedule = new System.Windows.Forms.Button();
             this.ilabel_icon = new System.Windows.Forms.Label();
             this.label_welcome = new System.Windows.Forms.Label();
             this.btn_addsubject = new System.Windows.Forms.Button();
@@ -162,7 +161,6 @@
             // UpPanel
             // 
             this.UpPanel.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.UpPanel.Controls.Add(this.btn_schedule);
             this.UpPanel.Controls.Add(this.ilabel_icon);
             this.UpPanel.Controls.Add(this.label_welcome);
             this.UpPanel.Controls.Add(this.btn_addsubject);
@@ -176,15 +174,6 @@
             this.UpPanel.Name = "UpPanel";
             this.UpPanel.Size = new System.Drawing.Size(889, 40);
             this.UpPanel.TabIndex = 2;
-            // 
-            // btn_schedule
-            // 
-            this.btn_schedule.Location = new System.Drawing.Point(523, 3);
-            this.btn_schedule.Name = "btn_schedule";
-            this.btn_schedule.Size = new System.Drawing.Size(85, 37);
-            this.btn_schedule.TabIndex = 9;
-            this.btn_schedule.Text = "ADD A SCHEDULE";
-            this.btn_schedule.UseVisualStyleBackColor = true;
             // 
             // ilabel_icon
             // 
@@ -230,7 +219,7 @@
             this.btn_addtimeslot.Name = "btn_addtimeslot";
             this.btn_addtimeslot.Size = new System.Drawing.Size(85, 37);
             this.btn_addtimeslot.TabIndex = 2;
-            this.btn_addtimeslot.Text = "ADD A TIME SLOT";
+            this.btn_addtimeslot.Text = "ADD A SCHEDULE";
             this.btn_addtimeslot.UseVisualStyleBackColor = true;
             this.btn_addtimeslot.Click += new System.EventHandler(this.btn_addtimeslot_Click);
             // 
@@ -306,6 +295,5 @@
         private System.Windows.Forms.Label label_welcome;
         private System.Windows.Forms.Label ilabel_icon;
         private System.Windows.Forms.LinkLabel linkLabel_logout;
-        private System.Windows.Forms.Button btn_schedule;
     }
 }

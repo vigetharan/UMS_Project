@@ -12,6 +12,7 @@ namespace UnicomTICManagementSystem.Controllers
 {
     internal class UsersController
     {
+        // add a user to users table in db
         public int AddUser(User u)
         {
             int uId;
@@ -29,7 +30,6 @@ namespace UnicomTICManagementSystem.Controllers
                 SQLiteCommand idCommand = new SQLiteCommand(LastIdQuery, dbconn);
                 uId = Convert.ToInt32(idCommand.ExecuteScalar());
             }
-            MessageBox.Show(uId.ToString());
             return uId;
 
 

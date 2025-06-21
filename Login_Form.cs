@@ -19,17 +19,11 @@ namespace UnicomTICManagementSystem
         {
             InitializeComponent();
            DBInitializer.CreateTables();
-            tb_username.Focus();
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            /*if (LoginController.CheckLogin(tb_username.Text, tb_password.Text))
-            {
-                Main_Form f = new Main_Form();
-                f.Show();
-                
-            }*/
 
             if (LoginController.CheckLogin(tb_username.Text, tb_password.Text))
             {
@@ -48,22 +42,38 @@ namespace UnicomTICManagementSystem
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            tb_username.Focus();
         }
 
-        private void tb_password_TextChanged(object sender, EventArgs e)
+        //checking username and pasword must contains the minimum required letters when leaving the textbox
+        private void tb_username_Leave(object sender, EventArgs e)
         {
-
+            if (tb_username.Text.Length < 3)
+            {
+                label_error.Text = "Username must be at least 3 characters long.";
+                label_error.Visible = true;
+                tb_username.Clear();
+                tb_username.Focus();
+            }
+            else
+            {
+                label_error.Visible = false;
+            }
         }
 
-        private void label_error_Click(object sender, EventArgs e)
+        private void tb_password_Leave(object sender, EventArgs e)
         {
-
-        }
-
-        private void tb_username_TextChanged(object sender, EventArgs e)
-        {
-            label_error.Visible = false;
+            if (tb_password.Text.Length < 3)
+            {
+                label_error.Text = "Password must be at least 3 characters long.";
+                label_error.Visible = true;
+                tb_password.Clear();
+                tb_password.Focus();
+            }
+            else
+            {
+                label_error.Visible = false;
+            }
         }
     }
 }

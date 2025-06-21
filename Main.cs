@@ -22,6 +22,12 @@ namespace UnicomTICManagementSystem
         }
         private void Main_Form_Load(object sender, EventArgs e)
         {
+            btn_add_person.Visible = false;
+            btn_course.Visible = false;
+            btn_addtimeslot.Visible = false;
+            btn_addsubject.Visible = false;
+            btn_addexam.Visible = false;
+            btn_addcourse.Visible = false;
             if (LoggedInUser.Role == Enums.UserRole.ADMIN)
             {
                 btn_add_person.Visible = true;
@@ -29,7 +35,7 @@ namespace UnicomTICManagementSystem
                 btn_addtimeslot.Visible = true;
                 btn_addsubject.Visible = true;
                 btn_addexam.Visible = true;
-                btn_schedule.Visible = true;
+                btn_addcourse.Visible = true;
             }
         }
 
@@ -214,7 +220,8 @@ namespace UnicomTICManagementSystem
 
         private void btn_addtimeslot_Click(object sender, EventArgs e)
         {
-
+            TimeTableForm tt = new TimeTableForm();
+            tt.Show();
         }
     }
 }

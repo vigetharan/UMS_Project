@@ -77,6 +77,7 @@
             this.label_employeno = new System.Windows.Forms.Label();
             this.tb_salary = new System.Windows.Forms.TextBox();
             this.label_salary = new System.Windows.Forms.Label();
+            this.error_parent = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label_utno
@@ -141,7 +142,7 @@
             this.tb_name.Name = "tb_name";
             this.tb_name.Size = new System.Drawing.Size(279, 20);
             this.tb_name.TabIndex = 2;
-            this.tb_name.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.tb_name.Leave += new System.EventHandler(this.tb_name_Leave);
             // 
             // tb_address
             // 
@@ -149,6 +150,7 @@
             this.tb_address.Name = "tb_address";
             this.tb_address.Size = new System.Drawing.Size(279, 20);
             this.tb_address.TabIndex = 3;
+            this.tb_address.TextChanged += new System.EventHandler(this.tb_address_TextChanged);
             // 
             // tb_email
             // 
@@ -156,6 +158,7 @@
             this.tb_email.Name = "tb_email";
             this.tb_email.Size = new System.Drawing.Size(279, 20);
             this.tb_email.TabIndex = 4;
+            this.tb_email.Leave += new System.EventHandler(this.tb_email_Leave);
             // 
             // tb_contactno
             // 
@@ -163,6 +166,7 @@
             this.tb_contactno.Name = "tb_contactno";
             this.tb_contactno.Size = new System.Drawing.Size(279, 20);
             this.tb_contactno.TabIndex = 5;
+            this.tb_contactno.Leave += new System.EventHandler(this.tb_contactno_Leave);
             // 
             // btn_add
             // 
@@ -182,7 +186,6 @@
             this.label_username.Size = new System.Drawing.Size(68, 13);
             this.label_username.TabIndex = 31;
             this.label_username.Text = "USERNAME";
-            this.label_username.Click += new System.EventHandler(this.label6_Click);
             // 
             // label_password
             // 
@@ -192,7 +195,6 @@
             this.label_password.Size = new System.Drawing.Size(70, 13);
             this.label_password.TabIndex = 30;
             this.label_password.Text = "PASSWORD";
-            this.label_password.Click += new System.EventHandler(this.label7_Click);
             // 
             // tb_username
             // 
@@ -200,7 +202,7 @@
             this.tb_username.Name = "tb_username";
             this.tb_username.Size = new System.Drawing.Size(279, 20);
             this.tb_username.TabIndex = 7;
-            this.tb_username.TextChanged += new System.EventHandler(this.tb_username_TextChanged);
+            this.tb_username.Leave += new System.EventHandler(this.tb_username_Leave);
             // 
             // tb_password
             // 
@@ -209,7 +211,7 @@
             this.tb_password.PasswordChar = '*';
             this.tb_password.Size = new System.Drawing.Size(279, 20);
             this.tb_password.TabIndex = 8;
-            this.tb_password.TextChanged += new System.EventHandler(this.tb_password_TextChanged);
+            this.tb_password.Leave += new System.EventHandler(this.tb_password_Leave);
             // 
             // label_course
             // 
@@ -229,7 +231,6 @@
             this.cb_course.Size = new System.Drawing.Size(121, 21);
             this.cb_course.TabIndex = 9;
             this.cb_course.Visible = false;
-            this.cb_course.SelectedIndexChanged += new System.EventHandler(this.combo_course_SelectedIndexChanged);
             // 
             // label9
             // 
@@ -246,7 +247,6 @@
             this.tb_nic.Name = "tb_nic";
             this.tb_nic.Size = new System.Drawing.Size(279, 20);
             this.tb_nic.TabIndex = 1;
-            this.tb_nic.TextChanged += new System.EventHandler(this.tb_nic_TextChanged);
             this.tb_nic.Leave += new System.EventHandler(this.tb_nic_Leave);
             // 
             // error_utno
@@ -258,7 +258,6 @@
             this.error_utno.TabIndex = 21;
             this.error_utno.Text = "UT Number must format of \"UT010043\"";
             this.error_utno.Visible = false;
-            this.error_utno.Click += new System.EventHandler(this.error_utno_Click);
             // 
             // error_nic
             // 
@@ -329,7 +328,6 @@
             this.error_course.TabIndex = 28;
             this.error_course.Text = "Please select a valid COURSE.";
             this.error_course.Visible = false;
-            this.error_course.Click += new System.EventHandler(this.label17_Click);
             // 
             // error_contactno
             // 
@@ -480,6 +478,7 @@
             this.tb_parent.Size = new System.Drawing.Size(205, 20);
             this.tb_parent.TabIndex = 52;
             this.tb_parent.Visible = false;
+            this.tb_parent.TextChanged += new System.EventHandler(this.tb_parent_TextChanged);
             this.tb_parent.Enter += new System.EventHandler(this.tb_parent_Enter);
             // 
             // label_employeno
@@ -499,6 +498,7 @@
             this.tb_salary.Size = new System.Drawing.Size(120, 20);
             this.tb_salary.TabIndex = 54;
             this.tb_salary.Visible = false;
+            this.tb_salary.Leave += new System.EventHandler(this.tb_salary_Leave);
             // 
             // label_salary
             // 
@@ -510,11 +510,22 @@
             this.label_salary.Text = "SALARY";
             this.label_salary.Visible = false;
             // 
+            // error_parent
+            // 
+            this.error_parent.AutoSize = true;
+            this.error_parent.Location = new System.Drawing.Point(680, 276);
+            this.error_parent.Name = "error_parent";
+            this.error_parent.Size = new System.Drawing.Size(28, 13);
+            this.error_parent.TabIndex = 56;
+            this.error_parent.Text = "error";
+            this.error_parent.Visible = false;
+            // 
             // AddPersonForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1000, 650);
+            this.Controls.Add(this.error_parent);
             this.Controls.Add(this.tb_salary);
             this.Controls.Add(this.label_salary);
             this.Controls.Add(this.label_employeno);
@@ -619,5 +630,6 @@
         private System.Windows.Forms.Label label_employeno;
         private System.Windows.Forms.TextBox tb_salary;
         private System.Windows.Forms.Label label_salary;
+        private System.Windows.Forms.Label error_parent;
     }
 }

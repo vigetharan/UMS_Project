@@ -15,15 +15,15 @@ using static UnicomTICManagementSystem.Models.Enums;
 
 namespace UnicomTICManagementSystem.Views
 {
-    public partial class TimeTable : Form
+    public partial class TimeTableForm : Form
     {
-        public TimeTable()
+        public TimeTableForm()
         {
             InitializeComponent();
             LoadCombo();
         }
 
-        private void TimeTable_Load(object sender, EventArgs e)
+        private void TimeTableForm_Load(object sender, EventArgs e)
         {
             // Set the minimum date for the DateTimePickers to today
             // This ensures that users cannot select a date in the past
@@ -34,12 +34,10 @@ namespace UnicomTICManagementSystem.Views
             dtp_start.MinDate = DateTime.Today;
             dtp_end.MinDate = DateTime.Today;
 
-            var groupList = new List<string> { "--Select--" };
-            groupList.AddRange(Enum.GetValues(typeof(Group)).Cast<Group>().Select(g => g.ToString()));
-            cb_group.DataSource = groupList;
+
             var groupList_schedule = new List<string> { "--Select--" };
-            groupList.AddRange(Enum.GetValues(typeof(ScheduleType)).Cast<ScheduleType>().Select(g => g.ToString()));
-            cb_type.DataSource = groupList;
+            groupList_schedule.AddRange(Enum.GetValues(typeof(ScheduleType)).Cast<ScheduleType>().Select(g => g.ToString()));
+            cb_type.DataSource = groupList_schedule;
         }
 
         private void btn_add_timeslot_Click(object sender, EventArgs e)
@@ -65,9 +63,9 @@ namespace UnicomTICManagementSystem.Views
                 using (var dbconn = DatabaseManager.GetConnection())
                 {
                     string query = @"
-                        SELECT Lecturers.LecturerId AS Id, Persons.Name AS Name
-                        FROM Lecturers
-                        JOIN Persons ON Lecturers.LecturerId = Persons.Id";
+                        SELECT l.PersonId AS Id, Persons.Name AS Name
+                        FROM Lecturers l
+                        JOIN Persons ON l.PersonId = Persons.Id";
 
                     using (var cmd = new SQLiteCommand(query, dbconn))
                     using (var adapter = new SQLiteDataAdapter(cmd))
@@ -121,7 +119,7 @@ namespace UnicomTICManagementSystem.Views
                         cb_room.SelectedIndex = 0;
                     }
 
-                    string queryslot = "SELECT Id, Name FROM TimeSlots";
+                    string queryslot = "SELECT Id, TimeSlot FROM TimeSlots";
                     using (var cmd = new SQLiteCommand(queryslot, dbconn))
                     using (var adapter = new SQLiteDataAdapter(cmd))
                     {
@@ -129,14 +127,31 @@ namespace UnicomTICManagementSystem.Views
                         adapter.Fill(dt);
                         DataRow dr = dt.NewRow();
                         dr["Id"] = -1;
-                        dr["Name"] = "-- Select One --";
+                        dr["TimeSlot"] = "-- Select One --";
                         dt.Rows.InsertAt(dr, 0);
 
 
                         cb_timeslot.DataSource = dt;
-                        cb_timeslot.DisplayMember = "Name";
+                        cb_timeslot.DisplayMember = "TimeSlot";
                         cb_timeslot.ValueMember = "Id";
                         cb_timeslot.SelectedIndex = 0;
+                    }
+                    string querycourse = "SELECT Id, CourseName FROM Courses";
+                    using (var cmd = new SQLiteCommand(querycourse, dbconn))
+                    using (var adapter = new SQLiteDataAdapter(cmd))
+                    {
+                        DataTable dt3 = new DataTable();
+                        adapter.Fill(dt3);
+                        DataRow dr = dt3.NewRow();
+                        dr["Id"] = -1;
+                        dr["CourseName"] = "-- Select One --";
+                        dt3.Rows.InsertAt(dr, 0);
+
+
+                        cb_group.DataSource = dt3;
+                        cb_group.DisplayMember = "CourseName";
+                        cb_group.ValueMember = "Id";
+                        cb_group.SelectedIndex = 0;
                     }
                 }
             }
@@ -146,6 +161,16 @@ namespace UnicomTICManagementSystem.Views
             }
         }
         private void cb_lecturer_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cb_type_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cb_group_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
