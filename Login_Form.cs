@@ -75,5 +75,10 @@ namespace UnicomTICManagementSystem
                 label_error.Visible = false;
             }
         }
+
+        private void tb_username_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

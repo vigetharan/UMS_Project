@@ -71,17 +71,15 @@ namespace UnicomTICManagementSystem.Controllers
             bool isTaken = false;
 
             
-                string query = "SELECT Username FROM Users WHERE Username = @username";
+            string query = "SELECT EXISTS(SELECT 1 FROM Users WHERE Username = @username);\r\n";
 
             using (var dbconn = DatabaseManager.GetConnection())
             {
                 using (var cmd = new SQLiteCommand(query, dbconn))
                 {
                     cmd.Parameters.AddWithValue("@username", username);
-
-                    dbconn.Open();
-                    int count = (int)cmd.ExecuteScalar();
-                    isTaken = count > 0;
+                    long count = (long)cmd.ExecuteScalar();
+                    isTaken = count ==1;
                 }
             }
 

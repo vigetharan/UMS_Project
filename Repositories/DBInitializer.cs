@@ -161,7 +161,7 @@ namespace UnicomTICManagementSystem.Repositories
                         StudentId INTEGER,
                         SubjectId INTEGER,
                         PRIMARY KEY (StudentId, SubjectId),
-                        FOREIGN KEY (StudentId) REFERENCES Students(Id) ON DELETE CASCADE,
+                        FOREIGN KEY (StudentId) REFERENCES Students(PersonId) ON DELETE CASCADE,
                         FOREIGN KEY (SubjectId) REFERENCES Subjects(Id)
                     );
 
@@ -169,15 +169,15 @@ namespace UnicomTICManagementSystem.Repositories
                         StudentId INTEGER,
                         LecturerId INTEGER,
                         PRIMARY KEY (StudentId, LecturerId),
-                        FOREIGN KEY (StudentId) REFERENCES Students(Id) ON DELETE CASCADE,
-                        FOREIGN KEY (LecturerId) REFERENCES Lecturers(Id) ON DELETE CASCADE
+                        FOREIGN KEY (StudentId) REFERENCES Students(PersonId) ON DELETE CASCADE,
+                        FOREIGN KEY (LecturerId) REFERENCES Lecturers(PersonId)
                     );
 
                     CREATE TABLE IF NOT EXISTS LecturerSubjects (
                         SubjectId INTEGER,
                         LecturerId INTEGER,
                         PRIMARY KEY (LecturerId, SubjectId),
-                        FOREIGN KEY (LecturerId) REFERENCES Lecturers(Id) ON DELETE CASCADE,
+                        FOREIGN KEY (LecturerId) REFERENCES Lecturers(PersonId) ON DELETE CASCADE,
                         FOREIGN KEY (SubjectId) REFERENCES Subjects(Id)
                     );
                     CREATE TABLE IF NOT EXISTS StudentExam (

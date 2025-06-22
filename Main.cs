@@ -24,7 +24,7 @@ namespace UnicomTICManagementSystem
         }
         private void Main_Form_Load(object sender, EventArgs e)
         {
-            btn_add_person.Visible = true;
+            btn_add_person.Visible = false;
             btn_course.Visible = false;
             btn_addtimeslot.Visible = false;
             btn_addsubject.Visible = false;

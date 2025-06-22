@@ -30,7 +30,6 @@ namespace UnicomTICManagementSystem.Views
             LoadComboBoxData();
             tb_parent.Text = "Enter Parent's / Guardian's Contact Number";
             tb_parent.ForeColor = Color.LightGray;
-            error_parent.Visible = false;
         }
 
         private void Student_Form_Load(object sender, EventArgs e)
@@ -396,16 +395,17 @@ namespace UnicomTICManagementSystem.Views
         {
             string username= tb_username.Text.Trim();
             LoginController l = new LoginController();
-            if(username.Length < 3 && !string.IsNullOrWhiteSpace(username))
+            if (username.Length < 3 && !string.IsNullOrWhiteSpace(username))
             {
                 error_username.Visible = true;
                 error_username.Text = "Username must be at least 3 characters long.";
                 tb_username.Clear();
-                if(!l.IsUsernameTaken(username))
-                {
+            }
+            else if(l.IsUsernameTaken(username))
+            {
                     error_username.Text = "Username is already taken. Please choose another one.";
                     tb_username.Clear();
-                }
+            
             }
             else
             {
@@ -450,7 +450,5 @@ namespace UnicomTICManagementSystem.Views
                 error_parent.Visible = false;
             }
         }
-
-
     }
 }

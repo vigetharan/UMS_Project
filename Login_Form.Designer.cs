@@ -54,6 +54,7 @@ namespace UnicomTICManagementSystem
             this.tb_username.Name = "tb_username";
             this.tb_username.Size = new System.Drawing.Size(188, 20);
             this.tb_username.TabIndex = 0;
+            this.tb_username.TextChanged += new System.EventHandler(this.tb_username_TextChanged);
             this.tb_username.Leave += new System.EventHandler(this.tb_username_Leave);
             // 
             // btn_login
