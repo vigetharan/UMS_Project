@@ -36,16 +36,13 @@ namespace UnicomTICManagementSystem.Controllers
         {
             using (var dbconn = DatabaseManager.GetConnection())
             {
-                string updateStudentQuery = "UPDATE Students SET Name = @name, Address = @address, Email = @email, NicNo = @nicno, ContactNo = @contactno, CourseId = @courseid WHERE UTNumber = @utnumber";
-                SQLiteCommand updateCommand = new SQLiteCommand(updateStudentQuery, dbconn);
-                updateCommand.Parameters.AddWithValue("@utnumber", st.UTNumber);
-                updateCommand.Parameters.AddWithValue("@name", st.Name);
-                updateCommand.Parameters.AddWithValue("@address", st.Address);
-                updateCommand.Parameters.AddWithValue("@email", st.Email);
-                updateCommand.Parameters.AddWithValue("@nicno", st.NicNo);
-                updateCommand.Parameters.AddWithValue("@contactno", st.ContactNo);
-                updateCommand.Parameters.AddWithValue("@courseid", st.CourseId);
-                updateCommand.ExecuteNonQuery();
+                string updateStudentQuery = "UPDATE Students SET (UTNumber,CourseId,JoinedDate,ParentContact) VALUES (@utnumber,@courseid,@joinedDate,@parentcontact)";
+                SQLiteCommand addCommand = new SQLiteCommand(updateStudentQuery, dbconn);
+                addCommand.Parameters.AddWithValue("@utnumber", st.UTNumber);
+                addCommand.Parameters.AddWithValue("@courseid", st.CourseId);
+                addCommand.Parameters.AddWithValue("@joinedDate", st.JoinedDate);
+                addCommand.Parameters.AddWithValue("@parentcontact", st.ParentContact);
+                addCommand.ExecuteNonQuery();
             }
             return "STUDENT UPDATED SUCCESSFULLY";
         }

@@ -105,9 +105,9 @@ namespace UnicomTICManagementSystem.Controllers
                     FROM 
                         Persons p
                         LEFT JOIN Students s ON p.Id = s.PersonId AND p.UserRole = 2
-                        LEFT JOIN Staffs st ON p.Id = st.StaffId AND p.UserRole = 3
+                        LEFT JOIN Staffs st ON p.Id = st.PersonId AND p.UserRole = 3
                         LEFT JOIN Lecturers l ON p.Id = l.PersonId AND p.UserRole = 4
-                        LEFT JOIN Admins a ON p.Id = a.AdminId AND p.UserRole = 1
+                        LEFT JOIN Admins a ON p.Id = a.PersonId AND p.UserRole = 1
                         LEFT JOIN Courses c ON s.CourseId = c.Id";
 
 
@@ -116,7 +116,15 @@ namespace UnicomTICManagementSystem.Controllers
                 {
                     DataTable dt = new DataTable();
                     adapter.Fill(dt);
-                    return dt;
+                    if (dt.Rows.Count > 0)
+                    {
+                        return dt;
+                    }
+                    else
+                    {
+                        MessageBox.Show("No users found, please contact admin...");
+                        return null;
+                    }
                 }
             }
         }
@@ -309,19 +317,47 @@ namespace UnicomTICManagementSystem.Controllers
                 return "Person updated successfully.";
             }
         }
-        public bool DeletePerson(int id)
+        public bool DeletePerson(int personId)
         {
             using (var dbconn = DatabaseManager.GetConnection())
             {
-                string deleteQuery = "DELETE FROM Persons WHERE Id = @id";
-                using (SQLiteCommand cmd = new SQLiteCommand(deleteQuery, dbconn))
+                using (var tx = dbconn.BeginTransaction())
                 {
-                    cmd.Parameters.AddWithValue("@id", id);
-                    int rowsAffected = cmd.ExecuteNonQuery();
-                    return rowsAffected > 0;
+                    try
+                    {
+                        int userId;
+                        using (var cmd = new SQLiteCommand("SELECT UserId FROM Persons WHERE Id = @id", dbconn, tx))
+                        {
+                            cmd.Parameters.AddWithValue("@id", personId);
+                            var result = cmd.ExecuteScalar();
+                            if (result == null)
+                                return false;              // no such person
+                            userId = Convert.ToInt32(result);
+                        }
+                        using (var cmd = new SQLiteCommand("DELETE FROM Persons WHERE Id = @id", dbconn, tx))
+                        {
+                            cmd.Parameters.AddWithValue("@id", personId);
+                            cmd.ExecuteNonQuery();
+                        }
+
+                        using (var cmd = new SQLiteCommand("DELETE FROM Users WHERE Id = @uid", dbconn, tx))
+                        {
+                            cmd.Parameters.AddWithValue("@uid", userId);
+                            cmd.ExecuteNonQuery();
+                        }
+
+                        tx.Commit();
+                        return true;
+                    }
+                    catch
+                    {
+                        tx.Rollback();
+                        throw;
+                    }
                 }
             }
         }
+
 
     }
 }

@@ -15,9 +15,9 @@ namespace UnicomTICManagementSystem.Controllers
         {
             using (var dbconn = DatabaseManager.GetConnection())
             {
-                string addAdminQuery = "INSERT INTO Admins ( AdminId, EmployeeNo, Salary, JoinedDate) VALUES (@adid, @employeeno, @salary, @joinedDate)";
+                string addAdminQuery = "INSERT INTO Admins ( PersonId, EmployeeNo, Salary, JoinedDate) VALUES (@adid, @employeeno, @salary, @joinedDate)";
                 SQLiteCommand addCommand = new SQLiteCommand(addAdminQuery, dbconn);
-                addCommand.Parameters.AddWithValue("adid", a.AdminId);
+                addCommand.Parameters.AddWithValue("adid", a.PersonId);
                 addCommand.Parameters.AddWithValue("employeeno", a.EmployeeNo);
                 addCommand.Parameters.AddWithValue("salary", a.Salary);
                 addCommand.Parameters.AddWithValue("joinedDate", a.JoinedDate);
@@ -39,7 +39,7 @@ namespace UnicomTICManagementSystem.Controllers
                 {
                     return new Admin
                     {
-                        AdminId = reader.GetInt32(0),
+                        PersonId = reader.GetInt32(0),
                         EmployeeNo = reader.GetString(1),
                         Salary = reader.GetDecimal(2),
                         JoinedDate = reader["JoinedDate"].ToString()
@@ -50,6 +50,19 @@ namespace UnicomTICManagementSystem.Controllers
                     return null;
                 }
             }
+        }
+        public string UpdateAdmin(Admin a)
+        {
+            using (var dbconn = DatabaseManager.GetConnection())
+            {
+                string updateStaffQuery = "UPDATE Admins SET (EmployeeNo, Salary, JoinedDate) VALUES (@employeeno, @salary, @joinedDate)";
+                SQLiteCommand addCommand = new SQLiteCommand(updateStaffQuery, dbconn);
+                addCommand.Parameters.AddWithValue("@employeeno", a.EmployeeNo);
+                addCommand.Parameters.AddWithValue("@salary", a.Salary);
+                addCommand.Parameters.AddWithValue("@joinedDate", a.JoinedDate);
+                addCommand.ExecuteNonQuery();
+            }
+            return "Admin updated successfully";
         }
 
     }

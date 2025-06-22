@@ -36,16 +36,27 @@ namespace UnicomTICManagementSystem.Views
             }
             else
             {
-                // Filter the DataTable for the logged-in user's only
-                DataRow[] filteredRows = dt.Select($"Id = '{LoggedInUser.PersonId}'");
-
-                if (filteredRows.Length > 0)
+                try
                 {
-                    // Create a new DataTable with filtered rows
-                    DataTable filteredTable = filteredRows.CopyToDataTable();
+                    // Filter the DataTable for the logged-in user's only
+                    DataRow[] filteredRows = dt.Select($"Id = '{LoggedInUser.PersonId}'");
 
-                    // Set the filtered table as the DataSource for the grid when STUDENT logged in.
-                    student_view.DataSource = filteredTable;
+                    if (filteredRows.Length > 0)
+                    {
+                        // Create a new DataTable with filtered rows
+                        DataTable filteredTable = filteredRows.CopyToDataTable();
+
+                        // Set the filtered table as the DataSource for the grid when STUDENT logged in.
+                        student_view.DataSource = filteredTable;
+                        panel1.Hide();
+                        btn_delete.Hide();
+                        btn_update.Hide();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    return;
                 }
             }
         }
@@ -258,7 +269,6 @@ namespace UnicomTICManagementSystem.Views
             // Get selected person's Id
             int personId = Convert.ToInt32(student_view.SelectedRows[0].Cells["Id"].Value);
 
-            // Confirm deletion
             DialogResult result = MessageBox.Show("Are you sure you want to delete this person?",
                                                   "Confirm Deletion",
                                                   MessageBoxButtons.YesNo,

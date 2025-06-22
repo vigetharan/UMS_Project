@@ -24,7 +24,7 @@ namespace UnicomTICManagementSystem
         }
         private void Main_Form_Load(object sender, EventArgs e)
         {
-            btn_add_person.Visible = false;
+            btn_add_person.Visible = true;
             btn_course.Visible = false;
             btn_addtimeslot.Visible = false;
             btn_addsubject.Visible = false;
@@ -45,14 +45,7 @@ namespace UnicomTICManagementSystem
         {
 
         }
-        private bool studentButtonClicked = false;
-        private bool lecturerButtonClicked = false;
-        private bool staffButtonClicked = false;
-        private bool adminButtonClicked = false;
-        private bool courseButtonClicked = false;
-        private bool timetableButtonClicked = false;
-        private bool attendanceButtonClicked = false;
-        private bool examButtonClicked = false;
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -96,16 +89,6 @@ namespace UnicomTICManagementSystem
             // clear center viewing panel to empty, and other button clicks set to false
 
             centerPanel.Controls.Clear();
-            studentButtonClicked = false;
-            lecturerButtonClicked = false;
-            staffButtonClicked = false;
-            adminButtonClicked = false;
-            courseButtonClicked = true;
-            timetableButtonClicked = false;
-            attendanceButtonClicked = false;
-            examButtonClicked = false;
-
-            //Load Course and Subjects Form into center panel
             CourseSubject csd = new CourseSubject();
             centerPanel.Controls.Clear();
             csd.TopLevel = false;
@@ -122,16 +105,6 @@ namespace UnicomTICManagementSystem
             // clear center viewing panel to empty, and other button clicks set to false
 
             centerPanel.Controls.Clear();
-            studentButtonClicked = false;
-            lecturerButtonClicked = false;
-            staffButtonClicked = false;
-            adminButtonClicked = false;
-            courseButtonClicked = false;
-            timetableButtonClicked = false;
-            attendanceButtonClicked = true;
-            examButtonClicked = false;
-
-            //Load AttendancesForm into center panel
             AttendanceDetails atn = new AttendanceDetails();
             centerPanel.Controls.Clear();
             atn.TopLevel = false;
@@ -146,16 +119,6 @@ namespace UnicomTICManagementSystem
             // clear center viewing panel to empty, and other button clicks set to false
 
             centerPanel.Controls.Clear();
-            studentButtonClicked = false;
-            lecturerButtonClicked = false;
-            staffButtonClicked = false;
-            adminButtonClicked = false;
-            courseButtonClicked = false;
-            timetableButtonClicked = true;
-            attendanceButtonClicked = false;
-            examButtonClicked = false;
-
-            //Load TimeTable Form into center panel
             TimeTableDetails tt = new TimeTableDetails();
             centerPanel.Controls.Clear();
             tt.TopLevel = false;
@@ -170,15 +133,7 @@ namespace UnicomTICManagementSystem
             // clear center viewing panel to empty, and other button clicks set to false
 
             centerPanel.Controls.Clear();
-            studentButtonClicked = false;
-            lecturerButtonClicked = false;
-            staffButtonClicked = false;
-            adminButtonClicked = false;
-            courseButtonClicked = false;
-            timetableButtonClicked = false;
-            attendanceButtonClicked = false;
-            examButtonClicked = true;
-
+            
             //Load Exam and Marks Form into center panel
             MarksDetails marks = new MarksDetails();
             centerPanel.Controls.Clear();

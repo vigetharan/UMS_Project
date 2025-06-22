@@ -48,7 +48,7 @@ namespace UnicomTICManagementSystem.Repositories
                         DateOfBirth DATETIME,
                         UserRole INTEGER,
                         UserId INTEGER NOT NULL UNIQUE,
-                        FOREIGN KEY (UserId) REFERENCES Users(Id)                     
+                        FOREIGN KEY (UserId) REFERENCES Users(Id) ON DELETE CASCADE                   
                     );
 
                     CREATE TABLE IF NOT EXISTS Students (
@@ -57,8 +57,8 @@ namespace UnicomTICManagementSystem.Repositories
                         JoinedDate TEXT,
                         ParentContact TEXT NOT NULL,
                         CourseId INTEGER NOT NULL,
-                        FOREIGN KEY (PersonId) REFERENCES Persons(Id) ON DELETE CASCADE,
-                        FOREIGN KEY (CourseId) REFERENCES Courses(Id)
+                        FOREIGN KEY (CourseId) REFERENCES Courses(Id),
+                        FOREIGN KEY (PersonId) REFERENCES Persons(Id) ON DELETE CASCADE
                         
                     );
 
@@ -80,17 +80,19 @@ namespace UnicomTICManagementSystem.Repositories
                     );
 
                     CREATE TABLE IF NOT EXISTS Staffs (
-                        StaffId INTEGER PRIMARY KEY,
+                        PersonId INTEGER PRIMARY KEY,
                         EmployeeNo TEXT NOT NULL UNIQUE,
                         Salary DECIMAL NOT NULL,
-                        JoinedDate TEXT
+                        JoinedDate TEXT,
+                        FOREIGN KEY (PersonId) REFERENCES Persons(Id) ON DELETE CASCADE
                     );
 
                     CREATE TABLE IF NOT EXISTS Admins (
-                        AdminId INTEGER PRIMARY KEY,
+                        PersonId INTEGER PRIMARY KEY,
                         EmployeeNo TEXT NOT NULL UNIQUE,
                         Salary DECIMAL NOT NULL,
-                        JoinedDate TEXT
+                        JoinedDate TEXT,
+                        FOREIGN KEY (PersonId) REFERENCES Persons(Id) ON DELETE CASCADE
                     );
                     CREATE TABLE IF NOT EXISTS Exams (
                         Id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -159,7 +161,7 @@ namespace UnicomTICManagementSystem.Repositories
                         StudentId INTEGER,
                         SubjectId INTEGER,
                         PRIMARY KEY (StudentId, SubjectId),
-                        FOREIGN KEY (StudentId) REFERENCES Students(Id),
+                        FOREIGN KEY (StudentId) REFERENCES Students(Id) ON DELETE CASCADE,
                         FOREIGN KEY (SubjectId) REFERENCES Subjects(Id)
                     );
 
@@ -167,23 +169,23 @@ namespace UnicomTICManagementSystem.Repositories
                         StudentId INTEGER,
                         LecturerId INTEGER,
                         PRIMARY KEY (StudentId, LecturerId),
-                        FOREIGN KEY (StudentId) REFERENCES Students(Id),
-                        FOREIGN KEY (LecturerId) REFERENCES Lecturers(Id)
+                        FOREIGN KEY (StudentId) REFERENCES Students(Id) ON DELETE CASCADE,
+                        FOREIGN KEY (LecturerId) REFERENCES Lecturers(Id) ON DELETE CASCADE
                     );
 
                     CREATE TABLE IF NOT EXISTS LecturerSubjects (
                         SubjectId INTEGER,
                         LecturerId INTEGER,
                         PRIMARY KEY (LecturerId, SubjectId),
-                        FOREIGN KEY (LecturerId) REFERENCES Lecturers(Id),
+                        FOREIGN KEY (LecturerId) REFERENCES Lecturers(Id) ON DELETE CASCADE,
                         FOREIGN KEY (SubjectId) REFERENCES Subjects(Id)
                     );
                     CREATE TABLE IF NOT EXISTS StudentExam (
-                        StudentId INTEGER,
+                        PersonId INTEGER,
                         ExamId INTEGER,
                         MarksObtained INTEGER,
-                        PRIMARY KEY (StudentId, ExamId),
-                        FOREIGN KEY (StudentId) REFERENCES Students(PersonId) ON DELETE CASCADE,
+                        PRIMARY KEY (PersonId, ExamId),
+                        FOREIGN KEY (PersonId) REFERENCES Students(PersonId) ON DELETE CASCADE,
                         FOREIGN KEY (ExamId) REFERENCES Exams(Id) ON DELETE CASCADE
                     );
 

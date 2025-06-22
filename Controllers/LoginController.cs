@@ -26,44 +26,46 @@ namespace UnicomTICManagementSystem.Controllers
         LEFT JOIN Persons ON Users.Id = Persons.Id
         WHERE Users.Username = @username AND Users.Password = @password";
 
-            using (var dbconn = DatabaseManager.GetConnection())
-            {
-                using (var cmd = new SQLiteCommand(query, dbconn))
+                using (var dbconn = DatabaseManager.GetConnection())
                 {
-                    cmd.Parameters.AddWithValue("@username", username);
-                    cmd.Parameters.AddWithValue("@password", password);
-
-                    using (var reader = cmd.ExecuteReader())
+                    using (var cmd = new SQLiteCommand(query, dbconn))
                     {
-                        if (reader.Read())
-                        {
-                            LoggedInUser.UserId = reader.GetInt32(0);
-                            LoggedInUser.Role = (UserRole)reader.GetInt32(1);
+                        cmd.Parameters.AddWithValue("@username", username);
+                        cmd.Parameters.AddWithValue("@password", password);
 
-                            // Persons.Name might be null if no matching person found
-                            if (!reader.IsDBNull(2))
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
                             {
-                                LoggedInUser.Name = reader.GetString(2);
-                                LoggedInUser.PersonId = reader.GetInt32(3);
-                                LoggedInUser.Gender = (Gender)reader.GetInt32(4);
+                                LoggedInUser.UserId = reader.GetInt32(0);
+                                LoggedInUser.Role = (UserRole)reader.GetInt32(1);
+
+                                // Persons.Name might be null if no matching person found
+                                if (!reader.IsDBNull(2))
+                                {
+                                    LoggedInUser.Name = reader.GetString(2);
+                                    LoggedInUser.PersonId = reader.GetInt32(3);
+                                    LoggedInUser.Gender = (Gender)reader.GetInt32(4);
+                                }
+                                else
+                                {
+                                    throw new Exception("Person not found for the user");
+                                }
+
+                                MessageBox.Show($"Login Succeeded\n welcome :{LoggedInUser.Name}");
+                                return true;
                             }
                             else
                             {
-                                throw new Exception("Person not found for the user");
+                                MessageBox.Show("Login Failed");
+                                return false;
                             }
-
-                            MessageBox.Show($"Login Succeeded\n welcome :{LoggedInUser.Name}");
-                            return true;
-                        }
-                        else
-                        {
-                            MessageBox.Show("Login Failed");
-                            return false;
                         }
                     }
                 }
-            }
         }
+
+
         public bool IsUsernameTaken(string username)
         {
             bool isTaken = false;

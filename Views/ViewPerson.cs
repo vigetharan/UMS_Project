@@ -18,6 +18,7 @@ namespace UnicomTICManagementSystem.Views
     {
         public bool IsViewOnly { get; set; } = false;
         public int personid;
+        public DataTable dt;
         
         public ViewPerson(DataTable personData, bool isViewOnly)
         {
@@ -50,8 +51,9 @@ namespace UnicomTICManagementSystem.Views
             tb_gender.Enabled = false;
             tb_course.Enabled = false;
         }
-        private void LoadDataToForm(DataTable dt)
+        private void LoadDataToForm(DataTable datatable)
         {
+            dt = datatable;
             try
             {
                 if (dt.Rows.Count == 0) return;
@@ -115,6 +117,8 @@ namespace UnicomTICManagementSystem.Views
 
         private void btn_update_Click(object sender, EventArgs e)
         {
+
+            var row = dt.Rows[0];
             Person p = new Person
             {
                 Id= personid,
@@ -125,6 +129,44 @@ namespace UnicomTICManagementSystem.Views
             };
             PersonController pc = new PersonController();
             MessageBox.Show(pc.UpdatePerson(p));
+            switch (row["UserRole"].ToString())
+            {
+                case "STUDENT":
+                    Student s = new Student();
+                    s.UTNumber = tb_empNo.Text.Trim();
+                    s.JoinedDate = tb_datejoined.Text.Trim();
+                    s.ParentContact = tb_parentcontact.Text.Trim();
+                    s.CourseId = Convert.ToInt32(tb_course.Text.Trim());
+                    StudentController st = new StudentController();
+                    MessageBox.Show(st.UpdateStudent(s));
+                    break;
+
+                case "LECTURER":
+                    Lecturer l = new Lecturer();
+                    l.EmployeeNo = tb_empNo.Text.Trim();
+                    l.Salary = Convert.ToDecimal(tb_salary.Text.Trim());
+                    l.JoinedDate = tb_datejoined.Text.Trim();
+                    LecturerController lc = new LecturerController();
+                    MessageBox.Show(lc.UpdateLecturer(l));
+                    break;
+                case "ADMIN":
+                    Admin a = new Admin();
+                    a.EmployeeNo = tb_empNo.Text.Trim();
+                    a.Salary = Convert.ToDecimal(tb_salary.Text.Trim());
+                    a.JoinedDate = tb_datejoined.Text.Trim();
+                    AdminController ad = new AdminController();
+                    MessageBox.Show(ad.UpdateAdmin(a));
+                    break;
+                case "STAFF":
+                    Staff staff = new Staff();
+                    staff.EmployeeNo = tb_empNo.Text.Trim();
+                   staff.Salary = Convert.ToDecimal(tb_salary.Text.Trim());
+                    staff.JoinedDate = tb_datejoined.Text.Trim();
+                    StaffController sc = new StaffController();
+                    MessageBox.Show(sc.UpdateStaff(staff));
+                    break; 
+
+            }
 
         }
     }

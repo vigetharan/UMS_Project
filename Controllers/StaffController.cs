@@ -16,9 +16,9 @@ namespace UnicomTICManagementSystem.Controllers
         {
             using (var dbconn = DatabaseManager.GetConnection())
             {
-                string addStaffQuery = "INSERT INTO Staffs ( StaffId, EmployeeNo, Salary, JoinedDate) VALUES (@stfid, @employeeno, @salary, @joinedDate)";
+                string addStaffQuery = "INSERT INTO Staffs ( PersonId, EmployeeNo, Salary, JoinedDate) VALUES (@stfid, @employeeno, @salary, @joinedDate)";
                 SQLiteCommand addCommand = new SQLiteCommand(addStaffQuery, dbconn);
-                addCommand.Parameters.AddWithValue("@stfid", s.StaffId);
+                addCommand.Parameters.AddWithValue("@stfid", s.PersonId);
                 addCommand.Parameters.AddWithValue("@employeeno", s.EmployeeNo);
                 addCommand.Parameters.AddWithValue("@salary", s.Salary);
                 addCommand.Parameters.AddWithValue("@joinedDate", s.JoinedDate);
@@ -41,7 +41,7 @@ namespace UnicomTICManagementSystem.Controllers
                 {
                     return new Staff
                     {
-                        StaffId = reader.GetInt32(0),
+                        PersonId = reader.GetInt32(0),
                         EmployeeNo = reader.GetString(1),
                         Salary = reader.GetDecimal(2),
                         JoinedDate = reader["JoinedDate"].ToString()
@@ -53,6 +53,19 @@ namespace UnicomTICManagementSystem.Controllers
                 }
             }
 
+        }
+        public string UpdateStaff(Staff s)
+        {
+            using (var dbconn = DatabaseManager.GetConnection())
+            {
+                string updateStaffQuery = "UPDATE Staffs SET (EmployeeNo, Salary, JoinedDate) VALUES (@employeeno, @salary, @joinedDate)";
+                SQLiteCommand addCommand = new SQLiteCommand(updateStaffQuery, dbconn);
+                addCommand.Parameters.AddWithValue("@employeeno", s.EmployeeNo);
+                addCommand.Parameters.AddWithValue("@salary", s.Salary);
+                addCommand.Parameters.AddWithValue("@joinedDate", s.JoinedDate);
+                addCommand.ExecuteNonQuery();
+            }
+            return "Staff updated successfully";
         }
     }
 }

@@ -63,6 +63,9 @@ namespace UnicomTICManagementSystem.Views
             tb_username.Clear();
             tb_password.Clear();
             tb_utno.Clear();
+            tb_nic.Clear();
+            cb_role.SelectedIndex = 0;
+            cb_gender.SelectedIndex = 0;
         }
 
         // method for load course combo box
@@ -150,7 +153,7 @@ namespace UnicomTICManagementSystem.Views
                         {
                             Lecturer l = new Lecturer
                             {
-                                LecturerId = personId,
+                                PersonId = personId,
                                 EmployeeNo = tb_utno.Text.Trim(),
                                 Salary = Convert.ToDecimal(tb_salary.Text.Trim()),
                                 JoinedDate = dtp_datejoined.Value.ToString("yyyyMMdd")
@@ -164,7 +167,7 @@ namespace UnicomTICManagementSystem.Views
                         {
                             Staff s = new Staff
                             {
-                                StaffId = personId,
+                                PersonId = personId,
                                 EmployeeNo = tb_utno.Text, // Assuming tb_utno is used for employee ID
                                 Salary = Convert.ToDecimal(tb_salary.Text),
                                 JoinedDate = dtp_datejoined.Value.ToString("yyyy-MM-dd")
@@ -178,7 +181,7 @@ namespace UnicomTICManagementSystem.Views
                         {
                             Admin a = new Admin
                             {
-                                AdminId = personId,
+                                PersonId = personId,
                                 EmployeeNo = tb_utno.Text,
                                 Salary = Convert.ToDecimal(tb_salary.Text),
                                 UserId = userid,
@@ -324,9 +327,10 @@ namespace UnicomTICManagementSystem.Views
 
         private void tb_utno_Enter(object sender, EventArgs e)
         {
- //           tb_utno.Text = string.Empty;
+            tb_utno.Text = string.Empty;
             tb_utno.ForeColor = Color.Black;
         }
+
 
         private void tb_name_Leave(object sender, EventArgs e)
         {
@@ -446,5 +450,7 @@ namespace UnicomTICManagementSystem.Views
                 error_parent.Visible = false;
             }
         }
+
+
     }
 }

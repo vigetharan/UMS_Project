@@ -8,7 +8,7 @@ namespace UnicomTICManagementSystem.Models
 {
     internal class Lecturer : Person
     {
-        public int LecturerId { get; set; }
+        public int PersonId { get; set; }
         public string EmployeeNo { get; set; }
         public decimal Salary { get; set; }
         public string JoinedDate { get; set; }

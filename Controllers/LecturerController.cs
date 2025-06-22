@@ -17,7 +17,7 @@ namespace UnicomTICManagementSystem.Controllers
                 {
                     string addStaffQuery = "INSERT INTO Lecturers ( PersonId,EmployeeNo, Salary, JoinedDate) VALUES (@lid, @empliyeeno,@salary, @joinedDate)";
                     SQLiteCommand addCommand = new SQLiteCommand(addStaffQuery, dbconn);
-                    addCommand.Parameters.AddWithValue("@lid", l.LecturerId);
+                    addCommand.Parameters.AddWithValue("@lid", l.PersonId);
                     addCommand.Parameters.AddWithValue("@empliyeeno", l.EmployeeNo);
                     addCommand.Parameters.AddWithValue("@salary", l.Salary);
                     addCommand.Parameters.AddWithValue("@joinedDate", l.JoinedDate);
@@ -39,7 +39,7 @@ namespace UnicomTICManagementSystem.Controllers
                 {
                     return new Lecturer
                     {
-                        LecturerId = reader.GetInt32(0),
+                        PersonId = reader.GetInt32(0),
                         EmployeeNo = reader.GetString(1),
                         Salary = reader.GetDecimal(2),
                         JoinedDate = reader["JoinedDate"].ToString()
@@ -50,6 +50,19 @@ namespace UnicomTICManagementSystem.Controllers
                     return null;
                 }
             }
+        }
+        public string UpdateLecturer(Lecturer l)
+        {
+            using (var dbconn = DatabaseManager.GetConnection())
+            {
+                string updateLecturerQuery = "UPDATE Lecturers SET (EmployeeNo, Salary, JoinedDate) VALUES (@employeeno, @salary, @joinedDate)";
+                SQLiteCommand addCommand = new SQLiteCommand(updateLecturerQuery, dbconn);
+                addCommand.Parameters.AddWithValue("@employeeno", l.EmployeeNo);
+                addCommand.Parameters.AddWithValue("@salary", l.Salary);
+                addCommand.Parameters.AddWithValue("@joinedDate", l.JoinedDate);
+                addCommand.ExecuteNonQuery();
+            }
+            return "Lecturer updated successfully";
         }
     }
 }
