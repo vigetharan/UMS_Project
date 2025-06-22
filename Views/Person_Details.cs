@@ -85,7 +85,7 @@ namespace UnicomTICManagementSystem.Views
             if (student_view.SelectedRows.Count > 0)
             {
                 // Get the PersonId from the selected row
-                string personId = student_view.SelectedRows[0].Cells["Id"].Value.ToString();
+                int personId = Convert.ToInt32(student_view.SelectedRows[0].Cells["Id"].Value);
 
                 // Filter DataTable based on PersonId
                 filteredRows = dt.Select($"Id = '{personId}'");
@@ -150,7 +150,7 @@ namespace UnicomTICManagementSystem.Views
             else
             {
 
-                MessageBox.Show("No lecturers found.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("No Admins found.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -203,6 +203,86 @@ namespace UnicomTICManagementSystem.Views
             student_view.DataSource = dv;
             student_view.Refresh();
         }
+
+        private void btn_update_Click(object sender, EventArgs e)
+        {
+            if (student_view.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Please select a row to view details.");
+                return;
+            }
+
+            DataRow[] filteredRowsupdate;
+
+            // Check if there is a selected row in the DataGridView
+            if (student_view.SelectedRows.Count > 0)
+            {
+                // Get the PersonId from the selected row
+                string personId = student_view.SelectedRows[0].Cells["Id"].Value.ToString();
+
+                // Filter DataTable based on PersonId
+                filteredRowsupdate = dt.Select($"Id = '{personId}'");
+            }
+            else
+            {
+                MessageBox.Show("Please select a row to view details.");
+                return;
+            }
+
+            // Check if any rows are found
+            if (filteredRowsupdate.Length > 0)
+            {
+                // Create a new DataTable with the filtered rows
+                DataTable personDatau = filteredRowsupdate.CopyToDataTable();
+
+                // Pass the DataTable to the ViewPerson form
+                ViewPerson pop = new ViewPerson(personDatau, false);
+                pop.StartPosition = FormStartPosition.CenterScreen;
+                pop.Show();
+            }
+            else
+            {
+                MessageBox.Show("No data found for the Selected row.");
+            }
+            LoadDataIntoGrid();
+        }
+
+        private void btn_delete_Click(object sender, EventArgs e)
+        {
+            if (student_view.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Please select a row to delete.");
+                return;
+            }
+
+            // Get selected person's Id
+            int personId = Convert.ToInt32(student_view.SelectedRows[0].Cells["Id"].Value);
+
+            // Confirm deletion
+            DialogResult result = MessageBox.Show("Are you sure you want to delete this person?",
+                                                  "Confirm Deletion",
+                                                  MessageBoxButtons.YesNo,
+                                                  MessageBoxIcon.Warning);
+
+            if (result == DialogResult.Yes)
+            {
+                // Delete using controller
+                PersonController pc = new PersonController();
+                bool success = pc.DeletePerson(personId);
+
+                if (success)
+                {
+                    MessageBox.Show("Person deleted successfully.");
+                    LoadDataIntoGrid(); // Refresh the DataGridView
+                }
+                else
+                {
+                    MessageBox.Show("Deletion failed. Person may not exist.");
+                }
+            }
+        }
     }
+    
+    
     
 }

@@ -56,6 +56,8 @@
             this.tb_salary = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tb_age = new System.Windows.Forms.TextBox();
+            this.btn_cancel = new System.Windows.Forms.Button();
+            this.btn_update = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label_salary
@@ -282,11 +284,33 @@
             this.tb_age.Size = new System.Drawing.Size(142, 20);
             this.tb_age.TabIndex = 100;
             // 
+            // btn_cancel
+            // 
+            this.btn_cancel.Location = new System.Drawing.Point(320, 496);
+            this.btn_cancel.Name = "btn_cancel";
+            this.btn_cancel.Size = new System.Drawing.Size(75, 23);
+            this.btn_cancel.TabIndex = 102;
+            this.btn_cancel.Text = "CANCEL";
+            this.btn_cancel.UseVisualStyleBackColor = true;
+            this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
+            // 
+            // btn_update
+            // 
+            this.btn_update.Location = new System.Drawing.Point(661, 496);
+            this.btn_update.Name = "btn_update";
+            this.btn_update.Size = new System.Drawing.Size(75, 23);
+            this.btn_update.TabIndex = 102;
+            this.btn_update.Text = "UPDATE";
+            this.btn_update.UseVisualStyleBackColor = true;
+            this.btn_update.Click += new System.EventHandler(this.btn_update_Click);
+            // 
             // ViewPerson
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(873, 571);
+            this.Controls.Add(this.btn_update);
+            this.Controls.Add(this.btn_cancel);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tb_age);
             this.Controls.Add(this.tb_salary);
@@ -352,5 +376,7 @@
         private System.Windows.Forms.TextBox tb_salary;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tb_age;
+        private System.Windows.Forms.Button btn_cancel;
+        private System.Windows.Forms.Button btn_update;
     }
 }

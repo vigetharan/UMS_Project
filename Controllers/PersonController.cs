@@ -286,6 +286,43 @@ namespace UnicomTICManagementSystem.Controllers
 
             return null; // If no person is found with the given PersonId
         }
+        public string UpdatePerson(Person p)
+        {
+            using (var dbconn = DatabaseManager.GetConnection())
+            {
+                string updateQuery = @"UPDATE Persons 
+                               SET Name = @name,
+                                   Address = @address,
+                                   Email = @email,
+                                   ContactNo = @contactno                         
+                                    
+                                   WHERE Id = @pid";
+
+                SQLiteCommand updateCommand = new SQLiteCommand(updateQuery, dbconn);
+                updateCommand.Parameters.AddWithValue("@name", p.Name);
+                updateCommand.Parameters.AddWithValue("@address", p.Address);
+                updateCommand.Parameters.AddWithValue("@email", p.Email);
+                updateCommand.Parameters.AddWithValue("@contactno", p.ContactNo);
+                updateCommand.Parameters.AddWithValue("@pid", p.Id);
+
+                updateCommand.ExecuteNonQuery();
+                return "Person updated successfully.";
+            }
+        }
+        public bool DeletePerson(int id)
+        {
+            using (var dbconn = DatabaseManager.GetConnection())
+            {
+                string deleteQuery = "DELETE FROM Persons WHERE Id = @id";
+                using (SQLiteCommand cmd = new SQLiteCommand(deleteQuery, dbconn))
+                {
+                    cmd.Parameters.AddWithValue("@id", id);
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    return rowsAffected > 0;
+                }
+            }
+        }
+
     }
 }
 

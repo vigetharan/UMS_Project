@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.btn_viewPerson = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btn_update = new System.Windows.Forms.Button();
             this.tb_filterbyname = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label_filterbyname = new System.Windows.Forms.Label();
@@ -42,12 +42,13 @@
             this.rb_all = new System.Windows.Forms.RadioButton();
             this.rb_staff = new System.Windows.Forms.RadioButton();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.student_view = new System.Windows.Forms.DataGridView();
             this.gb_radio = new System.Windows.Forms.GroupBox();
+            this.student_view = new System.Windows.Forms.DataGridView();
+            this.btn_delete = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.student_view)).BeginInit();
             this.gb_radio.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.student_view)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_viewPerson
@@ -60,14 +61,15 @@
             this.btn_viewPerson.UseVisualStyleBackColor = true;
             this.btn_viewPerson.Click += new System.EventHandler(this.btn_viewPerson_Click);
             // 
-            // button2
+            // btn_update
             // 
-            this.button2.Location = new System.Drawing.Point(223, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(108, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "button1";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btn_update.Location = new System.Drawing.Point(223, 3);
+            this.btn_update.Name = "btn_update";
+            this.btn_update.Size = new System.Drawing.Size(108, 23);
+            this.btn_update.TabIndex = 2;
+            this.btn_update.Text = "UPDATE";
+            this.btn_update.UseVisualStyleBackColor = true;
+            this.btn_update.Click += new System.EventHandler(this.btn_update_Click);
             // 
             // tb_filterbyname
             // 
@@ -97,8 +99,9 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.btn_delete);
             this.panel2.Controls.Add(this.btn_viewPerson);
-            this.panel2.Controls.Add(this.button2);
+            this.panel2.Controls.Add(this.btn_update);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 531);
             this.panel2.Name = "panel2";
@@ -198,6 +201,19 @@
             this.panel1.Size = new System.Drawing.Size(843, 45);
             this.panel1.TabIndex = 11;
             // 
+            // gb_radio
+            // 
+            this.gb_radio.Controls.Add(this.rb_staff);
+            this.gb_radio.Controls.Add(this.rb_all);
+            this.gb_radio.Controls.Add(this.rb_student);
+            this.gb_radio.Controls.Add(this.rb_lecturer);
+            this.gb_radio.Controls.Add(this.rb_admin);
+            this.gb_radio.Location = new System.Drawing.Point(44, 3);
+            this.gb_radio.Name = "gb_radio";
+            this.gb_radio.Size = new System.Drawing.Size(310, 31);
+            this.gb_radio.TabIndex = 13;
+            this.gb_radio.TabStop = false;
+            // 
             // student_view
             // 
             this.student_view.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -212,18 +228,15 @@
             this.student_view.TabIndex = 1;
             this.student_view.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.student_view_CellContentClick);
             // 
-            // gb_radio
+            // btn_delete
             // 
-            this.gb_radio.Controls.Add(this.rb_staff);
-            this.gb_radio.Controls.Add(this.rb_all);
-            this.gb_radio.Controls.Add(this.rb_student);
-            this.gb_radio.Controls.Add(this.rb_lecturer);
-            this.gb_radio.Controls.Add(this.rb_admin);
-            this.gb_radio.Location = new System.Drawing.Point(44, 3);
-            this.gb_radio.Name = "gb_radio";
-            this.gb_radio.Size = new System.Drawing.Size(310, 31);
-            this.gb_radio.TabIndex = 13;
-            this.gb_radio.TabStop = false;
+            this.btn_delete.Location = new System.Drawing.Point(398, 3);
+            this.btn_delete.Name = "btn_delete";
+            this.btn_delete.Size = new System.Drawing.Size(108, 23);
+            this.btn_delete.TabIndex = 3;
+            this.btn_delete.Text = "DELETE";
+            this.btn_delete.UseVisualStyleBackColor = true;
+            this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
             // 
             // Person_Details
             // 
@@ -240,16 +253,16 @@
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.student_view)).EndInit();
             this.gb_radio.ResumeLayout(false);
             this.gb_radio.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.student_view)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private System.Windows.Forms.Button btn_viewPerson;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btn_update;
         private System.Windows.Forms.TextBox tb_filterbyname;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label_filterbyname;
@@ -264,5 +277,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView student_view;
         private System.Windows.Forms.GroupBox gb_radio;
+        private System.Windows.Forms.Button btn_delete;
     }
 }

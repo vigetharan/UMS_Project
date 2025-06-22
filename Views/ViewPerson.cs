@@ -17,6 +17,7 @@ namespace UnicomTICManagementSystem.Views
     public partial class ViewPerson : Form
     {
         public bool IsViewOnly { get; set; } = false;
+        public int personid;
         
         public ViewPerson(DataTable personData, bool isViewOnly)
         {
@@ -26,23 +27,28 @@ namespace UnicomTICManagementSystem.Views
             setViewMode(IsViewOnly);
 
         }
-        private void setViewMode(bool editable)
+        private void setViewMode(bool IsViewOnly)
         {
-            // Example for textboxes:
- //           txtName.ReadOnly = !editable;
- //           txtRole.ReadOnly = !editable;
-
-//            btnSave.Enabled = editable;  // enable save only in editable mode
- //           btnUpdate.Enabled = !editable; // enable update only in view mode
+            tb_name.Enabled = !IsViewOnly;
+            tb_address.Enabled = !IsViewOnly;
+            tb_email.Enabled = !IsViewOnly;
+            tb_contact.Enabled = !IsViewOnly;            
+            tb_empNo.Enabled = !IsViewOnly;
+            tb_salary.Enabled = !IsViewOnly;
+            tb_parentcontact.Enabled = !IsViewOnly;
+            tb_datejoined.Enabled = !IsViewOnly;    
+           btn_update.Enabled = !IsViewOnly; 
         }
-
 
         private void ViewPerson_Load(object sender, EventArgs e)
         {
-//            if(isViewMode) 
- //           {
-//                if(control)
-
+            tb_nic.Enabled = false;
+            tb_role.Enabled = false;
+            tb_age.Enabled = false;
+            tb_dob.Enabled = false;
+            tb_nic.Enabled = false;
+            tb_gender.Enabled = false;
+            tb_course.Enabled = false;
         }
         private void LoadDataToForm(DataTable dt)
         {
@@ -50,6 +56,7 @@ namespace UnicomTICManagementSystem.Views
             {
                 if (dt.Rows.Count == 0) return;
                 var row = dt.Rows[0];
+                personid = Convert.ToInt32(row["Id"]);
                 tb_nic.Text = row["NicNo"].ToString();
                 tb_name.Text = row["Name"].ToString();
                 tb_address.Text = row["Address"].ToString();
@@ -70,25 +77,28 @@ namespace UnicomTICManagementSystem.Views
                 {
                     case "STUDENT":
                         label_salary.Visible = false;
-                        MessageBox.Show("student role");
+                        tb_salary.Visible = false;
                         break;
 
                     case "LECTURER":
                         label_course.Visible = false;
+                        tb_course.Visible=false;
                         label_parent.Visible = false;
-                        MessageBox.Show("lec role");
+                        tb_parentcontact.Visible = false;
                         break;
 
                     case "STAFF":
                         label_course.Visible = false;
+                        tb_course.Visible = false;
                         label_parent.Visible = false;
-                        MessageBox.Show("staff role");
+                        tb_parentcontact.Visible = false;
                         break;
 
                     case "ADMIN":
                         label_course.Visible = false;
+                        tb_course.Visible = false;
                         label_parent.Visible = false;
-                        MessageBox.Show("admin role");
+                        tb_parentcontact.Visible = false;
                         break;
                 }
             }
@@ -98,5 +108,24 @@ namespace UnicomTICManagementSystem.Views
             }
         }
 
+        private void btn_cancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btn_update_Click(object sender, EventArgs e)
+        {
+            Person p = new Person
+            {
+                Id= personid,
+                Name = tb_name.Text.Trim(),
+                Address = tb_address.Text.Trim(),
+                Email = tb_email.Text.Trim(),
+                ContactNo = tb_contact.Text.Trim()
+            };
+            PersonController pc = new PersonController();
+            MessageBox.Show(pc.UpdatePerson(p));
+
+        }
     }
 }

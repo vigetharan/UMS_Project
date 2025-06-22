@@ -52,7 +52,7 @@ namespace UnicomTICManagementSystem.Controllers
                                 throw new Exception("Person not found for the user");
                             }
 
-                            MessageBox.Show($"Login Succeeded\n welcome{LoggedInUser.Name}");
+                            MessageBox.Show($"Login Succeeded\n welcome :{LoggedInUser.Name}");
                             return true;
                         }
                         else
