@@ -9,13 +9,12 @@ namespace UnicomTICManagementSystem.Models
     internal class TimeTable
     {
         public int Id { get; set; }
+       
+        public int TimeSlotId {  get; set; }      
+        public int RoomId { get; set; }
         public int CourseId { get; set; }
-        public int TimeSlotId {  get; set; }
-        public int SubjectId { get; set; }
-        public string Type { get; set; }
         public int ExamId { get; set; }
-        public int LecturerId {  get; set; }
-        public string RoomId { get; set; }
-        public bool IsActive { get; set; }
+        public int SubjectId { get; set; }
+        public int LecturerId { get; set; }
     }
 }

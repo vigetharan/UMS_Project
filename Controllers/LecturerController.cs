@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using UnicomTICManagementSystem.Models;
 using UnicomTICManagementSystem.Repositories;
 
@@ -63,6 +65,31 @@ namespace UnicomTICManagementSystem.Controllers
                 addCommand.ExecuteNonQuery();
             }
             return "Lecturer updated successfully";
+        }
+        public DataTable GetLecturerTOCombo()
+        {
+            try
+            {
+                using (var dbconn = DatabaseManager.GetConnection())
+                {
+                    string getAllCoursesQuery = "SELECT Id,Name FROM Persons WHERE UserRole = 4";
+                    SQLiteCommand getCommand = new SQLiteCommand(getAllCoursesQuery, dbconn);
+                    SQLiteDataAdapter adapter = new SQLiteDataAdapter(getCommand);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    DataRow dr = dt.NewRow();
+                    dr["Id"] = -1;
+                    dr["Name"] = "-- Select One --";
+                    dt.Rows.InsertAt(dr, 0);
+                    return dt;
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error fetching courses: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
         }
     }
 }

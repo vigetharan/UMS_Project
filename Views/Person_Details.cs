@@ -169,7 +169,7 @@ namespace UnicomTICManagementSystem.Views
 
         private void rb_lecturer_CheckedChanged(object sender, EventArgs e)
         {
-            if (!rb_lecturer.Checked)
+            if (rb_lecturer.Checked)
             {
                 DataRow[] filteredrow = dt.Select($"UserRole = 'LECTURER'");
                 if (filteredrow.Length > 0)

@@ -10,6 +10,6 @@ namespace UnicomTICManagementSystem.Models
     {
         public int Id {  get; set; }
         public string Name {  get; set; }
-        public Enums.ExamMode ExamMode { get; set; }
+        public int SubjectId { get; set; }
     }
 }

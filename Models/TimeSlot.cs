@@ -6,9 +6,13 @@ using System.Threading.Tasks;
 
 namespace UnicomTICManagementSystem.Models
 {
-    internal class Course
+    internal class TimeSlot
     {
         public int Id { get; set; }
-        public string Name { get; set; }
+        public DateTime StartTime { get; set; }
+        public DateTime EndTime { get; set; }
+        public int IsAvailable { get; set; }
+        public string Timeslot { get; set; }
+ 
     }
 }

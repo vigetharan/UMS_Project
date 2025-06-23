@@ -130,18 +130,8 @@ namespace UnicomTICManagementSystem
 
         private void btn_exam_Click(object sender, EventArgs e)
         {
-            // clear center viewing panel to empty, and other button clicks set to false
-
-            centerPanel.Controls.Clear();
-            
-            //Load Exam and Marks Form into center panel
-            MarksDetails marks = new MarksDetails();
-            centerPanel.Controls.Clear();
-            marks.TopLevel = false;
-            marks.FormBorderStyle = FormBorderStyle.None;
-            marks.Dock = DockStyle.Fill;
-            centerPanel.Controls.Add(marks);
-            marks.Show();
+            Marks_Form marksForm = new Marks_Form();
+            marksForm.Show();
         }
 
         private void btn_addcourse_Click(object sender, EventArgs e)
@@ -168,6 +158,17 @@ namespace UnicomTICManagementSystem
         {
             TimeTableForm tt = new TimeTableForm();
             tt.Show();
+        }
+
+        private void btn_addexam_Click(object sender, EventArgs e)
+        {
+            AddExam exam = new AddExam();
+            exam.Show();
+        }
+
+        private void btn_addsubject_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

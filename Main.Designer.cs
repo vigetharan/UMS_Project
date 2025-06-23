@@ -33,15 +33,11 @@
             this.btn_timetable = new System.Windows.Forms.Button();
             this.btn_attendance = new System.Windows.Forms.Button();
             this.btn_course = new System.Windows.Forms.Button();
-            this.btn_staff = new System.Windows.Forms.Button();
-            this.btn_admin = new System.Windows.Forms.Button();
-            this.btn_lecturer = new System.Windows.Forms.Button();
             this.btn_persondetails = new System.Windows.Forms.Button();
             this.centerPanel = new System.Windows.Forms.Panel();
             this.UpPanel = new System.Windows.Forms.Panel();
             this.ilabel_icon = new System.Windows.Forms.Label();
             this.label_welcome = new System.Windows.Forms.Label();
-            this.btn_addsubject = new System.Windows.Forms.Button();
             this.btn_addexam = new System.Windows.Forms.Button();
             this.btn_addtimeslot = new System.Windows.Forms.Button();
             this.btn_addcourse = new System.Windows.Forms.Button();
@@ -58,9 +54,6 @@
             this.leftPanel.Controls.Add(this.btn_timetable);
             this.leftPanel.Controls.Add(this.btn_attendance);
             this.leftPanel.Controls.Add(this.btn_course);
-            this.leftPanel.Controls.Add(this.btn_staff);
-            this.leftPanel.Controls.Add(this.btn_admin);
-            this.leftPanel.Controls.Add(this.btn_lecturer);
             this.leftPanel.Controls.Add(this.btn_persondetails);
             this.leftPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.leftPanel.Location = new System.Drawing.Point(0, 0);
@@ -70,7 +63,7 @@
             // 
             // btn_exam
             // 
-            this.btn_exam.Location = new System.Drawing.Point(0, 483);
+            this.btn_exam.Location = new System.Drawing.Point(0, 173);
             this.btn_exam.Name = "btn_exam";
             this.btn_exam.Size = new System.Drawing.Size(105, 56);
             this.btn_exam.TabIndex = 7;
@@ -80,7 +73,7 @@
             // 
             // btn_timetable
             // 
-            this.btn_timetable.Location = new System.Drawing.Point(0, 421);
+            this.btn_timetable.Location = new System.Drawing.Point(0, 235);
             this.btn_timetable.Name = "btn_timetable";
             this.btn_timetable.Size = new System.Drawing.Size(105, 56);
             this.btn_timetable.TabIndex = 6;
@@ -90,7 +83,7 @@
             // 
             // btn_attendance
             // 
-            this.btn_attendance.Location = new System.Drawing.Point(0, 359);
+            this.btn_attendance.Location = new System.Drawing.Point(0, 111);
             this.btn_attendance.Name = "btn_attendance";
             this.btn_attendance.Size = new System.Drawing.Size(105, 56);
             this.btn_attendance.TabIndex = 5;
@@ -107,35 +100,6 @@
             this.btn_course.Text = "COURSE / SUBJECTS";
             this.btn_course.UseVisualStyleBackColor = true;
             this.btn_course.Click += new System.EventHandler(this.btn_course_Click);
-            // 
-            // btn_staff
-            // 
-            this.btn_staff.Location = new System.Drawing.Point(0, 235);
-            this.btn_staff.Name = "btn_staff";
-            this.btn_staff.Size = new System.Drawing.Size(105, 56);
-            this.btn_staff.TabIndex = 3;
-            this.btn_staff.Text = "STAFFS";
-            this.btn_staff.UseVisualStyleBackColor = true;
-            this.btn_staff.Click += new System.EventHandler(this.btn_staff_Click);
-            // 
-            // btn_admin
-            // 
-            this.btn_admin.Location = new System.Drawing.Point(0, 173);
-            this.btn_admin.Name = "btn_admin";
-            this.btn_admin.Size = new System.Drawing.Size(105, 56);
-            this.btn_admin.TabIndex = 2;
-            this.btn_admin.Text = "ADMINS";
-            this.btn_admin.UseVisualStyleBackColor = true;
-            // 
-            // btn_lecturer
-            // 
-            this.btn_lecturer.Location = new System.Drawing.Point(0, 111);
-            this.btn_lecturer.Name = "btn_lecturer";
-            this.btn_lecturer.Size = new System.Drawing.Size(105, 56);
-            this.btn_lecturer.TabIndex = 1;
-            this.btn_lecturer.Text = "LECTURERS";
-            this.btn_lecturer.UseVisualStyleBackColor = true;
-            this.btn_lecturer.Click += new System.EventHandler(this.button2_Click);
             // 
             // btn_persondetails
             // 
@@ -163,7 +127,6 @@
             this.UpPanel.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.UpPanel.Controls.Add(this.ilabel_icon);
             this.UpPanel.Controls.Add(this.label_welcome);
-            this.UpPanel.Controls.Add(this.btn_addsubject);
             this.UpPanel.Controls.Add(this.btn_addexam);
             this.UpPanel.Controls.Add(this.btn_addtimeslot);
             this.UpPanel.Controls.Add(this.btn_addcourse);
@@ -195,27 +158,19 @@
             this.label_welcome.TabIndex = 5;
             this.label_welcome.Text = "Welcome";
             // 
-            // btn_addsubject
-            // 
-            this.btn_addsubject.Location = new System.Drawing.Point(207, 3);
-            this.btn_addsubject.Name = "btn_addsubject";
-            this.btn_addsubject.Size = new System.Drawing.Size(85, 37);
-            this.btn_addsubject.TabIndex = 4;
-            this.btn_addsubject.Text = "ADD A SUBJECT";
-            this.btn_addsubject.UseVisualStyleBackColor = true;
-            // 
             // btn_addexam
             // 
-            this.btn_addexam.Location = new System.Drawing.Point(419, 3);
+            this.btn_addexam.Location = new System.Drawing.Point(177, 3);
             this.btn_addexam.Name = "btn_addexam";
             this.btn_addexam.Size = new System.Drawing.Size(85, 37);
             this.btn_addexam.TabIndex = 3;
             this.btn_addexam.Text = "ADD AN EXAM";
             this.btn_addexam.UseVisualStyleBackColor = true;
+            this.btn_addexam.Click += new System.EventHandler(this.btn_addexam_Click);
             // 
             // btn_addtimeslot
             // 
-            this.btn_addtimeslot.Location = new System.Drawing.Point(312, 3);
+            this.btn_addtimeslot.Location = new System.Drawing.Point(268, 3);
             this.btn_addtimeslot.Name = "btn_addtimeslot";
             this.btn_addtimeslot.Size = new System.Drawing.Size(85, 37);
             this.btn_addtimeslot.TabIndex = 2;
@@ -225,7 +180,7 @@
             // 
             // btn_addcourse
             // 
-            this.btn_addcourse.Location = new System.Drawing.Point(104, 3);
+            this.btn_addcourse.Location = new System.Drawing.Point(86, 2);
             this.btn_addcourse.Name = "btn_addcourse";
             this.btn_addcourse.Size = new System.Drawing.Size(85, 37);
             this.btn_addcourse.TabIndex = 1;
@@ -235,7 +190,7 @@
             // 
             // btn_add_person
             // 
-            this.btn_add_person.Location = new System.Drawing.Point(3, 3);
+            this.btn_add_person.Location = new System.Drawing.Point(0, 2);
             this.btn_add_person.Name = "btn_add_person";
             this.btn_add_person.Size = new System.Drawing.Size(80, 37);
             this.btn_add_person.TabIndex = 0;
@@ -281,15 +236,11 @@
         private System.Windows.Forms.Panel UpPanel;
         private System.Windows.Forms.Button btn_attendance;
         private System.Windows.Forms.Button btn_course;
-        private System.Windows.Forms.Button btn_staff;
-        private System.Windows.Forms.Button btn_admin;
-        private System.Windows.Forms.Button btn_lecturer;
         private System.Windows.Forms.Button btn_persondetails;
         private System.Windows.Forms.Button btn_add_person;
         private System.Windows.Forms.Button btn_exam;
         private System.Windows.Forms.Button btn_timetable;
         private System.Windows.Forms.Button btn_addcourse;
-        private System.Windows.Forms.Button btn_addsubject;
         private System.Windows.Forms.Button btn_addexam;
         private System.Windows.Forms.Button btn_addtimeslot;
         private System.Windows.Forms.Label label_welcome;

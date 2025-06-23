@@ -30,6 +30,7 @@ namespace UnicomTICManagementSystem.Views
             LoadComboBoxData();
             tb_parent.Text = "Enter Parent's / Guardian's Contact Number";
             tb_parent.ForeColor = Color.LightGray;
+            error_parent.Visible = false;
         }
 
         private void Student_Form_Load(object sender, EventArgs e)
@@ -70,37 +71,15 @@ namespace UnicomTICManagementSystem.Views
         // method for load course combo box
         private void LoadComboBoxData()
         {
-             try
-            {
-                using (var dbconn = DatabaseManager.GetConnection())
-                {
-                    string query = "SELECT Id, CourseName FROM Courses";
-                    using (var cmd = new SQLiteCommand(query, dbconn))
-                    using (var adapter = new SQLiteDataAdapter(cmd))
-                    {
-                        DataTable dt = new DataTable();
-                        adapter.Fill(dt);
-                        DataRow dr = dt.NewRow();
-                        dr["Id"] = -1;              // or -1 or some invalid ID
-                        dr["CourseName"] = "-- Select One --";
-                        dt.Rows.InsertAt(dr, 0);
+            CourseController cc = new CourseController();
+            DataTable dt = cc.GetAllCoursesTOCombo();
+            cb_course.DataSource = dt;
+            cb_course.DisplayMember = "CourseName";
+            cb_course.ValueMember = "Id";
 
-
-                        cb_course.DataSource = dt;
-                        cb_course.DisplayMember = "CourseName";
-                        cb_course.ValueMember = "Id";
-
-                        cb_course.SelectedIndex = 0;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error loading data: " + ex.Message, "Database Error",
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            cb_course.SelectedIndex = 0;
         }
-        //comment
+
         private void btn_add_Click(object sender, EventArgs e)
         {
             try

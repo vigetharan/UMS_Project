@@ -34,6 +34,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label_filterbyname = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btn_delete = new System.Windows.Forms.Button();
             this.rb_student = new System.Windows.Forms.RadioButton();
             this.tb_filterbyid = new System.Windows.Forms.TextBox();
             this.rb_admin = new System.Windows.Forms.RadioButton();
@@ -44,7 +45,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.gb_radio = new System.Windows.Forms.GroupBox();
             this.student_view = new System.Windows.Forms.DataGridView();
-            this.btn_delete = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.gb_radio.SuspendLayout();
@@ -107,6 +107,16 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(843, 30);
             this.panel2.TabIndex = 12;
+            // 
+            // btn_delete
+            // 
+            this.btn_delete.Location = new System.Drawing.Point(398, 3);
+            this.btn_delete.Name = "btn_delete";
+            this.btn_delete.Size = new System.Drawing.Size(108, 23);
+            this.btn_delete.TabIndex = 3;
+            this.btn_delete.Text = "DELETE";
+            this.btn_delete.UseVisualStyleBackColor = true;
+            this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
             // 
             // rb_student
             // 
@@ -189,6 +199,7 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.panel1.Controls.Add(this.tb_filterbyname);
             this.panel1.Controls.Add(this.label_filterbyname);
             this.panel1.Controls.Add(this.label1);
@@ -196,6 +207,7 @@
             this.panel1.Controls.Add(this.tb_filterbyid);
             this.panel1.Controls.Add(this.gb_radio);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(843, 45);
@@ -227,16 +239,6 @@
             this.student_view.Size = new System.Drawing.Size(843, 486);
             this.student_view.TabIndex = 1;
             this.student_view.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.student_view_CellContentClick);
-            // 
-            // btn_delete
-            // 
-            this.btn_delete.Location = new System.Drawing.Point(398, 3);
-            this.btn_delete.Name = "btn_delete";
-            this.btn_delete.Size = new System.Drawing.Size(108, 23);
-            this.btn_delete.TabIndex = 3;
-            this.btn_delete.Text = "DELETE";
-            this.btn_delete.UseVisualStyleBackColor = true;
-            this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
             // 
             // Person_Details
             // 

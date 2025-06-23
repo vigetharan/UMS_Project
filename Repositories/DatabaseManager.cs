@@ -19,10 +19,10 @@ namespace UnicomTICManagementSystem.Repositories
                 var conn = new SQLiteConnection(connectionString);
                 conn.Open();
                 // Enable foreign key constraints
-                using (var cmd = new SQLiteCommand("PRAGMA foreign_keys = ON;", conn))
-                {
-                    cmd.ExecuteNonQuery();
-                }
+  //              using (var cmd = new SQLiteCommand("PRAGMA foreign_keys = ON;", conn))
+  //              {
+ //                   cmd.ExecuteNonQuery();
+  //              }
                 return conn;
             }
             catch (System.Data.SQLite.SQLiteException sqlex)
