@@ -27,7 +27,6 @@ namespace UnicomTICManagementSystem
             btn_add_person.Visible = false;
             btn_course.Visible = false;
             btn_addtimeslot.Visible = false;
-            btn_addsubject.Visible = false;
             btn_addexam.Visible = false;
             btn_addcourse.Visible = false;
             if (LoggedInUser.Role == Enums.UserRole.ADMIN)
@@ -35,7 +34,6 @@ namespace UnicomTICManagementSystem
                 btn_add_person.Visible = true;
                 btn_course.Visible = true;
                 btn_addtimeslot.Visible = true;
-                btn_addsubject.Visible = true;
                 btn_addexam.Visible = true;
                 btn_addcourse.Visible = true;
             }

@@ -119,7 +119,7 @@ namespace UnicomTICManagementSystem.Views
                 LecturerId = Convert.ToInt32(cb_lecturer.SelectedValue)
             };
             CourseController courseController = new CourseController();
-            MessageBox.Show(courseController.AddSubject(sub));
+            MessageBox.Show(courseController.AddSubject(sub, Convert.ToInt32(cb_lecturer.SelectedValue)));
             tb_subject.Clear();
             LoadDataIntoGrid();
             cb_lecturer.SelectedIndex = 0;

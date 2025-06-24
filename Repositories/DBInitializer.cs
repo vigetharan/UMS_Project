@@ -166,7 +166,7 @@ namespace UnicomTICManagementSystem.Repositories
                         FOREIGN KEY (LecturerId) REFERENCES Lecturers(PersonId)
                     );
 
-                    CREATE TABLE IF NOT EXISTS LecturerSubjects (
+                    CREATE TABLE IF NOT EXISTS LecturerSubject (
                         SubjectId INTEGER,
                         LecturerId INTEGER,
                         PRIMARY KEY (LecturerId, SubjectId),

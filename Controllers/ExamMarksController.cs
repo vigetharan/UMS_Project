@@ -13,10 +13,40 @@ namespace UnicomTICManagementSystem.Controllers
 {
     internal class ExamMarksController
     {
-        public void AddMarks(int examId, int studentId, int marks, int updatedBy)
+        public string AddMarks(Result r)
         {
-            // Logic to add marks for a student in an exam
-            // This would typically involve creating a Result object and saving it to the database
+            string grade;
+            if(r.Marks>75)
+            {
+                grade = Enums.Grade.A.ToString();
+            }
+            else if (r.Marks > 60)
+            {
+                grade = Enums.Grade.B.ToString();
+            }
+            else if (r.Marks > 50)
+            {
+                grade = Enums.Grade.C.ToString();
+            }
+            else if (r.Marks > 40)
+            {
+                grade = Enums.Grade.D.ToString();
+            }
+            else
+            {
+                grade = Enums.Grade.F.ToString();
+            }
+            using (var dbconn = DatabaseManager.GetConnection())
+            {
+                string addSubjectQuery = "INSERT INTO Marks (Marks, StudentId, ExamId, Grade_Obtained, UpdatedBy) VALUES (@marks, @sid, @eid, @grade, @updatedby)";
+                SQLiteCommand addCommand = new SQLiteCommand(addSubjectQuery, dbconn);
+                addCommand.Parameters.AddWithValue("marks", r.Marks);
+                addCommand.Parameters.AddWithValue("sid", r.StudentId);
+                addCommand.Parameters.AddWithValue("eid", r.ExamId);
+                addCommand.Parameters.AddWithValue("grade", grade);
+                addCommand.Parameters.AddWithValue("updatedby", r.UpdatedBy);
+                addCommand.ExecuteNonQuery();  
+            }return $"Marks of {r.StudentId} added successfully.";
         }
 
         public void UpdateMarks(int resultId, int marks, int updatedBy)
@@ -29,6 +59,35 @@ namespace UnicomTICManagementSystem.Controllers
         {
             // Logic to delete marks for a specific result
             // This would typically involve removing the Result object from the database
+        }
+        public DataTable GetAllMarks()
+        {
+
+                string getquery = "SELECT p.Name AS StudentName, e.Name AS ExamName, m.Id, m.Marks, m.Grade_Obtained , m.StudentId " +
+                               " FROM Marks m " +
+                               "JOIN Exams e ON m.ExamId = e.Id " +
+                               "JOIN Persons p ON m.StudentId = p.Id";
+
+                using (var dbconn = DatabaseManager.GetConnection())
+                {
+                    
+                    using (SQLiteCommand cmd = new SQLiteCommand(getquery, dbconn))
+                    using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(cmd))
+                    {
+                        DataTable dt = new DataTable();
+                        adapter.Fill(dt);
+                        if (dt.Rows.Count > 0)
+                        {
+                            return dt;
+                        }
+                        else
+                        {
+                            MessageBox.Show("No users found, please contact admin...");
+                            return null;
+                        }
+                    }
+                }
+            
         }
 
         public string AddExam(Exam exam)

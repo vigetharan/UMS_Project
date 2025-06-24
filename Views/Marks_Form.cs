@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using UnicomTICManagementSystem.Controllers;
 using UnicomTICManagementSystem.Repositories;
+using UnicomTICManagementSystem.Models;
 
 namespace UnicomTICManagementSystem.Views
 {
@@ -18,6 +19,7 @@ namespace UnicomTICManagementSystem.Views
         public Marks_Form()
         {
             InitializeComponent();
+            LoadMarks();
         }
 
         private void Marks_Form_Load(object sender, EventArgs e)
@@ -38,6 +40,41 @@ namespace UnicomTICManagementSystem.Views
             cb_exam.SelectedIndex = 0;
         
 
+        }
+        public void LoadMarks()
+        {
+            ExamMarksController emc = new ExamMarksController();
+            DataTable dt = emc.GetAllMarks();
+            if (LoggedInUser.Role == Enums.UserRole.ADMIN || LoggedInUser.Role == Enums.UserRole.STAFF || LoggedInUser.Role == Enums.UserRole.LECTURER)
+            {
+                dtg_marks.DataSource = dt;
+            }
+            else
+            {
+                try
+                {
+                    // Filter the DataTable for the logged-in user's only
+                    DataRow[] filteredRows = dt.Select($"StudentId = '{LoggedInUser.PersonId}'");
+
+                    if (filteredRows.Length > 0)
+                    {
+                        // Create a new DataTable with filtered rows
+                        DataTable filteredTable = filteredRows.CopyToDataTable();
+
+                        // Set the filtered table as the DataSource for the grid when STUDENT logged in.
+                        dtg_marks.DataSource = filteredTable;
+                        btn_delete.Hide();
+                         btn_update.Hide();
+                        btn_addmarks.Hide();
+                        tb_marks.Enabled= false;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    return;
+                }
+            }
         }
         private void LoadStudentsForSelectedCourse()
             {
@@ -125,6 +162,19 @@ namespace UnicomTICManagementSystem.Views
                     }
                 }
             }
+        }
+
+        private void btn_addmarks_Click(object sender, EventArgs e)
+        {
+            ExamMarksController emc = new ExamMarksController();
+            Result r = new Result {
+               StudentId = Convert.ToInt32(cb_student.SelectedValue),
+                ExamId = Convert.ToInt32(cb_exam.SelectedValue),
+               Marks = Convert.ToInt32(tb_marks.Text),
+               UpdatedBy = LoggedInUser.PersonId 
+           };
+            MessageBox.Show(emc.AddMarks(r));
+
         }
     }
 }

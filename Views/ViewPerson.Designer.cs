@@ -58,6 +58,9 @@
             this.tb_age = new System.Windows.Forms.TextBox();
             this.btn_cancel = new System.Windows.Forms.Button();
             this.btn_update = new System.Windows.Forms.Button();
+            this.dgv_marks = new System.Windows.Forms.DataGridView();
+            this.label_marks = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_marks)).BeginInit();
             this.SuspendLayout();
             // 
             // label_salary
@@ -304,12 +307,32 @@
             this.btn_update.UseVisualStyleBackColor = true;
             this.btn_update.Click += new System.EventHandler(this.btn_update_Click);
             // 
+            // dgv_marks
+            // 
+            this.dgv_marks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_marks.Location = new System.Drawing.Point(615, 195);
+            this.dgv_marks.Name = "dgv_marks";
+            this.dgv_marks.Size = new System.Drawing.Size(258, 244);
+            this.dgv_marks.TabIndex = 103;
+            // 
+            // label_marks
+            // 
+            this.label_marks.AutoSize = true;
+            this.label_marks.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_marks.Location = new System.Drawing.Point(747, 176);
+            this.label_marks.Name = "label_marks";
+            this.label_marks.Size = new System.Drawing.Size(114, 16);
+            this.label_marks.TabIndex = 104;
+            this.label_marks.Text = "Marks obtained";
+            // 
             // ViewPerson
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ClientSize = new System.Drawing.Size(873, 571);
+            this.Controls.Add(this.label_marks);
+            this.Controls.Add(this.dgv_marks);
             this.Controls.Add(this.btn_update);
             this.Controls.Add(this.btn_cancel);
             this.Controls.Add(this.label1);
@@ -343,6 +366,7 @@
             this.Name = "ViewPerson";
             this.Text = "OWN DETAILS";
             this.Load += new System.EventHandler(this.ViewPerson_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_marks)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -379,5 +403,7 @@
         private System.Windows.Forms.TextBox tb_age;
         private System.Windows.Forms.Button btn_cancel;
         private System.Windows.Forms.Button btn_update;
+        private System.Windows.Forms.DataGridView dgv_marks;
+        private System.Windows.Forms.Label label_marks;
     }
 }

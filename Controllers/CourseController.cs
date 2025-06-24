@@ -27,7 +27,7 @@ namespace UnicomTICManagementSystem.Controllers
 
 
         }
-        public string AddSubject(Subject sub)
+        public string AddSubject(Subject sub, int LecturerId)
         {
             using (var dbconn = DatabaseManager.GetConnection())
             {
@@ -36,19 +36,44 @@ namespace UnicomTICManagementSystem.Controllers
                 addCommand.Parameters.AddWithValue("name", sub.Name);
                 addCommand.Parameters.AddWithValue("cid", sub.CourseId);
                 addCommand.Parameters.AddWithValue("lid", sub.LecturerId);
-
                 addCommand.ExecuteNonQuery();
-            // Get the last inserted ID to use in CourseSubject table
-/*
-                string LastInsertIdQuery = "SELECT last_insert_rowid()";
-                SQLiteCommand lastIdCommand = new SQLiteCommand(LastInsertIdQuery, dbconn);
-                long subId = (long)lastIdCommand.ExecuteScalar();
-                string addcoursesubjectQuery = "Insert INTO CourseSubject ( CourseId, SubjectId) VALUES (@cid, @subid)";
-                SQLiteCommand addCommand1 = new SQLiteCommand(addcoursesubjectQuery, dbconn);
-                addCommand1.Parameters.AddWithValue("cid", sub.CourseId);
-                addCommand1.Parameters.AddWithValue("subid", subId);
-                   addCommand1.ExecuteNonQuery();
-                */
+
+                // Get the last inserted SubjectId to link with students
+                int subjectId = (int)dbconn.LastInsertRowId;
+                string insertStudentSubjectQuery = @"
+                    INSERT OR IGNORE INTO StudentSubject (StudentId, SubjectId) 
+                    VALUES (@StudentId, @SubjectId)";
+                List<int> studentIds = new List<int>();
+                string getStudentsQuery = "SELECT PersonId FROM Students WHERE CourseId = @courseId";
+                using (var getStudentsCommand = new SQLiteCommand(getStudentsQuery, dbconn))
+                {
+                    getStudentsCommand.Parameters.AddWithValue("@courseId", sub.CourseId);
+                    using (var reader = getStudentsCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            studentIds.Add(reader.GetInt32(0));
+                        }
+                    }
+                }
+                foreach (var studentId in studentIds)
+                {
+                    using (var command = new SQLiteCommand(insertStudentSubjectQuery, dbconn))
+                    {
+                        command.Parameters.AddWithValue("@StudentId", studentId);
+                        command.Parameters.AddWithValue("@SubjectId", subjectId);
+                        command.ExecuteNonQuery();
+                    }
+                }
+                string insertLecturerSubjectQuery = @"
+                    INSERT OR IGNORE INTO LecturerSubject (SubjectId, LecturerId) 
+                    VALUES (@SubjectId, @LecturerId)";
+                using (var command = new SQLiteCommand(insertLecturerSubjectQuery, dbconn))
+                {
+                    command.Parameters.AddWithValue("@SubjectId", sub.Id);
+                    command.Parameters.AddWithValue("@LecturerId", LecturerId);
+                    command.ExecuteNonQuery();
+                }
                 return $"NEW SUBJECT ADDED SUCCESSFULLY";
             }
         }

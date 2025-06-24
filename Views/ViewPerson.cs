@@ -11,6 +11,9 @@ using static UnicomTICManagementSystem.Models.Enums;
 using UnicomTICManagementSystem.Controllers;
 using UnicomTICManagementSystem.Models;
 using System.Xml.Linq;
+using System.Data.SQLite;
+using System.Net.NetworkInformation;
+using UnicomTICManagementSystem.Repositories;
 
 namespace UnicomTICManagementSystem.Views
 {
@@ -50,6 +53,37 @@ namespace UnicomTICManagementSystem.Views
             tb_nic.Enabled = false;
             tb_gender.Enabled = false;
             tb_course.Enabled = false;
+//            dgv_marks.Visible = false;
+            label_marks.Visible = false;
+        }
+        public void loadDGV(int PersonId)
+        {
+            DataTable dt = new DataTable();
+            ExamMarksController emc = new ExamMarksController();
+            dt = emc.GetAllMarks();
+                    try
+                    {
+                        // Filter the DataTable for the logged-in user's only
+                        DataRow[] filteredRows = dt.Select($"StudentId = '{LoggedInUser.PersonId}'");
+
+                        if (filteredRows.Length > 0)
+                        {
+                            // Create a new DataTable with filtered rows
+                            DataTable filteredTable = filteredRows.CopyToDataTable();
+
+                            // Set the filtered table as the DataSource for the grid when STUDENT logged in.
+                            dgv_marks.DataSource = filteredTable;
+                            dgv_marks.Columns["StudentName"].Visible = false;
+                            dgv_marks.Columns["Id"].Visible = false;
+                            dgv_marks.Columns["StudentId"].Visible = false;
+
+                }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                        return;
+                    }
         }
         private void LoadDataToForm(DataTable datatable)
         {
@@ -80,6 +114,9 @@ namespace UnicomTICManagementSystem.Views
                     case "STUDENT":
                         label_salary.Visible = false;
                         tb_salary.Visible = false;
+                        label_marks.Visible = true;
+                        loadDGV(LoggedInUser.PersonId);
+                        dgv_marks.Visible = true;
                         break;
 
                     case "LECTURER":

@@ -38,6 +38,10 @@
             this.cb_course = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label_name = new System.Windows.Forms.Label();
+            this.dtg_marks = new System.Windows.Forms.DataGridView();
+            this.btn_update = new System.Windows.Forms.Button();
+            this.btn_delete = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dtg_marks)).BeginInit();
             this.SuspendLayout();
             // 
             // cb_student
@@ -102,6 +106,7 @@
             this.btn_addmarks.TabIndex = 6;
             this.btn_addmarks.Text = "ADD MARKS";
             this.btn_addmarks.UseVisualStyleBackColor = true;
+            this.btn_addmarks.Click += new System.EventHandler(this.btn_addmarks_Click);
             // 
             // cb_course
             // 
@@ -132,12 +137,41 @@
             this.label_name.Text = "name";
             this.label_name.Visible = false;
             // 
+            // dtg_marks
+            // 
+            this.dtg_marks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtg_marks.Location = new System.Drawing.Point(-6, 89);
+            this.dtg_marks.Name = "dtg_marks";
+            this.dtg_marks.Size = new System.Drawing.Size(809, 322);
+            this.dtg_marks.TabIndex = 10;
+            // 
+            // btn_update
+            // 
+            this.btn_update.Location = new System.Drawing.Point(515, 417);
+            this.btn_update.Name = "btn_update";
+            this.btn_update.Size = new System.Drawing.Size(103, 23);
+            this.btn_update.TabIndex = 11;
+            this.btn_update.Text = "Update";
+            this.btn_update.UseVisualStyleBackColor = true;
+            // 
+            // btn_delete
+            // 
+            this.btn_delete.Location = new System.Drawing.Point(208, 417);
+            this.btn_delete.Name = "btn_delete";
+            this.btn_delete.Size = new System.Drawing.Size(103, 23);
+            this.btn_delete.TabIndex = 12;
+            this.btn_delete.Text = "DELETE";
+            this.btn_delete.UseVisualStyleBackColor = true;
+            // 
             // Marks_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btn_delete);
+            this.Controls.Add(this.btn_update);
+            this.Controls.Add(this.dtg_marks);
             this.Controls.Add(this.label_name);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.cb_course);
@@ -151,6 +185,7 @@
             this.Name = "Marks_Form";
             this.Text = "Marks_Form";
             this.Load += new System.EventHandler(this.Marks_Form_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dtg_marks)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -168,5 +203,8 @@
         private System.Windows.Forms.ComboBox cb_course;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label_name;
+        private System.Windows.Forms.DataGridView dtg_marks;
+        private System.Windows.Forms.Button btn_update;
+        private System.Windows.Forms.Button btn_delete;
     }
 }
