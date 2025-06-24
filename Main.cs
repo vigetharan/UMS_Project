@@ -47,14 +47,8 @@ namespace UnicomTICManagementSystem
 
         private void button1_Click(object sender, EventArgs e)
         {
- //           centerPanel.AutoScroll = true;
             Person_Details pform = new Person_Details();
- //           pform.TopLevel = false;
- //           pform.FormBorderStyle = FormBorderStyle.None;
             pform.StartPosition = FormStartPosition.CenterScreen;
- //           pform.Dock = DockStyle.Fill;
- //           pform.AutoScaleMode = AutoScaleMode.None;
-//            centerPanel.Controls.Add(pform);
             pform.Show();
 
         }
@@ -117,7 +111,7 @@ namespace UnicomTICManagementSystem
             // clear center viewing panel to empty, and other button clicks set to false
 
             centerPanel.Controls.Clear();
-            TimeTableDetails tt = new TimeTableDetails();
+            TimeTableForm tt = new TimeTableForm();
             centerPanel.Controls.Clear();
             tt.TopLevel = false;
             tt.FormBorderStyle = FormBorderStyle.None;

@@ -173,8 +173,15 @@ namespace UnicomTICManagementSystem.Views
                Marks = Convert.ToInt32(tb_marks.Text),
                UpdatedBy = LoggedInUser.PersonId 
            };
+            tb_marks.Clear();
             MessageBox.Show(emc.AddMarks(r));
 
+        }
+
+        private void btn_delete_Click(object sender, EventArgs e)
+        {
+            ExamMarksController emc = new ExamMarksController();
+            emc.DeleteMarks(Convert.ToInt32(dtg_marks.SelectedRows[0].Cells["Id"].Value));
         }
     }
 }

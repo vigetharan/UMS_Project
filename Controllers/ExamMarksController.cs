@@ -51,14 +51,81 @@ namespace UnicomTICManagementSystem.Controllers
 
         public void UpdateMarks(int resultId, int marks, int updatedBy)
         {
-            // Logic to update marks for a specific result
-            // This would typically involve fetching the Result object and updating its properties
+            try
+            {
+                string grade;
+                if (marks > 75)
+                {
+                    grade = Enums.Grade.A.ToString();
+                }
+                else if (marks > 60)
+                {
+                    grade = Enums.Grade.B.ToString();
+                }
+                else if (marks > 50)
+                {
+                    grade = Enums.Grade.C.ToString();
+                }
+                else if (marks > 40)
+                {
+                    grade = Enums.Grade.D.ToString();
+                }
+                else
+                {
+                    grade = Enums.Grade.F.ToString();
+                }
+
+                using (var dbconn = DatabaseManager.GetConnection())
+                {
+                    string updateQuery = "UPDATE Marks SET Marks = @marks, Grade_Obtained = @grade, UpdatedBy = @updatedBy WHERE Id = @resultId";
+                    SQLiteCommand updateCommand = new SQLiteCommand(updateQuery, dbconn);
+                    updateCommand.Parameters.AddWithValue("@marks", marks);
+                    updateCommand.Parameters.AddWithValue("@grade", grade);
+                    updateCommand.Parameters.AddWithValue("@updatedBy", updatedBy);
+                    updateCommand.Parameters.AddWithValue("@resultId", resultId);
+
+                    int rowsAffected = updateCommand.ExecuteNonQuery();
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("Marks updated successfully.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("No record found to update.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error updating marks: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public void DeleteMarks(int resultId)
         {
-            // Logic to delete marks for a specific result
-            // This would typically involve removing the Result object from the database
+            try
+            {
+                using (var dbconn = DatabaseManager.GetConnection())
+                {
+                    string deleteQuery = "DELETE FROM Marks WHERE Id = @resultId";
+                    SQLiteCommand deleteCommand = new SQLiteCommand(deleteQuery, dbconn);
+                    deleteCommand.Parameters.AddWithValue("@resultId", resultId);
+
+                    int rowsAffected = deleteCommand.ExecuteNonQuery();
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("Marks deleted successfully.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("No record found to delete.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error deleting marks: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         public DataTable GetAllMarks()
         {
